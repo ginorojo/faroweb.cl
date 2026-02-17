@@ -3,28 +3,46 @@
 import { useState } from 'react';
 import { Clock, MapPin, Smartphone, ArrowRight, Star, Award, Users, ExternalLink, ChevronDown, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion'; // Importamos Variants para corregir el error
 
 export default function Home() {
   
-  // -- CONFIGURACIÓN DE ANIMACIONES --
-  const autoShake = {
+  // -- CONFIGURACIÓN DE ANIMACIONES (CORREGIDO PARA TYPESCRIPT) --
+  // Ahora definimos explícitamente que esto es de tipo 'Variants'
+  const autoShake: Variants = {
     idle: {
       rotate: [0, -1, 1, -1, 1, 0],
-      transition: { duration: 0.5, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }
+      transition: { 
+        duration: 0.5, 
+        repeat: Infinity, 
+        repeatDelay: 4, 
+        ease: "easeInOut" 
+      }
     },
     hover: {
-      y: -10, scale: 1.02, rotate: 0, transition: { duration: 0.2 }
+      y: -10, 
+      scale: 1.02, 
+      rotate: 0, 
+      transition: { duration: 0.2 }
     }
   };
 
-  const autoShakeFeatured = {
+  const autoShakeFeatured: Variants = {
     idle: {
-      rotate: [0, -1, 1, -1, 1, 0], scale: 1.05,
-      transition: { duration: 0.5, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }
+      rotate: [0, -1, 1, -1, 1, 0], 
+      scale: 1.05,
+      transition: { 
+        duration: 0.5, 
+        repeat: Infinity, 
+        repeatDelay: 4, 
+        ease: "easeInOut" 
+      }
     },
     hover: {
-      y: -10, scale: 1.08, rotate: 0, transition: { duration: 0.2 }
+      y: -10, 
+      scale: 1.08, 
+      rotate: 0, 
+      transition: { duration: 0.2 }
     }
   };
 
@@ -168,6 +186,7 @@ export default function Home() {
               <motion.div 
                 className="rounded-3xl border border-gray-200 p-8 bg-white hover:border-green-300 hover:shadow-xl cursor-default"
                 variants={autoShake}
+                initial="idle"
                 animate="idle"
                 whileHover="hover"
               >
@@ -188,6 +207,7 @@ export default function Home() {
               <motion.div 
                 className="relative rounded-3xl border-2 border-green-600 p-10 shadow-2xl bg-white z-10 cursor-default"
                 variants={autoShakeFeatured}
+                initial="idle"
                 animate="idle"
                 whileHover="hover"
               >
@@ -209,6 +229,7 @@ export default function Home() {
               <motion.div 
                 className="rounded-3xl border border-gray-200 p-8 bg-white hover:border-green-300 hover:shadow-xl cursor-default"
                 variants={autoShake}
+                initial="idle"
                 animate="idle"
                 whileHover="hover"
               >
@@ -278,7 +299,6 @@ export default function Home() {
                       "/gift3.jpg"  
                     ].map((imgSrc, i) => (
                       <div key={i} className="relative w-12 h-12 rounded-full border-4 border-white overflow-hidden shadow-sm bg-gray-100">
-                        {/* Como next/image puede ser quisquilloso con rutas locales, usa <img> normal para avatares locales si prefieres */}
                         <img 
                           src={imgSrc} 
                           alt={`Equipo ${i}`} 
@@ -297,14 +317,13 @@ export default function Home() {
               {/* --- ESPACIO PARA EL VIDEO --- */}
               <div className="md:w-1/2 w-full h-64 md:h-80 bg-gray-100 rounded-3xl relative overflow-hidden shadow-lg border-2 border-white">
                 <video
-                  src="/laserena.mp4" // <--- NOMBRE DEL ARCHIVO QUE DEBES PONER EN PUBLIC
+                  src="/laserena.mp4" 
                   autoPlay
                   loop
                   muted
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                 />
-                {/* Capa de protección visual (overlay) opcional */}
                 <div className="absolute inset-0 bg-black/5"></div>
               </div>
 
@@ -312,7 +331,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FAQ SECTION (FONDO VERDE CLARO) */}
+        {/* FAQ SECTION */}
         <section id="faq" className="py-24 bg-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <div className="text-center mb-16">
@@ -327,46 +346,38 @@ export default function Home() {
           </div>
         </section>
 
-          {/* --- SECCIÓN DE PAGOS DESTACADA (CON LOGOS ESTABLES) --- */}
+        {/* --- SECCIÓN DE PAGOS DESTACADA --- */}
         <section className="py-24 bg-green-600 text-white">
           <div className="container mx-auto px-4 text-center">
             <h3 className="text-3xl md:text-5xl font-black mb-12 tracking-tight">Aceptamos Todo Medio de Pago</h3>
             
-            {/* Contenedor blanco con imágenes estándar <img> y URLs de WIKIMEDIA (Las más estables) */}
             <div className="inline-flex flex-wrap justify-center items-center gap-8 bg-white py-8 px-12 rounded-3xl shadow-2xl">
-              
               <img 
                 src="https://img.icons8.com/?size=100&id=13608&format=png&color=000000" 
                 alt="Visa" 
                 className="h-10 w-auto"
                 loading="lazy"
               />
-              
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" 
                 alt="Mastercard" 
                 className="h-10 w-auto"
                 loading="lazy"
               />
-              
               <img 
                 src="https://img.icons8.com/?size=100&id=nTLVtpxsNPaz&format=png&color=000000"
+                alt="Mercado Pago"
                 className="h-10 w-auto"
                 loading="lazy"
               />
-
               <div className="flex items-center gap-3 text-gray-800 font-bold border-l-2 border-gray-200 pl-8 ml-4">
                 <CheckCircle2 className="text-green-600 h-8 w-8" />
                 <span className="text-lg leading-tight text-left">Transferencia<br/>Bancaria</span>
               </div>
             </div>
-            
             <p className="mt-8 text-green-100 font-medium opacity-80">Tu seguridad es nuestra prioridad. Transacciones encriptadas.</p>
           </div>
         </section>
-
-
-      
 
       </main>
 
