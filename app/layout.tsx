@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'FaroWeb | Diseño de Páginas Web en La Serena y Coquimbo',
+  title: 'Faroweb | Diseño de Páginas Web en La Serena y Coquimbo',
   description: 'Desarrollo web profesional y tiendas online en la Cuarta Región. Creamos sitios rápidos y modernos para potenciar tu negocio local en Chile.', 
 };
 
