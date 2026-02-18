@@ -12,6 +12,7 @@ import {
   ExternalLink,
   ChevronDown,
   CheckCircle2,
+  Timer,
 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion"; // Importamos Variants para corregir el error
@@ -100,18 +101,16 @@ export default function Home() {
               </a>
             </div>
             <nav className="hidden md:flex md:space-x-8 font-medium text-sm tracking-wide">
-              {["Beneficios", "Planes", "Portafolio", "Nosotros"].map(
-                (item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-500 hover:text-green-600 transition-colors relative group py-2"
-                  >
-                    {item}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></span>
-                  </a>
-                ),
-              )}
+              {["Beneficios", "Planes", "Diseños", "Nosotros"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-gray-500 hover:text-green-600 transition-colors relative group py-2"
+                >
+                  {item}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
             </nav>
             <a
               href="https://wa.me/569XXXXXXXX"
@@ -151,7 +150,7 @@ export default function Home() {
                   24 Horas
                 </span>
               </h1>
-              <p className="text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
+              <p className="text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
                 Páginas web ultra-rápidas, modernas y optimizadas para vender en
                 La Serena, Coquimbo y todo el país. Tu competencia ya está en
                 línea, ¿y tú?
@@ -188,7 +187,7 @@ export default function Home() {
                 {
                   icon: <MapPin />,
                   title: "Posicionamiento Local",
-                  desc: "Optimizamos tu web para que aparezcas primero cuando busquen tus servicios en la IV Región.",
+                  desc: "Optimizamos tu web para que aparezcas en google cuando busquen tus servicios en la IV Región.",
                 },
                 {
                   icon: <Smartphone />,
@@ -245,7 +244,14 @@ export default function Home() {
                   </span>
                   <p className="text-4xl font-black text-gray-900">$79.990</p>
                 </div>
-                <ul className="mt-8 space-y-4 text-gray-600">
+                <div className="flex items-center  gap-2 my-4">
+                    <Timer size={18} className="text-red-500" />{" "}
+                    {/* Aquí tienes tu "emoji" en B/N */}
+                    <p className="text-red-500 font-semibold">
+                      Tiempo limitado
+                    </p>
+                  </div>
+                <ul className=" space-y-4 text-gray-600">
                   <li className="flex items-center">
                     <Star className="h-5 w-5 text-green-500 mr-2" />
                     Landing Page Profesional
@@ -253,6 +259,18 @@ export default function Home() {
                   <li className="flex items-center">
                     <Star className="h-5 w-5 text-green-500 mr-2" />
                     Botón de WhatsApp
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="h-5 w-5 text-green-500 mr-2" />
+                    Hasta 5 secciones
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="h-5 w-5 text-green-500 mr-2" />
+                    Formulario de contacto(opcional)
+                  </li>
+                  <li className="flex items-center">
+                    <Star className="h-5 w-5 text-green-500 mr-2" />
+                    Mapa de ubicación
                   </li>
                 </ul>
                 <a
@@ -279,9 +297,16 @@ export default function Home() {
                   <span className="text-gray-400 line-through text-lg">
                     $250.000
                   </span>
-                  <p className="text-5xl font-black text-green-600">$149.990</p>
+                  <p className="text-5xl font-black text-green-600">$129.990</p>
+                  <div className="flex items-center  gap-2 my-4">
+                    <Timer size={18} className="text-red-500" />{" "}
+                    {/* Aquí tienes tu "emoji" en B/N */}
+                    <p className="text-red-500 font-semibold">
+                      Tiempo limitado
+                    </p>
+                  </div>
                 </div>
-                <ul className="mt-8 space-y-4 font-medium">
+                <ul className="space-y-4 font-medium">
                   <li className="flex items-center text-gray-900">
                     <Award className="h-5 w-5 text-green-500 mr-2" />
                     Todo de Presencia
@@ -292,7 +317,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center text-gray-900">
                     <Award className="h-5 w-5 text-green-500 mr-2" />
-                    Pedidos directos
+                    Pedidos directos por whatsapp
                   </li>
                 </ul>
                 <a
@@ -324,6 +349,10 @@ export default function Home() {
                     <Users className="h-5 w-5 text-green-500 mr-2" />
                     Sistemas Propios
                   </li>
+                  <li className="flex items-center">
+                    <Users className="h-5 w-5 text-green-500 mr-2" />
+                    Sistemas de pago
+                  </li>
                 </ul>
                 <a
                   href="https://wa.me/..."
@@ -337,7 +366,7 @@ export default function Home() {
         </section>
 
         {/* PORTAFOLIO */}
-        <section id="portafolio" className="py-24 bg-gray-900 text-white">
+        <section id="diseños" className="py-24 bg-gray-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-black text-center mb-16 italic">
               Diseños de Próxima Generación
@@ -442,6 +471,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="flex justify-center pt-10 text-xl px-8 content-center">
+            <p className="flex justify-center">
+              * Diseños referenciales, adaptamos el diseño a tu negocio y
+              necesidades.
+            </p>
           </div>
         </section>
 
@@ -629,7 +664,6 @@ export default function Home() {
           </div>
           <div className="pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
             <p>&copy; 2026 Faroweb.cl. Todos los derechos reservados.</p>
-            
           </div>
         </div>
       </footer>
