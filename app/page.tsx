@@ -15,11 +15,68 @@ import {
   Timer,
 } from "lucide-react";
 import Image from "next/image";
-import { motion, AnimatePresence, Variants } from "framer-motion"; // Importamos Variants para corregir el error
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
+// --- 1. COMPONENTE BOTÓN WHATSAPP FLOTANTE (DINÁMICO) ---
+function WhatsAppFloating() {
+  // Animación: Flota suavemente y cada 4 segundos da un "saltito" (notify)
+  const floatVariants: Variants = {
+    idle: {
+      y: [0, -5, 0],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+    notify: {
+      scale: [1, 1.1, 1, 1.1, 1],
+      rotate: [0, -5, 5, -5, 5, 0],
+      transition: {
+        duration: 0.5,
+        repeat: Infinity,
+        repeatDelay: 4, // Espera 4 segundos entre cada animación de atención
+      },
+    },
+  };
+
+  const defaultMsg = encodeURIComponent(
+    "¡Hola Faroweb! Estoy viendo su página y me gustaría recibir información sobre diseño web."
+  );
+
+  return (
+    <motion.a
+      href={`https://wa.me/56971874099?text=${defaultMsg}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 z-[100] flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-shadow hover:shadow-green-500/50"
+      variants={floatVariants}
+      animate="notify" // Ejecuta la animación de notificación constantemente
+      whileHover={{ scale: 1.1, rotate: 0 }} // Al pasar el mouse se agranda
+      whileTap={{ scale: 0.9 }} // Al hacer clic se achica
+    >
+      <svg
+        viewBox="0 0 24 24"
+        className="h-9 w-9 fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+    </motion.a>
+  );
+}
+
+// --- 2. COMPONENTE PRINCIPAL ---
 export default function Home() {
-  // -- CONFIGURACIÓN DE ANIMACIONES (CORREGIDO PARA TYPESCRIPT) --
-  // Ahora definimos explícitamente que esto es de tipo 'Variants'
+  
+  // Función para generar links de WhatsApp específicos por plan
+  const getWhatsAppLink = (planName: string) => {
+    const msg = encodeURIComponent(
+      `¡Hola Faroweb! Me interesa el *${planName}*. ¿Podrían darme más información?`
+    );
+    return `https://wa.me/56971874099?text=${msg}`;
+  };
+
   const autoShake: Variants = {
     idle: {
       rotate: [0, -1, 1, -1, 1, 0],
@@ -57,7 +114,6 @@ export default function Home() {
     },
   };
 
-  // -- DATOS DE PREGUNTAS FRECUENTES --
   const faqs = [
     {
       question: "¿Cuánto tiempo demoran en entregar mi página?",
@@ -113,7 +169,7 @@ export default function Home() {
               ))}
             </nav>
             <a
-              href="https://wa.me/569XXXXXXXX"
+              href={getWhatsAppLink("Servicios Generales")}
               className="inline-flex items-center justify-center rounded-full bg-green-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-green-600/30 transition-all hover:bg-green-700 hover:shadow-green-600/50 hover:-translate-y-0.5 active:scale-95"
             >
               Hablemos
@@ -245,12 +301,9 @@ export default function Home() {
                   <p className="text-4xl font-black text-gray-900">$79.990</p>
                 </div>
                 <div className="flex items-center  gap-2 my-4">
-                    <Timer size={18} className="text-red-500" />{" "}
-                    {/* Aquí tienes tu "emoji" en B/N */}
-                    <p className="text-red-500 font-semibold">
-                      Tiempo limitado
-                    </p>
-                  </div>
+                  <Timer size={18} className="text-red-500" />{" "}
+                  <p className="text-red-500 font-semibold">Tiempo limitado</p>
+                </div>
                 <ul className=" space-y-4 text-gray-600">
                   <li className="flex items-center">
                     <Star className="h-5 w-5 text-green-500 mr-2" />
@@ -274,7 +327,7 @@ export default function Home() {
                   </li>
                 </ul>
                 <a
-                  href="https://wa.me/..."
+                  href={getWhatsAppLink("Plan Presencia")}
                   className="mt-10 block w-full py-3 text-center font-bold border-2 border-gray-900 rounded-xl hover:bg-gray-900 hover:text-white transition-all"
                 >
                   Elegir Plan
@@ -300,7 +353,6 @@ export default function Home() {
                   <p className="text-5xl font-black text-green-600">$129.990</p>
                   <div className="flex items-center  gap-2 my-4">
                     <Timer size={18} className="text-red-500" />{" "}
-                    {/* Aquí tienes tu "emoji" en B/N */}
                     <p className="text-red-500 font-semibold">
                       Tiempo limitado
                     </p>
@@ -321,7 +373,7 @@ export default function Home() {
                   </li>
                 </ul>
                 <a
-                  href="https://wa.me/..."
+                  href={getWhatsAppLink("Plan Catálogo")}
                   className="mt-10 block w-full py-4 text-center font-bold bg-green-600 text-white rounded-xl shadow-lg shadow-green-600/30 hover:bg-green-700 transition-all"
                 >
                   Lo quiero ahora
@@ -355,7 +407,7 @@ export default function Home() {
                   </li>
                 </ul>
                 <a
-                  href="https://wa.me/..."
+                  href={getWhatsAppLink("Desarrollo a Medida")}
                   className="mt-10 block w-full py-3 text-center font-bold border-2 border-gray-900 text-gray-900 rounded-xl hover:bg-gray-900 hover:text-white transition-all"
                 >
                   Consultar
@@ -373,11 +425,11 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Card 1 */}
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100   ">
+              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
                 <div className="absolute inset-0 bg-blue-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 {/* VIDEO AQUI */}
                 <video
-                  src="/abogado.mp4" // Cambia esto por el nombre real de tu archivo
+                  src="/abogado.mp4"
                   autoPlay
                   loop
                   muted
@@ -410,7 +462,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-red-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 {/* VIDEO AQUI */}
                 <video
-                  src="/pet.mp4" // Cambia esto por el nombre real de tu archivo
+                  src="/pet.mp4"
                   autoPlay
                   loop
                   muted
@@ -443,7 +495,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-amber-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 {/* VIDEO AQUI */}
                 <video
-                  src="/amedida.mp4" // Cambia esto por el nombre real de tu archivo
+                  src="/amedida.mp4"
                   autoPlay
                   loop
                   muted
@@ -460,7 +512,7 @@ export default function Home() {
                   </h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
                     <a
-                      href="https://wa.me/..."
+                      href={getWhatsAppLink("Desarrollo a Medida")}
                       className="flex items-center text-green-500"
                       target="_blank"
                     >
@@ -521,7 +573,7 @@ export default function Home() {
                             className="object-cover w-full h-full"
                           />
                         </div>
-                      ),
+                      )
                     )}
                   </div>
                   <div className="flex flex-col justify-center">
@@ -558,7 +610,9 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Preguntas Frecuentes
               </h2>
-              <p className="text-gray-600">Resolvemos tus dudas en segundos.</p>
+              <p className="text-gray-600">
+                Resolvemos tus dudas en segundos.
+              </p>
             </div>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
@@ -667,6 +721,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      
+      {/* BOTÓN FLOTANTE FINAL (Se mueve cada 4s) */}
+      <WhatsAppFloating />
     </div>
   );
 }
