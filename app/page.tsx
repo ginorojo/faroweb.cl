@@ -358,10 +358,10 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
                   <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">
-                    Legal
+                    Abogados laborales
                   </span>
                   <h3 className="text-2xl font-bold leading-tight">
-                    Estudio Jurídico
+                    Plan presencia
                   </h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
                    
@@ -373,11 +373,11 @@ export default function Home() {
               </div>
 
               {/* Card 2 */}
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer">
+              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
                 <div className="absolute inset-0 bg-red-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 {/* VIDEO AQUI */}
                 <video
-                  src="/nombre-de-tu-video.mp4" // Cambia esto por el nombre real de tu archivo
+                  src="/pet.mp4" // Cambia esto por el nombre real de tu archivo
                   autoPlay
                   loop
                   muted
@@ -387,13 +387,15 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
                   <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">
-                    Gastro
+                    Pet shop
                   </span>
                   <h3 className="text-2xl font-bold leading-tight">
-                    Kitsune Sushi
+                    Plan Catálogo
                   </h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
-                    Ver Demo <ExternalLink size={16} className="ml-2" />
+                    <a href="https://petshop-aoc.pages.dev/"  className="flex items-center" target="_blank" >
+                     <p>Ver Demo</p>
+                     <ExternalLink size={16} className="ml-2" /></a>
                   </div>
                 </div>
               </div>
@@ -413,10 +415,10 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
                   <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">
-                    Business
+                    e-commerce
                   </span>
                   <h3 className="text-2xl font-bold leading-tight">
-                    Constructora Norte
+                    Plan a medida
                   </h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
                     Ver Demo <ExternalLink size={16} className="ml-2" />
