@@ -5,8 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Diseño de Páginas Web en La Serena | Faroweb",
-    description: "Agencia de desarrollo web en La Serena, Chile. Creamos sitios web modernos, rápidos y optimizados para SEO local. Aumenta tus ventas con nosotros.",
+  title: 'Faroweb | Diseño de Páginas Web en La Serena',
+  description: 'Desarrollo web profesional en la Cuarta Región y todo Chile...', 
+
 };
 
 export default function RootLayout({
