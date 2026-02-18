@@ -336,7 +336,7 @@ export default function Home() {
 
               {/* Plan Catálogo */}
               <motion.div
-                className="relative rounded-3xl border-2 border-green-600 p-10 shadow-2xl bg-white z-10 cursor-default"
+                className="relative rounded-3xl border-2 border-green-600 p-10 shadow-2xl bg-white z-10 cursor-default mt-8"
                 variants={autoShakeFeatured}
                 initial="idle"
                 animate="idle"
