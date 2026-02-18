@@ -83,7 +83,7 @@ export default function Home() {
   return (
     <div className="bg-white selection:bg-green-100 selection:text-green-900 font-sans">
       {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100 transition-all duration-300">
+      <header className="sticky top-0 z-50 bg-white backdrop-blur-lg border-b border-gray-100 transition-all duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
             <div className="flex-shrink-0 cursor-pointer">
@@ -344,7 +344,7 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Card 1 */}
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-2 border-gray-100   ">
+              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100   ">
                 <div className="absolute inset-0 bg-blue-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 {/* VIDEO AQUI */}
                 <video
@@ -364,10 +364,14 @@ export default function Home() {
                     Plan presencia
                   </h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
-                   
-                    <a href="https://abogados-template.pages.dev/"  className="flex items-center" target="_blank" >
-                     <p>Ver Demo</p>
-                     <ExternalLink size={16} className="ml-2" /></a>
+                    <a
+                      href="https://abogados-template.pages.dev/"
+                      className="flex items-center text-green-500"
+                      target="_blank"
+                    >
+                      <p>Ver Demo</p>
+                      <ExternalLink size={16} className="ml-2" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -393,19 +397,24 @@ export default function Home() {
                     Plan Catálogo
                   </h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
-                    <a href="https://petshop-aoc.pages.dev/"  className="flex items-center" target="_blank" >
-                     <p>Ver Demo</p>
-                     <ExternalLink size={16} className="ml-2" /></a>
+                    <a
+                      href="https://petshop-aoc.pages.dev/"
+                      className="flex items-center text-green-500"
+                      target="_blank"
+                    >
+                      <p>Ver Demo</p>
+                      <ExternalLink size={16} className="ml-2" />
+                    </a>
                   </div>
                 </div>
               </div>
 
               {/* Card 3 */}
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer">
+              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
                 <div className="absolute inset-0 bg-amber-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 {/* VIDEO AQUI */}
                 <video
-                  src="/nombre-de-tu-video.mp4" // Cambia esto por el nombre real de tu archivo
+                  src="/amedida.mp4" // Cambia esto por el nombre real de tu archivo
                   autoPlay
                   loop
                   muted
@@ -421,7 +430,14 @@ export default function Home() {
                     Plan a medida
                   </h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
-                    Ver Demo <ExternalLink size={16} className="ml-2" />
+                    <a
+                      href="https://wa.me/..."
+                      className="flex items-center text-green-500"
+                      target="_blank"
+                    >
+                      <p>Cotizar</p>
+                      <ExternalLink size={16} className="ml-2" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -607,21 +623,13 @@ export default function Home() {
               <h4 className="text-white font-bold mb-4">Contacto</h4>
               <ul className="space-y-2 text-sm">
                 <li>La Serena, Chile</li>
-                <li>hola@faroweb.cl</li>
-                <li>+56 9 XXXX XXXX</li>
+                <li>faroweb@gmail.com</li>
               </ul>
             </div>
           </div>
           <div className="pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
             <p>&copy; 2026 Faroweb.cl. Todos los derechos reservados.</p>
-            <div className="flex space-x-6">
-              <a href="#" className="hover:text-white transition-colors">
-                Instagram
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                WhatsApp
-              </a>
-            </div>
+            
           </div>
         </div>
       </footer>
