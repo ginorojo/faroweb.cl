@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next'
 
-// Agrega esta línea para solucionar el error de Cloudflare:
 export const dynamic = 'force-static'
  
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,15 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
-    },
-  ]
-}
-    // Si en el futuro agregas más páginas, las pones aquí:
-    // {
-    //   url: 'https://faroweb.cl/servicios',
-    //   lastModified: new Date(),
-    //   changeFrequency: 'monthly',
-    //   priority: 0.8,
-    // },
+    }
   ]
 }
