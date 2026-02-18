@@ -23,12 +23,12 @@ export default function RootLayout({
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "LocalBusiness",
-                            "name": "AgenciaWeb",
-                            "image": "https://tusitio.cl/logo.png",
+                            "name": "Faroweb",
+                            "image": "/farologo.png",
                             "telephone": "+569XXXXXXXX",
                             "address": {
                                 "@type": "PostalAddress",
-                                "streetAddress": "Av. Del Mar 123",
+                                "streetAddress": "la serena,chile",
                                 "addressLocality": "La Serena",
                                 "addressRegion": "Coquimbo",
                                 "postalCode": "1700000",
