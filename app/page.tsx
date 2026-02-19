@@ -186,7 +186,7 @@ export default function Home() {
         >
           <div className="absolute inset-0 z-0">
             <Image
-              src="/Gemini_Generated_Image_hxkz3bhxkz3bhxkz.png"
+              src="/hero.jpg"
               alt="Agencia de Diseño Web La Serena"
               fill
               className="object-cover object-center"
