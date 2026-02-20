@@ -13,13 +13,16 @@ import {
   ChevronDown,
   CheckCircle2,
   Timer,
+  Code2,    // Icono para Tecnología
+  Zap,      // Icono para Velocidad
+  ShieldCheck, // Icono para Seguridad
+  Globe,     // Icono para Red Global
 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 
 // --- 1. COMPONENTE BOTÓN WHATSAPP FLOTANTE (DINÁMICO) ---
 function WhatsAppFloating() {
-  // Animación: Flota suavemente y cada 4 segundos da un "saltito" (notify)
   const floatVariants: Variants = {
     idle: {
       y: [0, -5, 0],
@@ -35,7 +38,7 @@ function WhatsAppFloating() {
       transition: {
         duration: 0.5,
         repeat: Infinity,
-        repeatDelay: 4, // Espera 4 segundos entre cada animación de atención
+        repeatDelay: 4,
       },
     },
   };
@@ -51,9 +54,9 @@ function WhatsAppFloating() {
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-[100] flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-shadow hover:shadow-green-500/50"
       variants={floatVariants}
-      animate="notify" // Ejecuta la animación de notificación constantemente
-      whileHover={{ scale: 1.1, rotate: 0 }} // Al pasar el mouse se agranda
-      whileTap={{ scale: 0.9 }} // Al hacer clic se achica
+      animate="notify"
+      whileHover={{ scale: 1.1, rotate: 0 }}
+      whileTap={{ scale: 0.9 }}
     >
       <svg
         viewBox="0 0 24 24"
@@ -69,7 +72,6 @@ function WhatsAppFloating() {
 // --- 2. COMPONENTE PRINCIPAL ---
 export default function Home() {
   
-  // Función para generar links de WhatsApp específicos por plan
   const getWhatsAppLink = (planName: string) => {
     const msg = encodeURIComponent(
       `¡Hola Faroweb! Me interesa el *${planName}*. ¿Podrían darme más información?`
@@ -179,7 +181,7 @@ export default function Home() {
       </header>
 
       <main>
-        {/* HERO SECTION */}
+        {/* HERO SECTION CON DINAMISMO APLICADO */}
         <section
           id="hero"
           className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden"
@@ -196,31 +198,43 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-            <div className="max-w-4xl text-left">
+            {/* Contenedor animado para el texto del Hero */}
+            <motion.div 
+              className="max-w-4xl text-left"
+              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               <span className="inline-block py-1 px-3 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
                 Desarrollo Web IV Región
               </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+              <motion.h1 
+                className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              >
                 Tu Negocio Abierto las <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
                   24 Horas
                 </span>
-              </h1>
+              </motion.h1>
               <p className="text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
                 Páginas web ultra-rápidas, modernas y optimizadas para vender en
                 La Serena, Coquimbo y todo el país. Tu competencia ya está en
                 línea, ¿y tú?
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   href="#planes"
-                  className="group inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-green-700 hover:scale-105 shadow-xl shadow-green-900/40"
+                  className="group inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-green-700 shadow-xl shadow-green-900/40"
                 >
                   Ver Planes{" "}
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </a>
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -270,6 +284,85 @@ export default function Home() {
           </div>
         </section>
 
+        {/* --- NUEVA SECCIÓN: TECNOLOGÍA DE PUNTA --- */}
+        <section className="py-24 bg-gray-950 text-white relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-500 via-transparent to-transparent pointer-events-none"></div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16 max-w-3xl mx-auto">
+              <h2 className="text-3xl font-black sm:text-5xl mb-6 leading-tight">
+                Tu web construida con la tecnología de{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-500 to-emerald-500">
+                  TikTok, Instagram, Facebook, y Netflix.
+                </span>
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                No usamos plantillas lentas ni sistemas anticuados. Desarrollamos tu proyecto con el mismo "stack" tecnológico que usan las grandes empresas para garantizar velocidad y seguridad total.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: <Code2 className="w-8 h-8" />,
+                  title: "React",
+                  color: "text-blue-400",
+                  desc: "Interfaces instantáneas creadas por Meta. La misma tecnología que mueve Instagram.",
+                },
+                {
+                  icon: <Zap className="w-8 h-8" />,
+                  title: "Next.js",
+                  color: "text-white",
+                  desc: "Carga a la velocidad de la luz. Optimizada para que Google ame tu sitio.",
+                },
+                {
+                  icon: <ShieldCheck className="w-8 h-8" />,
+                  title: "TypeScript",
+                  color: "text-blue-500",
+                  desc: "Código robusto y profesional que evita errores antes de que sucedan.",
+                },
+                {
+                  icon: <Globe className="w-8 h-8" />,
+                  title: "Edge Network",
+                  color: "text-orange-400",
+                  desc: "Servidores globales para que tu web vuele desde cualquier rincón de Chile.",
+                },
+              ].map((tech, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="p-8 rounded-3xl bg-gray-900 border border-gray-800 hover:border-green-500/30 transition-all duration-300 group"
+                >
+                  <div className={`mb-5 ${tech.color} opacity-80 group-hover:opacity-100 transition-opacity`}>
+                    {tech.icon}
+                  </div>
+                  <h4 className="font-bold text-xl text-white mb-2">
+                    {tech.title}
+                  </h4>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    {tech.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="mt-16 text-center">
+              <p className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-6">
+                Ecosistema de alto rendimiento
+              </p>
+              <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale">
+                 <span className="text-2xl font-black font-mono tracking-tighter">React</span>
+                 <span className="text-2xl font-black tracking-tighter">NEXT.js</span>
+                 <span className="text-2xl font-bold font-serif italic">Typescript</span>
+                 <span className="text-2xl font-black tracking-tight">Cloudflare</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* PLANES */}
         <section id="planes" className="py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -282,7 +375,6 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 items-center">
-              {/* Plan Presencia */}
               <motion.div
                 className="rounded-3xl border border-gray-200 p-8 bg-white hover:border-green-300 hover:shadow-xl cursor-default"
                 variants={autoShake}
@@ -291,40 +383,20 @@ export default function Home() {
                 whileHover="hover"
               >
                 <h3 className="text-2xl font-bold">Presencia</h3>
-                <p className="mt-2 text-gray-500 text-sm italic">
-                  Para empezar hoy mismo.
-                </p>
+                <p className="mt-2 text-gray-500 text-sm italic">Para empezar hoy mismo.</p>
                 <div className="mt-6">
-                  <span className="text-gray-400 line-through text-lg">
-                    $160.000
-                  </span>
+                  <span className="text-gray-400 line-through text-lg">$160.000</span>
                   <p className="text-4xl font-black text-gray-900">$79.990</p>
                 </div>
-                <div className="flex items-center  gap-2 my-4">
-                  <Timer size={18} className="text-red-500" />{" "}
+                <div className="flex items-center gap-2 my-4">
+                  <Timer size={18} className="text-red-500" />
                   <p className="text-red-500 font-semibold">Tiempo limitado</p>
                 </div>
-                <ul className=" space-y-4 text-gray-600">
-                  <li className="flex items-center">
-                    <Star className="h-5 w-5 text-green-500 mr-2" />
-                    Landing Page Profesional
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="h-5 w-5 text-green-500 mr-2" />
-                    Botón de WhatsApp
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="h-5 w-5 text-green-500 mr-2" />
-                    Hasta 5 secciones
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="h-5 w-5 text-green-500 mr-2" />
-                    Formulario de contacto(opcional)
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="h-5 w-5 text-green-500 mr-2" />
-                    Mapa de ubicación
-                  </li>
+                <ul className="space-y-4 text-gray-600">
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Landing Page Profesional</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Botón de WhatsApp</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Hasta 5 secciones</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Mapa de ubicación</li>
                 </ul>
                 <a
                   href={getWhatsAppLink("Plan Presencia")}
@@ -334,7 +406,6 @@ export default function Home() {
                 </a>
               </motion.div>
 
-              {/* Plan Catálogo */}
               <motion.div
                 className="relative rounded-3xl border-2 border-green-600 p-10 shadow-2xl bg-white z-10 cursor-default mt-8"
                 variants={autoShakeFeatured}
@@ -347,30 +418,17 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Catálogo</h3>
                 <div className="mt-6">
-                  <span className="text-gray-400 line-through text-lg">
-                    $250.000
-                  </span>
+                  <span className="text-gray-400 line-through text-lg">$250.000</span>
                   <p className="text-5xl font-black text-green-600">$129.990</p>
-                  <div className="flex items-center  gap-2 my-4">
-                    <Timer size={18} className="text-red-500" />{" "}
-                    <p className="text-red-500 font-semibold">
-                      Tiempo limitado
-                    </p>
+                  <div className="flex items-center gap-2 my-4">
+                    <Timer size={18} className="text-red-500" />
+                    <p className="text-red-500 font-semibold">Tiempo limitado</p>
                   </div>
                 </div>
                 <ul className="space-y-4 font-medium">
-                  <li className="flex items-center text-gray-900">
-                    <Award className="h-5 w-5 text-green-500 mr-2" />
-                    Todo de Presencia
-                  </li>
-                  <li className="flex items-center text-gray-900">
-                    <Award className="h-5 w-5 text-green-500 mr-2" />
-                    Catálogo de Productos
-                  </li>
-                  <li className="flex items-center text-gray-900">
-                    <Award className="h-5 w-5 text-green-500 mr-2" />
-                    Pedidos directos por whatsapp
-                  </li>
+                  <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Todo de Presencia</li>
+                  <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Catálogo de Productos</li>
+                  <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Pedidos directos por whatsapp</li>
                 </ul>
                 <a
                   href={getWhatsAppLink("Plan Catálogo")}
@@ -380,7 +438,6 @@ export default function Home() {
                 </a>
               </motion.div>
 
-              {/* Plan A Medida */}
               <motion.div
                 className="rounded-3xl border border-gray-200 p-8 bg-white hover:border-green-300 hover:shadow-xl cursor-default"
                 variants={autoShake}
@@ -389,22 +446,11 @@ export default function Home() {
                 whileHover="hover"
               >
                 <h3 className="text-2xl font-bold text-gray-900">A Medida</h3>
-                <p className="mt-6 text-4xl font-black text-gray-900">
-                  Cotizar
-                </p>
+                <p className="mt-6 text-4xl font-black text-gray-900">Cotizar</p>
                 <ul className="mt-8 space-y-4 text-gray-600">
-                  <li className="flex items-center">
-                    <Users className="h-5 w-5 text-green-500 mr-2" />
-                    E-commerce Completo
-                  </li>
-                  <li className="flex items-center">
-                    <Users className="h-5 w-5 text-green-500 mr-2" />
-                    Sistemas Propios
-                  </li>
-                  <li className="flex items-center">
-                    <Users className="h-5 w-5 text-green-500 mr-2" />
-                    Sistemas de pago
-                  </li>
+                  <li className="flex items-center"><Users className="h-5 w-5 text-green-500 mr-2" /> E-commerce Completo</li>
+                  <li className="flex items-center"><Users className="h-5 w-5 text-green-500 mr-2" /> Sistemas Propios</li>
+                  <li className="flex items-center"><Users className="h-5 w-5 text-green-500 mr-2" /> Sistemas de pago</li>
                 </ul>
                 <a
                   href={getWhatsAppLink("Desarrollo a Medida")}
@@ -424,32 +470,15 @@ export default function Home() {
               Diseños de Próxima Generación
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Card 1 */}
               <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
                 <div className="absolute inset-0 bg-blue-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
-                {/* VIDEO AQUI */}
-                <video
-                  src="/abogado.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <video src="/abogado.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
-                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">
-                    Abogados laborales
-                  </span>
-                  <h3 className="text-2xl font-bold leading-tight">
-                    Plan presencia
-                  </h3>
+                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">Abogados laborales</span>
+                  <h3 className="text-2xl font-bold leading-tight">Plan presencia</h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
-                    <a
-                      href="https://abogados-template.pages.dev/"
-                      className="flex items-center text-green-500"
-                      target="_blank"
-                    >
+                    <a href="https://abogados-template.pages.dev/" className="flex items-center text-green-500" target="_blank">
                       <p>Ver Demo</p>
                       <ExternalLink size={16} className="ml-2" />
                     </a>
@@ -457,32 +486,15 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Card 2 */}
               <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
                 <div className="absolute inset-0 bg-red-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
-                {/* VIDEO AQUI */}
-                <video
-                  src="/pet.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <video src="/pet.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
-                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">
-                    Pet shop
-                  </span>
-                  <h3 className="text-2xl font-bold leading-tight">
-                    Plan Catálogo
-                  </h3>
+                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">Pet shop</span>
+                  <h3 className="text-2xl font-bold leading-tight">Plan Catálogo</h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
-                    <a
-                      href="https://petshop-aoc.pages.dev/"
-                      className="flex items-center text-green-500"
-                      target="_blank"
-                    >
+                    <a href="https://petshop-aoc.pages.dev/" className="flex items-center text-green-500" target="_blank">
                       <p>Ver Demo</p>
                       <ExternalLink size={16} className="ml-2" />
                     </a>
@@ -490,32 +502,15 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Card 3 */}
               <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
                 <div className="absolute inset-0 bg-amber-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
-                {/* VIDEO AQUI */}
-                <video
-                  src="/amedida.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <video src="/amedida.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
-                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">
-                    e-commerce
-                  </span>
-                  <h3 className="text-2xl font-bold leading-tight">
-                    Plan a medida
-                  </h3>
+                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">e-commerce</span>
+                  <h3 className="text-2xl font-bold leading-tight">Plan a medida</h3>
                   <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
-                    <a
-                      href={getWhatsAppLink("Desarrollo a Medida")}
-                      className="flex items-center text-green-500"
-                      target="_blank"
-                    >
+                    <a href={getWhatsAppLink("Desarrollo a Medida")} className="flex items-center text-green-500" target="_blank">
                       <p>Cotizar</p>
                       <ExternalLink size={16} className="ml-2" />
                     </a>
@@ -525,18 +520,12 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center pt-10 text-xl px-8 content-center">
-            <p className="flex justify-center">
-              * Diseños referenciales, adaptamos el diseño a tu negocio y
-              necesidades.
-            </p>
+            <p className="flex justify-center">* Diseños referenciales, adaptamos el diseño a tu negocio.</p>
           </div>
         </section>
 
         {/* QUIENES SOMOS */}
-        <section
-          id="nosotros"
-          className="py-24 bg-white relative overflow-hidden"
-        >
+        <section id="nosotros" className="py-24 bg-white relative overflow-hidden">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-[3rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 border border-gray-100 shadow-sm">
               <motion.div
@@ -547,57 +536,27 @@ export default function Home() {
                 viewport={{ once: false, margin: "-100px" }}
               >
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Expertos Locales.
-                  <br />
-                  <span className="text-green-600">Resultados Globales.</span>
+                  Expertos Locales.<br /><span className="text-green-600">Resultados Globales.</span>
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  Somos <b>Faroweb</b>. Un equipo de desarrolladores apasionados
-                  viviendo y trabajando aquí mismo, en La Serena. Entendemos el
-                  mercado local porque somos parte de él. Sin intermediarios,
-                  sin letra chica.
+                  Somos <b>Faroweb</b>. Un equipo de desarrolladores apasionados viviendo en La Serena. Entendemos el mercado local porque somos parte de él.
                 </p>
-
                 <div className="flex gap-4 items-center">
                   <div className="flex -space-x-4">
-                    {/* --- TUS IMÁGENES DE EQUIPO --- */}
-                    {["/gift1.jpg", "/gift2.jpg", "/gift3.jpg"].map(
-                      (imgSrc, i) => (
-                        <div
-                          key={i}
-                          className="relative w-12 h-12 rounded-full border-4 border-white overflow-hidden shadow-sm bg-gray-100"
-                        >
-                          <img
-                            src={imgSrc}
-                            alt={`Equipo ${i}`}
-                            className="object-cover w-full h-full"
-                          />
-                        </div>
-                      )
-                    )}
+                    {["/gift1.jpg", "/gift2.jpg", "/gift3.jpg"].map((imgSrc, i) => (
+                      <div key={i} className="relative w-12 h-12 rounded-full border-4 border-white overflow-hidden shadow-sm bg-gray-100">
+                        <img src={imgSrc} alt={`Equipo ${i}`} className="object-cover w-full h-full" />
+                      </div>
+                    ))}
                   </div>
                   <div className="flex flex-col justify-center">
-                    <span className="text-sm font-bold text-gray-900">
-                      Equipo Faroweb
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      Listos para ayudarte
-                    </span>
+                    <span className="text-sm font-bold text-gray-900">Equipo Faroweb</span>
+                    <span className="text-xs text-gray-500">Listos para ayudarte</span>
                   </div>
                 </div>
               </motion.div>
-
-              {/* --- ESPACIO PARA EL VIDEO --- */}
               <div className="md:w-1/2 w-full h-64 md:h-80 bg-gray-100 rounded-3xl relative overflow-hidden shadow-lg border-2 border-white">
-                <video
-                  src="/laserena.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/5"></div>
+                <video src="/laserena.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -607,12 +566,8 @@ export default function Home() {
         <section id="faq" className="py-24 bg-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Preguntas Frecuentes
-              </h2>
-              <p className="text-gray-600">
-                Resolvemos tus dudas en segundos.
-              </p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Preguntas Frecuentes</h2>
+              <p className="text-gray-600">Resolvemos tus dudas en segundos.</p>
             </div>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
@@ -622,145 +577,43 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- SECCIÓN DE PAGOS DESTACADA --- */}
-        <section className="py-24 bg-green-600 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h3 className="text-3xl md:text-5xl font-black mb-12 tracking-tight">
-              Aceptamos Todo Medio de Pago
-            </h3>
-
-            <div className="inline-flex flex-wrap justify-center items-center gap-8 bg-white py-8 px-12 rounded-3xl shadow-2xl">
-              <img
-                src="https://img.icons8.com/?size=100&id=13608&format=png&color=000000"
-                alt="Visa"
-                className="h-10 w-auto"
-                loading="lazy"
-              />
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                alt="Mastercard"
-                className="h-10 w-auto"
-                loading="lazy"
-              />
-              <img
-                src="https://img.icons8.com/?size=100&id=nTLVtpxsNPaz&format=png&color=000000"
-                alt="Mercado Pago"
-                className="h-10 w-auto"
-                loading="lazy"
-              />
-              <div className="flex items-center gap-3 text-gray-800 font-bold border-l-2 border-gray-200 pl-8 ml-4">
-                <CheckCircle2 className="text-green-600 h-8 w-8" />
-                <span className="text-lg leading-tight text-left">
-                  Transferencia
-                  <br />
-                  Bancaria
-                </span>
-              </div>
+        {/* PAGOS */}
+        <section className="py-24 bg-green-600 text-white text-center">
+          <h3 className="text-3xl md:text-5xl font-black mb-12 tracking-tight">Aceptamos Todo Medio de Pago</h3>
+          <div className="inline-flex flex-wrap justify-center items-center gap-8 bg-white py-8 px-12 rounded-3xl shadow-2xl">
+            <img src="https://img.icons8.com/?size=100&id=13608&format=png&color=000000" alt="Visa" className="h-10 w-auto" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-10 w-auto" />
+            <div className="flex items-center gap-3 text-gray-800 font-bold border-l-2 border-gray-200 pl-8 ml-4">
+              <CheckCircle2 className="text-green-600 h-8 w-8" />
+              <span className="text-lg leading-tight text-left">Transferencia<br />Bancaria</span>
             </div>
-            <p className="mt-8 text-green-100 font-medium opacity-80">
-              Tu seguridad es nuestra prioridad. Transacciones encriptadas.
-            </p>
           </div>
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-gray-950 text-gray-400 py-16 border-t border-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-1 md:col-span-2">
-              <span className="text-2xl font-black text-white tracking-tighter italic">
-                FARO<span className="text-green-500">WEB</span>
-              </span>
-              <p className="mt-4 text-sm max-w-xs leading-relaxed text-gray-500">
-                Ayudamos a las PYMES de la IV Región y todo Chile a destacar en
-                el mundo digital. Diseño web estratégico y resultados reales.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-white font-bold mb-4">Servicios</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-green-500 transition-colors"
-                  >
-                    Diseño Web
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-green-500 transition-colors"
-                  >
-                    E-commerce
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-green-500 transition-colors"
-                  >
-                    SEO Local
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-bold mb-4">Contacto</h4>
-              <ul className="space-y-2 text-sm">
-                <li>La Serena, Chile</li>
-                <li>faroweb@gmail.com</li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-            <p>&copy; 2026 Faroweb.cl. Todos los derechos reservados.</p>
-          </div>
-        </div>
+      <footer className="bg-gray-950 text-gray-400 py-16 border-t border-gray-900 text-center">
+        <p>&copy; 2026 Faroweb.cl. Todos los derechos reservados.</p>
       </footer>
       
-      {/* BOTÓN FLOTANTE FINAL (Se mueve cada 4s) */}
       <WhatsAppFloating />
     </div>
   );
 }
 
-// COMPONENTE AUXILIAR FAQ
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <div className="border border-green-100 rounded-2xl bg-white overflow-hidden transition-all hover:border-green-400 shadow-sm">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between p-6 text-left"
-      >
+    <div className="border border-green-100 rounded-2xl bg-white overflow-hidden shadow-sm">
+      <button onClick={() => setIsOpen(!isOpen)} className="flex w-full items-center justify-between p-6 text-left">
         <span className="text-lg font-bold text-gray-900">{question}</span>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <ChevronDown
-            className={`w-5 h-5 ${isOpen ? "text-green-600" : "text-gray-400"}`}
-          />
+        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
+          <ChevronDown className="w-5 h-5 text-gray-400" />
         </motion.div>
       </button>
-
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-              {answer}
-            </div>
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+            <div className="px-6 pb-6 text-gray-600 leading-relaxed">{answer}</div>
           </motion.div>
         )}
       </AnimatePresence>
