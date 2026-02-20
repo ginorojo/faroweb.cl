@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: 'Desarrollo web profesional y tiendas online en la Cuarta Región. Creamos sitios rápidos y modernos para potenciar tu negocio local en Chile.', 
   icons: {
     icon: '/farologo.png',
+    apple: '/farologo.png', // Añadido para que se vea perfecto en iPhones
   },
-
 };
 
 export default function RootLayout({
@@ -28,11 +28,11 @@ export default function RootLayout({
                             "@context": "https://schema.org",
                             "@type": "LocalBusiness",
                             "name": "Faroweb",
-                            "image": "/farologo.png",
-                            "telephone": "+569XXXXXXXX",
+                            "image": "https://faroweb.cl/farologo.png", // URL Absoluta para el robot de Google
+                            "telephone": "+56971874099", // Tu número de contacto real
                             "address": {
                                 "@type": "PostalAddress",
-                                "streetAddress": "la serena,chile",
+                                "streetAddress": "La Serena, Chile",
                                 "addressLocality": "La Serena",
                                 "addressRegion": "Coquimbo",
                                 "postalCode": "1700000",
