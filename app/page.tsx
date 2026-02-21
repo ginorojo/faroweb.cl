@@ -16,7 +16,8 @@ import {
   Code2,    // Icono para Tecnología
   Zap,      // Icono para Velocidad
   ShieldCheck, // Icono para Seguridad
-  Globe,     // Icono para Red Global
+  Globe,
+  Settings,     // Icono para Red Global
 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -120,12 +121,12 @@ export default function Home() {
     {
       question: "¿Cuánto tiempo demoran en entregar mi página?",
       answer:
-        "Para el Plan Presencia y Catálogo, nuestros tiempos récord son de 3 a 5 días hábiles una vez que nos entregas la información. Para desarrollos a medida, suele tomar entre 2 a 3 semanas.",
+        "Para el Plan Presencia y Catálogo, nuestros tiempos récord son de 3 a 5 días hábiles una vez que nos entregas la información. Para desarrollos a medida, suele tomar entre 2 a 3 semanas dependiendo de la complejidad del proyecto.",
     },
     {
       question: "¿Debo pagar mensualidades?",
       answer:
-        "¡No! El pago por el diseño es único. Tú eres dueño de tu página web al 100%. Solo ofrecemos mensualidades opcionales si deseas que nosotros la mantengamos actualizada por ti.",
+        "¡No! El pago por el diseño es único. Tú eres dueño de tu página web al 100%, solo pagas el dominio despues del año. Solo ofrecemos mensualidades opcionales si deseas que nosotros la mantengamos actualizada por ti.",
     },
     {
       question: "¿Cómo actualizo mis productos o fotos?",
@@ -393,10 +394,14 @@ export default function Home() {
                   <p className="text-red-500 font-semibold">Tiempo limitado</p>
                 </div>
                 <ul className="space-y-4 text-gray-600">
-                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Landing Page Profesional</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Pagina web Informativa (Landing Page)</li>
                   <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Botón de WhatsApp</li>
-                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Hasta 5 secciones</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Formulario de contacto (opcional)</li>
                   <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Mapa de ubicación</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Hasta 5 correos corporativos</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Hosting gratis</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Dominio gratuito por un año</li>
+                  <li className="flex items-center"><Star className="h-5 w-5 text-green-500 mr-2" /> Seguridad integrada</li>
                 </ul>
                 <a
                   href={getWhatsAppLink("Plan Presencia")}
@@ -427,8 +432,9 @@ export default function Home() {
                 </div>
                 <ul className="space-y-4 font-medium">
                   <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Todo de Presencia</li>
-                  <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Catálogo de Productos</li>
-                  <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Pedidos directos por whatsapp</li>
+                  <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Catalogo de productos</li>
+                  <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Carritos de compras</li>
+                  <li className="flex items-center text-gray-900"><Award className="h-5 w-5 text-green-500 mr-2" /> Pedidos directos al whatsapp</li>
                 </ul>
                 <a
                   href={getWhatsAppLink("Plan Catálogo")}
@@ -462,65 +468,153 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* PORTAFOLIO */}
+       {/* PORTAFOLIO */}
         <section id="diseños" className="py-24 bg-gray-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-black text-center mb-16 italic">
               Diseños de Próxima Generación
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
+              
+              {/* TARJETA 1 */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.4 }} // Se activa cuando el 40% de la tarjeta es visible
+                className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100"
+              >
                 <div className="absolute inset-0 bg-blue-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 <video src="/abogado.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
-                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">Abogados laborales</span>
-                  <h3 className="text-2xl font-bold leading-tight">Plan presencia</h3>
-                  <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
+                
+                <motion.div 
+                  variants={{
+                    hidden: { paddingBottom: "2rem" },
+                    visible: { paddingBottom: "3rem", transition: { duration: 0.5, ease: "easeOut" } }
+                  }}
+                  className="absolute inset-0 px-8 pt-8 flex flex-col justify-end"
+                >
+                  <motion.span 
+                    variants={{
+                      hidden: { opacity: 0, y: 15 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+                    }}
+                    className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2"
+                  >
+                    Abogados laborales
+                  </motion.span>
+                  
+                  <h3 className="text-2xl font-bold leading-tight relative z-10">Plan presencia</h3>
+                  
+                  <motion.div 
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1, transition: { duration: 0.4, delay: 0.1 } }
+                    }}
+                    className="mt-4 flex items-center text-sm font-bold text-white/60"
+                  >
                     <a href="https://abogados-template.pages.dev/" className="flex items-center text-green-500" target="_blank">
-                      <p>Ver Demo</p>
+                      <p>Visitar Pagina</p>
                       <ExternalLink size={16} className="ml-2" />
                     </a>
-                  </div>
-                </div>
-              </div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
 
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
+              {/* TARJETA 2 */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.4 }}
+                className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100"
+              >
                 <div className="absolute inset-0 bg-red-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 <video src="/pet.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
-                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">Pet shop</span>
-                  <h3 className="text-2xl font-bold leading-tight">Plan Catálogo</h3>
-                  <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
+                
+                <motion.div 
+                  variants={{
+                    hidden: { paddingBottom: "2rem" },
+                    visible: { paddingBottom: "3rem", transition: { duration: 0.5, ease: "easeOut" } }
+                  }}
+                  className="absolute inset-0 px-8 pt-8 flex flex-col justify-end"
+                >
+                  <motion.span 
+                    variants={{
+                      hidden: { opacity: 0, y: 15 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+                    }}
+                    className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2"
+                  >
+                    Pet shop
+                  </motion.span>
+                  
+                  <h3 className="text-2xl font-bold leading-tight relative z-10">Plan Catálogo</h3>
+                  
+                  <motion.div 
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1, transition: { duration: 0.4, delay: 0.1 } }
+                    }}
+                    className="mt-4 flex items-center text-sm font-bold text-white/60"
+                  >
                     <a href="https://petshop-aoc.pages.dev/" className="flex items-center text-green-500" target="_blank">
-                      <p>Ver Demo</p>
+                      <p>Visitar Pagina</p>
                       <ExternalLink size={16} className="ml-2" />
                     </a>
-                  </div>
-                </div>
-              </div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
 
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100">
+              {/* TARJETA 3 */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.4 }}
+                className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer border-4 border-gray-100"
+              >
                 <div className="absolute inset-0 bg-amber-900 opacity-40 transition-transform duration-700 group-hover:scale-110"></div>
                 <video src="/amedida.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                <div className="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-300 group-hover:pb-12">
-                  <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0">e-commerce</span>
-                  <h3 className="text-2xl font-bold leading-tight">Plan a medida</h3>
-                  <div className="mt-4 flex items-center text-sm font-bold text-white/60 opacity-0 group-hover:opacity-100 transition-all delay-100">
+                
+                <motion.div 
+                  variants={{
+                    hidden: { paddingBottom: "2rem" },
+                    visible: { paddingBottom: "3rem", transition: { duration: 0.5, ease: "easeOut" } }
+                  }}
+                  className="absolute inset-0 px-8 pt-8 flex flex-col justify-end"
+                >
+                  <motion.span 
+                    variants={{
+                      hidden: { opacity: 0, y: 15 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+                    }}
+                    className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2"
+                  >
+                    e-commerce
+                  </motion.span>
+                  
+                  <h3 className="text-2xl font-bold leading-tight relative z-10">Plan a medida</h3>
+                  
+                  <motion.div 
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1, transition: { duration: 0.4, delay: 0.1 } }
+                    }}
+                    className="mt-4 flex items-center text-sm font-bold text-white/60"
+                  >
                     <a href={getWhatsAppLink("Desarrollo a Medida")} className="flex items-center text-green-500" target="_blank">
                       <p>Cotizar</p>
                       <ExternalLink size={16} className="ml-2" />
                     </a>
-                  </div>
-                </div>
-              </div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+
             </div>
           </div>
           <div className="flex justify-center pt-10 text-xl px-8 content-center">
-            <p className="flex justify-center">* Diseños referenciales, adaptamos el diseño a tu negocio.</p>
+            <p className="flex justify-center text-gray-400">* Diseños referenciales, adaptamos el diseño a tu negocio.</p>
           </div>
         </section>
 
@@ -561,6 +655,75 @@ export default function Home() {
             </div>
           </div>
         </section>
+         {/* --- SECCIÓN DE MANTENIMIENTO (Ancho Completo y Compacta) --- */}
+        <section className="py-16 bg-gray-900 relative overflow-hidden z-20 border-y border-gray-900">
+          {/* Resplandor decorativo sutil en el fondo */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-green-500/10 blur-[120px] pointer-events-none"></div>
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+              
+              {/* Textos y Beneficios */}
+              <div className="md:w-7/12 text-left">
+                <div className="flex items-center gap-3 mb-4">
+                  {/* Animación continua de la tuerca pero en tamaño pequeño */}
+                  <Settings className="w-6 h-6 text-green-500 animate-[spin_10s_linear_infinite]" />
+                  <span className="text-green-400 text-xs font-bold uppercase tracking-widest">
+                    Servicio Opcional de Mantención
+                  </span>
+                </div>
+                
+                <h2 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight tracking-tight">
+                  Tú dedícate a vender. <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500 italic">Nosotros cuidamos tu web.</span>
+                </h2>
+                <p className="text-gray-400 text-base leading-relaxed mb-6 max-w-2xl">
+                  Eres dueño de tu página al 100%. Pero si no tienes tiempo para subir fotos o cambiar precios, lo hacemos por ti a través de WhatsApp. Rápido y sin estrés.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-4 max-w-xl">
+                  <div className="flex items-center text-gray-300 text-sm font-medium">
+                    <CheckCircle2 className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Actualización de fotos
+                  </div>
+                  <div className="flex items-center text-gray-300 text-sm font-medium">
+                    <CheckCircle2 className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Cambios de precios
+                  </div>
+                  <div className="flex items-center text-gray-300 text-sm font-medium">
+                    <CheckCircle2 className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Soporte directo
+                  </div>
+                  <div className="flex items-center text-gray-300 text-sm font-medium">
+                    <CheckCircle2 className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Respaldos de seguridad
+                  </div>
+                </div>
+              </div>
+
+              {/* Caja de Precio con Disclaimer */}
+              <div className="md:w-5/12 w-full flex justify-end">
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-gray-900 border border-gray-800 rounded-3xl px-8 py-8 shadow-2xl w-full max-w-md relative"
+                >
+                  <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Inversión Transparente</p>
+                  <div className="flex items-baseline gap-2 flex-wrap">
+                    <span className="text-4xl md:text-5xl font-black text-white">$20.000</span>
+                    <span className="text-green-400 font-bold text-sm md:text-base">/ mes o por evento</span>
+                  </div>
+                  <p className="text-gray-400 text-sm mt-4 mb-6 flex items-center">
+                    <ArrowRight className="w-4 h-4 mr-2 text-green-500" /> Pídelo directo a nuestro WhatsApp.
+                  </p>
+                  
+                  {/* --- MENSAJE / DISCLAIMER ESTRUCTURAL --- */}
+                  <div className="border-t border-gray-800 pt-4 mt-2">
+                    <p className="text-gray-500 text-xs leading-relaxed">
+                      * <strong className="text-gray-400">Nota técnica:</strong> Este plan cubre modificaciones sobre el contenido existente (textos e imágenes). El desarrollo de nuevas secciones, funciones o rediseños estructurales se cotizan por separado.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+
+            </div>
+          </div>
+        </section>
 
         {/* FAQ SECTION */}
         <section id="faq" className="py-24 bg-green-50">
@@ -590,9 +753,15 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      <footer className="bg-gray-950 text-gray-400 py-16 border-t border-gray-900 text-center">
-        <p>&copy; 2026 Faroweb.cl. Todos los derechos reservados.</p>
+      {/* FOOTER */}
+      <footer className="bg-gray-950 text-gray-400 py-16 border-t border-gray-900 ">
+        <div className="container mx-auto px-4 text-center flex flex-col items-center justify-center gap-5">
+          <span className="text-2xl font-black text-white tracking-tighter italic">FARO<span className="text-green-500">WEB</span></span>
+          <p className=" text-md text-gray-500">Desarrollo web estratégico en La Serena, Chile.</p>
+          <p className=" text-md text-gray-500">faroweb@gmail.com</p>
+          <p className=" text-md text-gray-500">+56971874099</p>
+        <p className="flex items-center justify-center text-sm">&copy; 2026 Faroweb.cl. Todos los derechos reservados.</p>
+          </div>
       </footer>
       
       <WhatsAppFloating />
@@ -617,6 +786,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
           </motion.div>
         )}
       </AnimatePresence>
+      
     </div>
+    
   );
 }
