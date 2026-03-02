@@ -143,14 +143,14 @@ export default function Home() {
   return (
     <div className="bg-white selection:bg-green-100 selection:text-green-900 font-sans">
       {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-white backdrop-blur-lg border-b border-gray-100 transition-all duration-300">
+      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-gray-100 transition-all duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
             <div className="flex-shrink-0 cursor-pointer">
               <a href="#" className="flex items-center gap-2 group">
                 <div className="relative h-12 w-auto overflow-hidden">
                   <Image
-                    src="/logofaro.png"
+                    src="/farologo.png"
                     alt="Logo Faroweb"
                     width={100}
                     height={100}
