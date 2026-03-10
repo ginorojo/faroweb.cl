@@ -5,10 +5,12 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  // Configura la base para que Next.js construya bien las URLs de tus imágenes automáticas
+  metadataBase: new URL("https://faroweb.cl"),
   title: "Faroweb | Diseño de Páginas Web en La Serena y Coquimbo",
   description:
     "Desarrollo web profesional y tiendas online en la Cuarta Región. Creamos sitios rápidos y modernos para potenciar tu negocio local en Chile.",
-  // ¡La propiedad 'icons' fue eliminada! Next.js 14 ahora la genera automáticamente leyendo tu carpeta app/
+  // Next.js leerá automáticamente icon.png, favicon.ico y opengraph-image.jpg desde tu carpeta app/
 };
 
 export default function RootLayout({
@@ -19,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <head>
+        {/* Datos estructurados para Google (Local SEO y corrección de imagen) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -26,8 +29,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               name: "Faroweb",
-              // Actualizamos esta URL para que Google use tu nuevo logo cuadrado en su ficha de negocio
-              image: "https://faroweb.cl/icon.png",
+              url: "https://faroweb.cl",
+              logo: "https://faroweb.cl/icon.png", // Señal directa a Google de cuál es tu logo
+              image: "https://faroweb.cl/opengraph-image.jpg", // Foto principal de la agencia
               telephone: "+56971874099",
               address: {
                 "@type": "PostalAddress",
