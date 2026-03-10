@@ -28,7 +28,7 @@ import {
   X, // <-- NUEVO: Icono para cerrar
 } from "lucide-react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const faqs = [
   {
@@ -55,7 +55,7 @@ const faqs = [
 
 // --- 1. COMPONENTE BOTÓN WHATSAPP FLOTANTE (DINÁMICO) ---
 function WhatsAppFloating() {
-  const floatVariants = {
+  const floatVariants: Variants = {
     idle: {
       y: [0, -5, 0],
       transition: {
