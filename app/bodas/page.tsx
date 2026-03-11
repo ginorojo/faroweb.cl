@@ -480,7 +480,7 @@ export default function BodasPage() {
                                 Esencial
                               </h3>
                               <p className="text-5xl font-black text-[#1A1A1A] mb-10">
-                                $54.990
+                                $58.990
                               </p>
                               <ul className="space-y-5 text-gray-500 text-sm">
                                 <li className="flex items-center gap-3">
@@ -571,7 +571,7 @@ export default function BodasPage() {
                                 Premium
                               </h3>
                               <p className="text-5xl font-black text-[#C5A059] mb-10">
-                                $74.990
+                                $69.990
                               </p>
                               <ul className="space-y-5 text-[#1A1A1A] text-sm font-bold">
                                 <li className="flex items-center gap-3">
