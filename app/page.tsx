@@ -153,9 +153,8 @@ function ServiceCarousel({
         {images.map((_, idx) => (
           <div
             key={idx}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              idx === currentIndex ? "w-4 bg-green-500" : "w-1.5 bg-white/60"
-            }`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? "w-4 bg-green-500" : "w-1.5 bg-white/60"
+              }`}
           />
         ))}
       </div>
@@ -519,11 +518,10 @@ export default function Home() {
                   <button
                     key={tab}
                     onClick={() => changeTab(tab)}
-                    className={`whitespace-nowrap px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${
-                      activeTab === tab
+                    className={`whitespace-nowrap px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${activeTab === tab
                         ? "bg-green-600 text-white shadow-lg shadow-green-600/30"
                         : "bg-white text-gray-600 border border-gray-200 hover:bg-green-50 hover:text-green-600"
-                    }`}
+                      }`}
                   >
                     {tab === "presencia" && "✨ Plan Presencia (Landing)"}
                     {tab === "catalogo" && "📦 Plan Catálogo (E-commerce)"}
@@ -659,7 +657,7 @@ export default function Home() {
                             href="https://lacasitadelmolle.cl"
                             target="_blank"
                             rel="noreferrer"
-                            className="text-sm px-4 py-2 rounded-full border-2 border-gray-400 hover:border-green-500 hover:text-green-600 transition-colors flex items-center"
+                            className="text-sm px-4 py-2 rounded-full border-2 border-gray-500 hover:border-green-500 hover:text-green-600 transition-colors flex items-center"
                           >
                             La Casita del Molle{" "}
                             <ExternalLink size={14} className="ml-1" />
