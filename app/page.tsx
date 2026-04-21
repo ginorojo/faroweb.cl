@@ -655,6 +655,15 @@ export default function Home() {
                             Arguedas Construcciones{" "}
                             <ExternalLink size={14} className="ml-1" />
                           </a>
+                          <a
+                            href="https://lacasitadelmolle.cl"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-sm px-4 py-2 rounded-full border-2 border-gray-400 hover:border-green-500 hover:text-green-600 transition-colors flex items-center"
+                          >
+                            La Casita del Molle{" "}
+                            <ExternalLink size={14} className="ml-1" />
+                          </a>
                         </div>
                       </div>
                     </motion.div>
