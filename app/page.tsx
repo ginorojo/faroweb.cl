@@ -26,6 +26,7 @@ import {
   Heart,
   Menu, // <-- NUEVO: Icono de hamburguesa
   X, // <-- NUEVO: Icono para cerrar
+  Rocket,
 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -443,10 +444,10 @@ export default function Home() {
                   desc: "Código robusto y profesional que evita errores antes de que sucedan.",
                 },
                 {
-                  icon: <Globe className="w-8 h-8" />,
-                  title: "Edge Network",
-                  color: "text-orange-400",
-                  desc: "Servidores globales para que tu web vuele desde cualquier rincón de Chile.",
+                  icon: <Rocket className="w-8 h-8" />,
+                  title: "Astro",
+                  color: "text-orange-500",
+                  desc: "Utilizamos Astro para lograr sitios estáticos extremadamente rápidos y optimizados para SEO.",
                 },
               ].map((tech, i) => (
                 <motion.div
@@ -485,6 +486,9 @@ export default function Home() {
                 </span>
                 <span className="text-2xl font-bold font-serif italic">
                   Typescript
+                </span>
+                <span className="text-2xl font-black tracking-tighter">
+                  Astro
                 </span>
                 <span className="text-2xl font-black tracking-tight">
                   Cloudflare
@@ -555,13 +559,16 @@ export default function Home() {
 
                           <div className="mb-8">
                             <span className="text-gray-400 line-through text-lg">
-                              $160.000
+                              $229.990
                             </span>
                             <p className="text-5xl font-black text-green-600">
-                              $79.990
+                              $129.990
                             </p>
                             <span className="text-xs font-bold text-red-500 uppercase tracking-widest mt-1 block">
                               Oferta Pago Único
+                            </span>
+                            <span className="text-[10px] text-gray-400 font-medium block mt-1">
+                              * Valores no incluyen IVA
                             </span>
                           </div>
 
@@ -693,13 +700,16 @@ export default function Home() {
 
                           <div className="mb-8">
                             <span className="text-gray-400 line-through text-lg">
-                              $250.000
+                              $299.990
                             </span>
                             <p className="text-5xl font-black text-green-600">
-                              $129.990
+                              $219.990
                             </p>
                             <span className="text-xs font-bold text-red-500 uppercase tracking-widest mt-1 block">
                               Oferta Pago Único
+                            </span>
+                            <span className="text-[10px] text-gray-400 font-medium block mt-1">
+                              * Valores no incluyen IVA
                             </span>
                           </div>
 
