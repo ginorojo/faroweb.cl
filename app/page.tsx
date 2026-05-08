@@ -165,25 +165,8 @@ function ServiceCarousel({
 
 // --- 3. COMPONENTE PRINCIPAL ---
 export default function Home() {
-  // ESTADO PARA CONTROLAR LAS PESTAÑAS (TABS)
-  const [activeTab, setActiveTab] = useState("presencia");
-
-  // NUEVO: ESTADO PARA CONTROLAR EL MENÚ MÓVIL
+  // ESTADO PARA CONTROLAR EL MENÚ MÓVIL
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // EFECTO PARA LEER EL ENLACE (DEEP LINKING)
-  useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (["presencia", "catalogo", "medida"].includes(hash)) {
-      setActiveTab(hash);
-    }
-  }, []);
-
-  // FUNCIÓN PARA CAMBIAR DE PESTAÑA Y ACTUALIZAR LA URL SILENCIOSAMENTE
-  const changeTab = (tab: string) => {
-    setActiveTab(tab);
-    window.history.replaceState(null, "", `#${tab}`);
-  };
 
   const getWhatsAppLink = (planName: string) => {
     const msg = encodeURIComponent(
@@ -498,16 +481,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- NUEVA SECCIÓN UNIFICADA: PORTAFOLIO Y PLANES (TABS) --- */}
+        {/* --- NUEVA SECCIÓN: PLANES Y PORTAFOLIO --- */}
         <section
           id="planes-y-servicios"
           className="py-24 bg-gray-50 border-t border-gray-100 relative overflow-hidden"
         >
-          {/* ANCLAS INVISIBLES PARA LOS ENLACES DIRECTOS (TABS DEEP LINKING) */}
-          <div id="presencia" className="absolute top-0 scroll-mt-24"></div>
-          <div id="catalogo" className="absolute top-0 scroll-mt-24"></div>
-          <div id="medida" className="absolute top-0 scroll-mt-24"></div>
-
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-black text-gray-900 sm:text-5xl italic mb-6">
@@ -515,348 +493,386 @@ export default function Home() {
               </h2>
             </div>
 
-            {/* CONTROL DE PESTAÑAS (TABS) */}
-            <div className="flex flex-col items-center">
-              <div className="flex w-full md:w-auto overflow-x-auto pb-4 md:pb-0 hide-scrollbar gap-2 md:gap-4 justify-start md:justify-center mb-12">
-                {["presencia", "catalogo", "medida"].map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => changeTab(tab)}
-                    className={`whitespace-nowrap px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${activeTab === tab
-                        ? "bg-green-600 text-white shadow-lg shadow-green-600/30"
-                        : "bg-white text-gray-600 border border-gray-200 hover:bg-green-50 hover:text-green-600"
-                      }`}
-                  >
-                    {tab === "presencia" && "✨ Plan Presencia (Landing)"}
-                    {tab === "catalogo" && "📦 Plan Catálogo (E-commerce)"}
-                    {tab === "medida" && "💻 Desarrollo a Medida"}
-                  </button>
-                ))}
+            {/* PLANES UNO ABAJO DE OTRO */}
+            <div className="flex flex-col gap-8 max-w-4xl mx-auto mb-24">
+
+              {/* PLAN PRESENCIA */}
+              <div id="presencia" className="relative rounded-[2rem] overflow-hidden scroll-mt-24 group">
+                {/* Fondo con gradiente sutil */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-emerald-50/40 z-0" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl z-0 pointer-events-none" />
+                {/* Borde con brillo */}
+                <div className="absolute inset-0 rounded-[2rem] border border-gray-200/80 z-0" />
+                <div className="relative z-10 flex flex-col md:flex-row shadow-2xl shadow-gray-200/60 rounded-[2rem]">
+                  {/* Izquierdo: Info */}
+                  <div className="p-8 md:p-12 md:w-2/3 flex flex-col justify-between">
+                    <div>
+                      {/* Badge tipo */}
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900/5 border border-gray-900/10 mb-5">
+                        <Globe className="w-3 h-3 text-gray-500" />
+                        <span className="text-[10px] font-bold text-gray-500 tracking-widest uppercase">Landing Page</span>
+                      </div>
+                      <h3 className="text-4xl font-black text-gray-900 mb-2 tracking-tight">
+                        Presencia
+                      </h3>
+                      <p className="text-gray-500 mb-8 text-sm leading-relaxed">
+                        Tu negocio en internet con todo lo necesario para atraer clientes desde el primer día.
+                      </p>
+
+                      <ul className="space-y-3 mb-8">
+                        {[
+                          "Landing Page Informativa",
+                          "Botón directo a WhatsApp",
+                          "Formulario y Mapa",
+                          "5 Correos corporativos",
+                          "Hosting + Dominio (1 año)",
+                        ].map((feat) => (
+                          <li key={feat} className="flex items-center gap-3">
+                            <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                            <span className="text-gray-700 font-medium text-sm">{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Derecho: Precio + CTA */}
+                  <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-gray-100/80">
+                    <div className="w-full mb-6">
+                      <span className="text-gray-400 line-through text-base block mb-1">$229.990</span>
+                      <p className="text-5xl font-black text-gray-900 leading-none tracking-tight mb-1">
+                        $129.990
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-red-50 border border-red-100">
+                        <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest">🔥 Oferta Pago Único</span>
+                      </div>
+                      <span className="text-xs text-gray-500 font-semibold block mt-2">* Valores no incluyen IVA</span>
+                    </div>
+                    <a
+                      href={getWhatsAppLink("Plan Presencia")}
+                      className="w-full py-4 text-center font-bold bg-gray-900 text-white rounded-2xl shadow-lg shadow-gray-900/20 hover:bg-gray-800 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
+                    >
+                      Contratar Plan →
+                    </a>
+                  </div>
+                </div>
               </div>
 
-              {/* CONTENIDO DE LAS PESTAÑAS */}
-              <div className="w-full bg-white rounded-[2rem] shadow-xl border border-gray-100 overflow-hidden">
-                <AnimatePresence mode="wait">
-                  {/* --- TAB 1: PRESENCIA --- */}
-                  {activeTab === "presencia" && (
-                    <motion.div
-                      key="presencia"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="grid grid-cols-1 lg:grid-cols-12"
+              {/* PLAN CATÁLOGO — DESTACADO */}
+              <div id="catalogo" className="relative rounded-[2rem] overflow-hidden scroll-mt-24 group">
+                {/* Fondo con gradiente verde más vibrante */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 z-0" />
+                <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl z-0 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-teal-400/20 rounded-full blur-2xl z-0 pointer-events-none" />
+                <div className="relative z-10 flex flex-col md:flex-row shadow-2xl shadow-emerald-700/40 rounded-[2rem]">
+                  {/* Izquierdo: Info */}
+                  <div className="p-8 md:p-12 md:w-2/3 flex flex-col justify-between">
+                    <div>
+                      {/* Badge "más vendido" */}
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/20 mb-5 backdrop-blur-sm">
+                        <span className="text-[10px] font-black text-white tracking-widest uppercase">⭐ El más vendido</span>
+                      </div>
+                      <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
+                        Catálogo Básico
+                      </h3>
+                      <p className="text-emerald-100/80 mb-8 text-sm leading-relaxed">
+                        Tienda online con carrito de compras y pedidos directos a tu WhatsApp.
+                      </p>
+
+                      <ul className="space-y-3 mb-8">
+                        {[
+                          "Todo lo del Plan Presencia",
+                          "Catálogo de productos",
+                          "Carrito de compras",
+                          "Pedidos al WhatsApp",
+                        ].map((feat) => (
+                          <li key={feat} className="flex items-center gap-3">
+                            <div className="w-5 h-5 rounded-full bg-white/20 border border-white/30 flex items-center justify-center shrink-0">
+                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                            <span className="text-white/90 font-medium text-sm">{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Derecho: Precio + CTA */}
+                  <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-white/10">
+                    <div className="w-full mb-6">
+                      <span className="text-white/50 line-through text-base block mb-1">$299.990</span>
+                      <p className="text-5xl font-black text-white leading-none tracking-tight mb-1">
+                        $219.990
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-white/10 border border-white/20">
+                        <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest">🔥 Oferta Pago Único</span>
+                      </div>
+                      <span className="text-xs text-white/60 font-semibold block mt-2">* Valores no incluyen IVA</span>
+                    </div>
+                    <a
+                      href={getWhatsAppLink("Plan Catálogo Básico")}
+                      className="w-full py-4 text-center font-bold bg-white text-emerald-700 rounded-2xl shadow-lg shadow-black/20 hover:bg-emerald-50 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
                     >
-                      {/* Lado Izquierdo: Info y Precio */}
-                      <div className="p-8 md:p-12 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between bg-gray-50/50">
-                        <div>
-                          <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                            Presencia
-                          </h3>
-                          <p className="text-gray-700 mb-6 italic">
-                            Paginas informativas (Landing Pages)
-                          </p>
+                      Contratar Plan →
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-                          <div className="mb-8">
-                            <span className="text-gray-400 line-through text-lg">
-                              $229.990
-                            </span>
-                            <p className="text-5xl font-black text-green-600">
-                              $129.990
-                            </p>
-                            <span className="text-xs font-bold text-red-500 uppercase tracking-widest mt-1 block">
-                              Oferta Pago Único
-                            </span>
-                            <span className="text-[10px] text-gray-400 font-medium block mt-1">
-                              * Valores no incluyen IVA
-                            </span>
-                          </div>
+              {/* PLAN A MEDIDA */}
+              <div id="medida" className="relative rounded-[2rem] overflow-hidden scroll-mt-24 group">
+                {/* Fondo oscuro premium */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-slate-900 z-0" />
+                <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl z-0 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-400/5 rounded-full blur-2xl z-0 pointer-events-none" />
+                <div className="absolute inset-0 rounded-[2rem] border border-white/5 z-0" />
+                <div className="relative z-10 flex flex-col md:flex-row shadow-2xl shadow-black/40 rounded-[2rem]">
+                  {/* Izquierdo: Info */}
+                  <div className="p-8 md:p-12 md:w-5/12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5">
+                    <div>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 mb-5">
+                        <Briefcase className="w-3 h-3 text-blue-400" />
+                        <span className="text-[10px] font-bold text-blue-400 tracking-widest uppercase">Proyectos Empresariales</span>
+                      </div>
+                      <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
+                        Sistemas A Medida
+                      </h3>
+                      <p className="text-gray-400 mb-8 text-sm leading-relaxed">
+                        Soluciones robustas para empresas que necesitan digitalizar procesos o e-commerce avanzado.
+                      </p>
 
-                          <ul className="space-y-4 text-gray-700 font-medium mb-8">
-                            <li className="flex items-center">
-                              <Star className="h-5 w-5 text-green-500 mr-3" />{" "}
-                              Landing Page Informativa
-                            </li>
-                            <li className="flex items-center">
-                              <Star className="h-5 w-5 text-green-500 mr-3" />{" "}
-                              Botón directo a WhatsApp
-                            </li>
-                            <li className="flex items-center">
-                              <Star className="h-5 w-5 text-green-500 mr-3" />{" "}
-                              Formulario y Mapa
-                            </li>
-                            <li className="flex items-center">
-                              <Star className="h-5 w-5 text-green-500 mr-3" /> 5
-                              Correos corporativos
-                            </li>
-                            <li className="flex items-center">
-                              <Star className="h-5 w-5 text-green-500 mr-3" />{" "}
-                              Hosting + Dominio (1 año)
-                            </li>
-                          </ul>
-                        </div>
-                        <a
-                          href={getWhatsAppLink("Plan Presencia")}
-                          className="w-full py-4 text-center font-bold bg-gray-900 text-white rounded-xl shadow-lg hover:bg-gray-800 transition-all"
-                        >
-                          Contratar Plan Presencia
-                        </a>
+                      <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">
+                        <p className="text-3xl font-black text-white leading-none">Cotizar Proyecto</p>
+                        <span className="text-xs text-blue-400 font-semibold mt-1 block">Presupuesto personalizado sin costo</span>
                       </div>
 
-                      {/* Lado Derecho: Ejemplos Visuales */}
-                      <div className="p-8 md:p-12 lg:col-span-7 bg-white">
-                        <h4 className="font-bold text-gray-900 mb-6 flex items-center">
-                          <Globe className="w-5 h-5 mr-2 text-green-500" />{" "}
-                          Ejemplos Reales
-                        </h4>
-
-                        <div className="mb-8">
-                          <ServiceCarousel
-                            images={[
-                              "/domo1.jpg",
-                              "/domo2.jpg",
-                              "/domo3.jpg",
-                              "/domo4.jpg",
-                              "/cafe1.jpg",
-                              "/cafe2.jpg",
-                            ]}
-                          />
-                        </div>
-
-                        <div className="flex flex-wrap gap-3">
-                          <a
-                            href="https://domos-9vg.pages.dev"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm px-4 py-2 rounded-full border-2 border-gray-400 hover:border-green-500 hover:text-green-600 transition-colors flex items-center"
-                          >
-                            Domo Ejemplo{" "}
-                            <ExternalLink size={14} className="ml-1" />
-                          </a>
-                          <a
-                            href="https://cafeteria-template.pages.dev"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm px-4 py-2 rounded-full border-2 border-gray-400 hover:border-green-500 hover:text-green-600 transition-colors flex items-center"
-                          >
-                            Cafetería Ejemplo{" "}
-                            <ExternalLink size={14} className="ml-1" />
-                          </a>
-                          <a
-                            href="https://abogados-template.pages.dev"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm px-4 py-2 rounded-full border-2 border-gray-400 hover:border-green-500 hover:text-green-600 transition-colors flex items-center"
-                          >
-                            Abogados Ejemplo{" "}
-                            <ExternalLink size={14} className="ml-1" />
-                          </a>
-                          <a
-                            href="https://arguedasconstrucciones.cl/"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm px-4 py-2 rounded-full border-2 border-gray-400 hover:border-green-500 hover:text-green-600 transition-colors flex items-center"
-                          >
-                            Arguedas Construcciones{" "}
-                            <ExternalLink size={14} className="ml-1" />
-                          </a>
-                          <a
-                            href="https://lacasitadelmolle.cl"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm px-4 py-2 rounded-full border-2 border-gray-500 hover:border-green-500 hover:text-green-600 transition-colors flex items-center"
-                          >
-                            La Casita del Molle{" "}
-                            <ExternalLink size={14} className="ml-1" />
-                          </a>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {/* --- TAB 2: CATÁLOGO --- */}
-                  {activeTab === "catalogo" && (
-                    <motion.div
-                      key="catalogo"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="grid grid-cols-1 lg:grid-cols-12"
+                      <ul className="space-y-3 mb-8">
+                        {[
+                          "E-commerce Full (Pagos Webpay)",
+                          "Software SaaS (Sistemas Propios)",
+                          "CRM e Intranets",
+                          "Integración con Facturación",
+                        ].map((feat) => (
+                          <li key={feat} className="flex items-center gap-3">
+                            <div className="w-5 h-5 rounded-full bg-blue-500/20 border border-blue-400/30 flex items-center justify-center shrink-0">
+                              <svg className="w-3 h-3 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                            <span className="text-gray-300 font-medium text-sm">{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <a
+                      href={getWhatsAppLink("Desarrollo a Medida")}
+                      className="w-full py-4 text-center font-bold bg-blue-600 text-white rounded-2xl shadow-lg shadow-blue-600/30 hover:bg-blue-500 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
                     >
-                      {/* Lado Izquierdo: Info y Precio */}
-                      <div className="p-8 md:p-12 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between bg-green-50/30">
-                        <div>
-                          <div className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full mb-3 tracking-widest uppercase">
-                            El más vendido
-                          </div>
-                          <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                            Catálogo Básico
-                          </h3>
-                          <p className="text-gray-500 mb-6 italic">
-                            Tienda online con carrito de compras y pedidos
-                            directos a tu WhatsApp.
-                          </p>
+                      Agendar Asesoría Gratuita →
+                    </a>
+                  </div>
 
-                          <div className="mb-8">
-                            <span className="text-gray-400 line-through text-lg">
-                              $299.990
-                            </span>
-                            <p className="text-5xl font-black text-green-600">
-                              $219.990
-                            </p>
-                            <span className="text-xs font-bold text-red-500 uppercase tracking-widest mt-1 block">
-                              Oferta Pago Único
-                            </span>
-                            <span className="text-[10px] text-gray-400 font-medium block mt-1">
-                              * Valores no incluyen IVA
-                            </span>
-                          </div>
-
-                          <ul className="space-y-4 text-gray-700 font-medium mb-8">
-                            <li className="flex items-center">
-                              <Award className="h-5 w-5 text-green-500 mr-3" />{" "}
-                              Todo lo del Plan Presencia
-                            </li>
-                            <li className="flex items-center">
-                              <Award className="h-5 w-5 text-green-500 mr-3" />{" "}
-                              Catálogo de productos
-                            </li>
-                            <li className="flex items-center">
-                              <Award className="h-5 w-5 text-green-500 mr-3" />{" "}
-                              Carrito de compras
-                            </li>
-                            <li className="flex items-center">
-                              <Award className="h-5 w-5 text-green-500 mr-3" />{" "}
-                              Pedidos al WhatsApp
-                            </li>
-                          </ul>
+                  {/* Derecho: Imagen y Contexto */}
+                  <div className="p-8 md:p-12 md:w-7/12 flex flex-col justify-between">
+                    <div>
+                      <h4 className="font-bold text-gray-300 mb-6 flex items-center gap-2 text-sm">
+                        <div className="w-6 h-6 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                          <Briefcase className="w-3.5 h-3.5 text-blue-400" />
                         </div>
-                        <a
-                          href={getWhatsAppLink("Plan Catálogo Básico")}
-                          className="w-full py-4 text-center font-bold bg-green-600 text-white rounded-xl shadow-lg shadow-green-600/30 hover:bg-green-700 transition-all"
-                        >
-                          Contratar Plan Catálogo
-                        </a>
+                        Tecnología Empresarial
+                      </h4>
+
+                      <div className="mb-6 w-full">
+                        <ServiceCarousel
+                          images={["/saas.jpg", "/ecommerce.jpg"]}
+                          isDark={true}
+                        />
                       </div>
+                    </div>
 
-                      {/* Lado Derecho: Ejemplos Visuales */}
-                      <div className="p-8 md:p-12 lg:col-span-7 bg-white">
-                        <h4 className="font-bold text-gray-900 mb-6 flex items-center">
-                          <ShoppingCart className="w-5 h-5 mr-2 text-green-500" />{" "}
-                          Así se verá tu tienda
-                        </h4>
-                        <div className="relative group rounded-xl overflow-hidden aspect-[16/10] bg-gray-900 mb-6 shadow-md">
-                          <video
-                            src="/pet.mp4"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                        </div>
-                        <div className="flex">
-                          <a
-                            href="https://petshop-aoc.pages.dev/"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm px-6 py-3 rounded-full bg-gray-100 hover:bg-green-100 hover:text-green-700 font-bold transition-colors flex items-center"
-                          >
-                            Ver E-commerce de ejemplo{" "}
-                            <ExternalLink size={16} className="ml-2" />
-                          </a>
+                    <div className="flex gap-4 items-center opacity-60 mt-6 pt-4 border-t border-white/5">
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                        className="h-5"
+                        alt="Mastercard"
+                      />
+                      <div className="h-5 w-px bg-white/10"></div>
+                      <span className="font-bold tracking-widest text-xs text-gray-400">
+                        WEBPAY PLUS / TRANSBANK
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* SECCIÓN: PROYECTOS QUE YA ESTÁN VENDIENDO */}
+            <div className="mt-24 md:mt-32 max-w-6xl mx-auto">
+              {/* Encabezado renovado */}
+              <div className="mb-14 text-left md:text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 mb-6">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-xs font-bold text-emerald-700 tracking-widest uppercase">Resultados Reales</span>
+                </div>
+                <h2 className="text-5xl md:text-7xl font-black text-gray-900 leading-none mb-2 tracking-tight">
+                  Proyectos que ya
+                </h2>
+                <h2 className="text-5xl md:text-7xl font-medium text-gray-400 leading-none tracking-tight">
+                  están vendiendo.
+                </h2>
+                <p className="text-gray-500 mt-6 text-lg max-w-xl md:mx-auto">
+                  Mira lo que hemos construido para otros negocios — y pide algo similar para el tuyo.
+                </p>
+              </div>
+
+              {/* CARRUSEL DE PROYECTOS */}
+              <div className="flex overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:gap-8 -mx-4 px-4 md:mx-0 md:px-0">
+
+                {/* PROYECTO 1: La Casita del Molle */}
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                  <a href="https://lacasitadelmolle.cl" target="_blank" rel="noreferrer" className="flex-grow group/link block">
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                      {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
+                      <img
+                        src="/casita.webp"
+                        alt="La Casita del Molle"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                      />
+                      {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
+                        <Globe className="w-8 h-8 opacity-50 mb-1" />
+                        <span className="font-medium text-sm">src=""</span>
+                      </div>
+                    </div>
+                    <div className="px-1 mb-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                          Plan a Medida
+                        </span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">La Casita del Molle</h4>
+                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
+                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
                         </div>
                       </div>
-                    </motion.div>
-                  )}
-
-                  {/* --- TAB 3: A MEDIDA --- */}
-                  {activeTab === "medida" && (
-                    <motion.div
-                      key="medida"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="grid grid-cols-1 lg:grid-cols-12 bg-gray-900 text-white"
+                    </div>
+                  </a>
+                  <div className="mt-auto px-1">
+                    <a
+                      href={getWhatsAppLink("Plan A Medida (La Casita del Molle)")}
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
                     >
-                      {/* Lado Izquierdo: Info */}
-                      <div className="p-8 md:p-12 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-gray-800 flex flex-col justify-between">
-                        <div>
-                          <h3 className="text-3xl font-bold mb-2">
-                            Sistemas A Medida
-                          </h3>
-                          <p className="text-gray-400 mb-6 italic">
-                            Soluciones robustas para empresas que necesitan
-                            digitalizar procesos o e-commerce avanzado.
-                          </p>
-
-                          <div className="mb-8">
-                            <p className="text-4xl font-black text-white">
-                              Cotizar Proyecto
-                            </p>
-                            <span className="text-xs font-bold text-blue-400 uppercase tracking-widest mt-1 block">
-                              Sistemas Personalizados
-                            </span>
-                          </div>
-
-                          <ul className="space-y-4 text-gray-300 font-medium mb-8">
-                            <li className="flex items-center">
-                              <Users className="h-5 w-5 text-blue-400 mr-3" />{" "}
-                              E-commerce Full (Pagos Webpay)
-                            </li>
-                            <li className="flex items-center">
-                              <Users className="h-5 w-5 text-blue-400 mr-3" />{" "}
-                              Software SaaS (Sistemas Propios)
-                            </li>
-                            <li className="flex items-center">
-                              <Users className="h-5 w-5 text-blue-400 mr-3" />{" "}
-                              CRM e Intranets
-                            </li>
-                            <li className="flex items-center">
-                              <Users className="h-5 w-5 text-blue-400 mr-3" />{" "}
-                              Integración con Facturación
-                            </li>
-                          </ul>
-                        </div>
-                        <a
-                          href={getWhatsAppLink("Desarrollo a Medida")}
-                          className="w-full py-4 text-center font-bold bg-blue-600 text-white rounded-xl shadow-lg shadow-blue-600/30 hover:bg-blue-500 transition-all"
-                        >
-                          Agendar Asesoría Gratuita
-                        </a>
+                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
                       </div>
+                    </a>
+                  </div>
+                </div>
 
-                      {/* Lado Derecho: Imagen y Contexto */}
-                      <div className="p-8 md:p-12 lg:col-span-7 bg-gray-950 flex flex-col">
-                        <h4 className="font-bold text-gray-200 mb-6 flex items-center">
-                          <Briefcase className="w-5 h-5 mr-2 text-blue-400" />{" "}
-                          Tecnología Empresarial
-                        </h4>
-
-                        <div className="mb-6">
-                          <ServiceCarousel
-                            images={["/saas.jpg", "/ecommerce.jpg"]}
-                            isDark={true}
-                          />
-                        </div>
-
-                        <div className="flex gap-4 items-center opacity-70 mt-auto">
-                          <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                            className="h-6"
-                            alt="Mastercard"
-                          />
-                          <div className="h-6 w-px bg-gray-700"></div>
-                          <span className="font-bold tracking-widest text-sm">
-                            WEBPAY PLUS / TRANSBANK
-                          </span>
+                {/* PROYECTO 2: Domos */}
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                  <a href="https://domos-9vg.pages.dev" target="_blank" rel="noreferrer" className="flex-grow group/link block">
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                      {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
+                      <img
+                        src="/domo1.webp"
+                        alt="Domos"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                      />
+                      {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
+                        <Globe className="w-8 h-8 opacity-50 mb-1" />
+                        <span className="font-medium text-sm">src=""</span>
+                      </div>
+                    </div>
+                    <div className="px-1 mb-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                          Landing Page
+                        </span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">Domos</h4>
+                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
+                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
                         </div>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </div>
+                  </a>
+                  <div className="mt-auto px-1">
+                    <a
+                      href={getWhatsAppLink("Plan Presencia (Domos)")}
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                    >
+                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                {/* PROYECTO 3: Arguedas Construcciones */}
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                  <a href="https://arguedasconstrucciones.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                      {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
+                      <img
+                        src="/arguedas.webp"
+                        alt="Arguedas Construcciones"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                      />
+                      {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
+                        <Globe className="w-8 h-8 opacity-50 mb-1" />
+                        <span className="font-medium text-sm">src=""</span>
+                      </div>
+                    </div>
+                    <div className="px-1 mb-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                          Landing Page
+                        </span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">Arguedas Construcciones</h4>
+                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
+                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <div className="mt-auto px-1">
+                    <a
+                      href={getWhatsAppLink("Plan Presencia (Arguedas Construcciones)")}
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                    >
+                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -1118,7 +1134,7 @@ export default function Home() {
           <p className=" text-md text-gray-500">
             Desarrollo web estratégico en La Serena, Chile.
           </p>
-          <p className=" text-md text-gray-500">faroweb@gmail.com</p>
+          <p className=" text-md text-gray-500">soporte@faroweb.cl</p>
           <p className=" text-md text-gray-500">+56971874099</p>
           <p className="flex items-center justify-center text-sm">
             &copy; 2026 Faroweb.cl. Todos los derechos reservados.
