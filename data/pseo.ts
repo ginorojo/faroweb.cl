@@ -1,6 +1,8 @@
 export const CIUDADES = [
   { slug: "la-serena", nombre: "La Serena", datoCiudad: "en La Serena" },
-  { slug: "coquimbo", nombre: "Coquimbo", datoCiudad: "en la conurbación y Coquimbo" }
+  { slug: "coquimbo", nombre: "Coquimbo", datoCiudad: "en la conurbación y Coquimbo" },
+  { slug: "ovalle", nombre: "Ovalle", datoCiudad: "en Ovalle y la Provincia del Limarí" },
+  { slug: "vicuna", nombre: "Vicuña", datoCiudad: "en Vicuña y el Valle del Elqui" }
 ];
 
 export const RUBROS: Record<string, any> = {
