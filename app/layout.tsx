@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   // Configura la base para que Next.js construya bien las URLs de tus imágenes automáticas
   metadataBase: new URL("https://faroweb.cl"),
-  title: "Faroweb | Diseño de Páginas Web en La Serena y Coquimbo",
+  title: "Diseño Web en La Serena y Tiendas Online | Faroweb",
   description:
     "Desarrollo web profesional y tiendas online en la Cuarta Región. Creamos sitios rápidos y modernos para potenciar tu negocio local en Chile.",
   // Next.js leerá automáticamente icon.png, favicon.ico y opengraph-image.jpg desde tu carpeta app/

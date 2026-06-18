@@ -283,7 +283,7 @@ export default function Home() {
         {/* HERO SECTION */}
         <section
           id="hero"
-          className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden"
+          className="relative min-h-[90svh] flex items-center justify-center overflow-hidden pt-12 md:pt-16"
         >
           <div className="absolute inset-0 z-0">
             <Image
@@ -296,7 +296,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
           </div>
 
-          <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10 md:mb-0">
             <motion.div
               className="max-w-4xl text-left"
               initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
@@ -306,8 +306,9 @@ export default function Home() {
               <span className="inline-block py-1 px-3 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
                 Desarrollo Web IV Región
               </span>
-              <motion.h1
-                className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight"
+              <h1 className="sr-only">Diseño de Páginas Web en La Serena y Coquimbo</h1>
+              <motion.h2
+                className="text-4xl md:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight"
                 animate={{ y: [0, -8, 0] }}
                 transition={{
                   duration: 5,
@@ -319,11 +320,9 @@ export default function Home() {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
                   24 Horas
                 </span>
-              </motion.h1>
-              <p className="text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
-                Páginas web ultra-rápidas, modernas y optimizadas para vender en
-                La Serena, Coquimbo y todo el país. Tu competencia ya está en
-                línea, ¿y tú?
+              </motion.h2>
+              <p className="text-base md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
+                Faroweb es una agencia de diseño de páginas web en La Serena y Coquimbo especializada en crear sitios ultra-rápidos, tiendas online y sistemas a medida. Utilizamos tecnologías modernas como React, Next.js y Astro para potenciar negocios locales en toda la Cuarta Región.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.a
@@ -515,9 +514,15 @@ export default function Home() {
                       <h3 className="text-4xl font-black text-gray-900 mb-2 tracking-tight">
                         Presencia
                       </h3>
-                      <p className="text-gray-500 mb-8 text-sm leading-relaxed">
-                        Tu negocio en internet con todo lo necesario para atraer clientes desde el primer día.
-                      </p>
+                      <details className="group cursor-pointer mb-8">
+                        <summary className="text-sm font-bold text-emerald-600 list-none hover:underline focus:outline-none">
+                          <span className="group-open:hidden">Leer descripción completa ↓</span>
+                          <span className="hidden group-open:inline">Ocultar descripción ↑</span>
+                        </summary>
+                        <p className="text-gray-500 text-sm leading-relaxed mt-3 cursor-auto">
+                          El Plan Presencia está diseñado específicamente para empresas en La Serena y Coquimbo que necesitan establecer su marca en internet de manera rápida, profesional y económica. Al contratar este servicio de diseño web, obtendrás una Landing Page corporativa y moderna, completamente optimizada para móviles y buscadores como Google. Entendemos que tu objetivo principal es recibir consultas, por lo que integramos botones directos a WhatsApp, un formulario de contacto y un mapa interactivo. Además, este paquete incluye 5 correos electrónicos corporativos para generar confianza en tus clientes, junto con alojamiento (hosting) de alta velocidad y registro de dominio gratis durante el primer año. Olvídate de los problemas técnicos; nosotros nos encargamos de toda la configuración.
+                        </p>
+                      </details>
 
                       <ul className="space-y-3 mb-8">
                         {[
@@ -579,9 +584,15 @@ export default function Home() {
                       <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
                         Catálogo Básico
                       </h3>
-                      <p className="text-emerald-100/80 mb-8 text-sm leading-relaxed">
-                        Tienda online con carrito de compras y pedidos directos a tu WhatsApp.
-                      </p>
+                      <details className="group cursor-pointer mb-8">
+                        <summary className="text-sm font-bold text-emerald-300 list-none hover:underline focus:outline-none">
+                          <span className="group-open:hidden">Leer descripción completa ↓</span>
+                          <span className="hidden group-open:inline">Ocultar descripción ↑</span>
+                        </summary>
+                        <p className="text-emerald-50/90 text-sm leading-relaxed mt-3 cursor-auto">
+                          El Plan Catálogo Básico es la solución ideal para comerciantes y emprendedores de la Cuarta Región que desean vender productos por internet sin pagar comisiones por venta. Esta tienda online incluye un catálogo interactivo y un carrito de compras fácil de usar, donde los clientes pueden seleccionar sus productos y enviarte el pedido detallado directamente a tu WhatsApp. Además de todas las características del Plan Presencia (correos corporativos, hosting, dominio y diseño responsivo), te entregamos un panel de control intuitivo para autogestionar tus productos, precios e inventario. Es la opción más rápida y efectiva para digitalizar tus ventas locales sin depender de plataformas de terceros que retienen tu dinero.
+                        </p>
+                      </details>
 
                       <ul className="space-y-3 mb-8">
                         {[
@@ -643,9 +654,15 @@ export default function Home() {
                       <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
                         Sistemas A Medida
                       </h3>
-                      <p className="text-gray-400 mb-8 text-sm leading-relaxed">
-                        Soluciones robustas para empresas que necesitan digitalizar procesos o e-commerce avanzado.
-                      </p>
+                      <details className="group cursor-pointer mb-8">
+                        <summary className="text-sm font-bold text-blue-400 list-none hover:underline focus:outline-none">
+                          <span className="group-open:hidden">Leer descripción completa ↓</span>
+                          <span className="hidden group-open:inline">Ocultar descripción ↑</span>
+                        </summary>
+                        <p className="text-gray-400 text-sm leading-relaxed mt-3 cursor-auto">
+                          Desarrollamos Sistemas A Medida para grandes empresas y pymes escalables en Chile que requieren funcionalidades avanzadas más allá de una página web tradicional. Ya sea que necesites un E-commerce Full con integración oficial de Webpay Plus y Transbank para pagos con tarjeta, un Software como Servicio (SaaS) propio, o la digitalización de tus procesos internos a través de CRMs e Intranets privadas. Nuestro equipo de ingenieros Full-Stack trabaja estrechamente contigo para diseñar arquitecturas de software seguras, rápidas y conectadas con facturación electrónica o APIs externas. Construimos tecnología empresarial robusta que automatiza tus operaciones y reduce costos a largo plazo.
+                        </p>
+                      </details>
 
                       <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">
                         <p className="text-3xl font-black text-white leading-none">Cotizar Proyecto</p>
@@ -711,6 +728,52 @@ export default function Home() {
                 </div>
               </div>
 
+            </div>
+
+            {/* TABLA COMPARATIVA AEO */}
+            <div className="max-w-4xl mx-auto mb-24 overflow-x-auto rounded-xl border border-gray-200 shadow-sm bg-white">
+              <table className="w-full text-left text-sm text-gray-600">
+                <thead className="bg-gray-50 text-gray-900">
+                  <tr>
+                    <th scope="col" className="px-6 py-4 font-bold">Características</th>
+                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">Presencia</th>
+                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">Catálogo Básico</th>
+                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">A Medida</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr>
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Diseño Responsivo (Móvil)</th>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Sí</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Sí</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Sí, a medida</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Hosting y Dominio (1 año)</th>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Incluido</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Incluido</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-gray-500">Según requerimiento</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Correos Corporativos</th>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">5 cuentas</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">5 cuentas</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">5 cuentas</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Pedidos / Ventas</th>
+                    <td className="px-6 py-4 border-l border-gray-200 text-gray-500">Contacto Directo</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Carrito a WhatsApp</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Webpay / Transbank</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Integraciones y Software</th>
+                    <td className="px-6 py-4 border-l border-gray-200 text-gray-400">No</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-gray-400">No</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">SaaS, CRM, Facturación</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             {/* SECCIÓN: PROYECTOS QUE YA ESTÁN VENDIENDO */}

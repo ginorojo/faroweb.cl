@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /cdn-cgi/
+Disallow: /*?*
+
+# Permitir explícitamente a rastreadores de IA populares
+User-agent: GPTBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://faroweb.cl/sitemap.xml
