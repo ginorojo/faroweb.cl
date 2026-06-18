@@ -25,9 +25,13 @@ import {
   Briefcase,
   Heart,
   Menu, // <-- NUEVO: Icono de hamburguesa
-  X, // <-- NUEVO: Icono para cerrar
+  X, // <-- NUEVO:  X,
+  Calendar,
+  ListOrdered,
   Rocket,
 } from "lucide-react";
+import SharedHeader from "@/components/SharedHeader";
+import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 
@@ -165,8 +169,6 @@ function ServiceCarousel({
 
 // --- 3. COMPONENTE PRINCIPAL ---
 export default function Home() {
-  // ESTADO PARA CONTROLAR EL MENÚ MÓVIL
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const getWhatsAppLink = (planName: string) => {
     const msg = encodeURIComponent(
@@ -177,107 +179,7 @@ export default function Home() {
 
   return (
     <div className="bg-white selection:bg-green-100 selection:text-green-900 font-sans">
-      {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-gray-100 transition-all duration-300">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
-            {/* LOGO */}
-            <div className="flex-shrink-0 cursor-pointer relative z-50">
-              <a href="#" className="flex items-center gap-2 group">
-                <div className="relative h-12 w-auto overflow-hidden">
-                  <Image
-                    src="/farologo.png"
-                    alt="Logo Faroweb"
-                    width={100}
-                    height={100}
-                    className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-              </a>
-            </div>
-
-            {/* NAVEGACIÓN DESKTOP (Oculta en móviles) */}
-            <nav className="hidden md:flex md:space-x-8 font-medium text-sm tracking-wide">
-              {["Beneficios", "Planes", "Bodas", "Nosotros"].map((item) => (
-                <a
-                  key={item}
-                  href={
-                    item === "Planes"
-                      ? "#planes-y-servicios"
-                      : `#${item.toLowerCase()}`
-                  }
-                  className="text-gray-500 hover:text-green-600 transition-colors relative group py-2"
-                >
-                  {item}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ))}
-            </nav>
-
-            {/* BOTONES (Contacto y Menú Móvil) */}
-            <div className="flex items-center gap-4 relative z-50">
-              <a
-                href={getWhatsAppLink("Servicios Generales")}
-                className="hidden md:inline-flex items-center justify-center rounded-full bg-green-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-green-600/30 transition-all hover:bg-green-700 hover:shadow-green-600/50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Hablemos
-              </a>
-
-              {/* BOTÓN HAMBURGUESA MÓVIL */}
-              <button
-                className="md:hidden p-2 text-gray-600 hover:text-green-600 transition-colors"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Alternar menú"
-              >
-                {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* --- OVERLAY DEL MENÚ MÓVIL --- */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-24 px-6 pb-6 md:hidden flex flex-col min-h-screen"
-            >
-              <nav className="flex flex-col space-y-8 text-center mt-12">
-                {["Beneficios", "Planes", "Bodas", "Nosotros"].map((item) => (
-                  <a
-                    key={item}
-                    href={
-                      item === "Planes"
-                        ? "#planes-y-servicios"
-                        : `#${item.toLowerCase()}`
-                    }
-                    onClick={() => setIsMobileMenuOpen(false)} // Cierra el menú al clickear
-                    className="text-2xl font-bold text-gray-800 hover:text-green-600 transition-colors"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </nav>
-
-              <div className="mt-auto mb-10 w-full flex flex-col items-center gap-4">
-                <p className="text-gray-400 text-sm font-medium tracking-widest uppercase mb-2">
-                  ¿Listo para empezar?
-                </p>
-                <a
-                  href={getWhatsAppLink("Servicios Generales")}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-green-600/40 transition-all active:scale-95"
-                >
-                  Hablemos por WhatsApp
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+      <SharedHeader />
 
       <main>
         {/* HERO SECTION */}
