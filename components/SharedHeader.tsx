@@ -27,8 +27,8 @@ export default function SharedHeader() {
             </div>
 
             <nav className="hidden md:flex md:space-x-8 font-medium text-sm tracking-wide">
-              {["Beneficios", "Planes", "Bodas", "Nosotros", "Calculadora"].map((item) => (
-                <Link key={item} href={item === "Calculadora" ? "/calculadora-web" : `/#${item === "Planes" ? "planes-y-servicios" : item.toLowerCase()}`} className="text-gray-500 hover:text-emerald-600 transition-colors relative group py-2">
+              {["Beneficios", "Planes", "Bodas", "Nosotros", "Calculadora", "Blog"].map((item) => (
+                <Link key={item} href={item === "Calculadora" ? "/calculadora-web" : item === "Blog" ? "/blog" : `/#${item === "Planes" ? "planes-y-servicios" : item.toLowerCase()}`} className="text-gray-500 hover:text-emerald-600 transition-colors relative group py-2">
                   {item}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-600 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
@@ -50,8 +50,8 @@ export default function SharedHeader() {
           {isMobileMenuOpen && (
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-24 px-6 pb-6 md:hidden flex flex-col min-h-screen">
               <nav className="flex flex-col space-y-8 text-center mt-12">
-                {["Beneficios", "Planes", "Bodas", "Nosotros", "Calculadora"].map((item) => (
-                  <Link key={item} href={item === "Calculadora" ? "/calculadora-web" : `/#${item === "Planes" ? "planes-y-servicios" : item.toLowerCase()}`} onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-gray-800 hover:text-emerald-600 transition-colors">
+                {["Beneficios", "Planes", "Bodas", "Nosotros", "Calculadora", "Blog"].map((item) => (
+                  <Link key={item} href={item === "Calculadora" ? "/calculadora-web" : item === "Blog" ? "/blog" : `/#${item === "Planes" ? "planes-y-servicios" : item.toLowerCase()}`} onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-gray-800 hover:text-emerald-600 transition-colors">
                     {item}
                   </Link>
                 ))}

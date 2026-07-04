@@ -33,7 +33,9 @@ import {
 import SharedHeader from "@/components/SharedHeader";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import { RUBROS, CIUDADES } from "@/data/pseo";
 
 const faqs = [
   {
@@ -55,6 +57,11 @@ const faqs = [
     question: "¿Cómo funciona el pago?",
     answer:
       "Trabajamos con un 50% de anticipo para iniciar el proyecto y el 50% restante se paga solo cuando tu página está lista y funcionando a tu entera satisfacción.",
+  },
+  {
+    question: "¿Por qué elegir Faroweb en la Cuarta Región?",
+    answer:
+      "En Faroweb, entendemos que el diseño de páginas web en La Serena, Coquimbo y toda la Cuarta Región no se trata solo de crear sitios bonitos, sino de construir herramientas digitales que generen ventas y prospectos reales para tu negocio. Nos especializamos en el desarrollo de tiendas online (e-commerce) ultra rápidas, sistemas de reservas a medida y sitios web corporativos utilizando tecnologías de vanguardia como Next.js y React. Esto garantiza que tu página cargue en milisegundos, dándote una ventaja competitiva brutal en el posicionamiento SEO frente a tu competencia. Además, no te dejamos solo una vez terminado el proyecto. Ofrecemos planes de mantención web y soporte directo para que tú te enfoques exclusivamente en atender a tus nuevos clientes mientras nosotros nos encargamos de que tu plataforma digital esté siempre segura, actualizada y funcionando 24/7.",
   },
 ];
 
@@ -208,9 +215,8 @@ export default function Home() {
               <span className="inline-block py-1 px-3 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
                 Desarrollo Web IV Región
               </span>
-              <h1 className="sr-only">Diseño de Páginas Web en La Serena y Coquimbo</h1>
-              <motion.h2
-                className="text-4xl md:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight"
+              <motion.h1
+                className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight"
                 animate={{ y: [0, -8, 0] }}
                 transition={{
                   duration: 5,
@@ -218,11 +224,11 @@ export default function Home() {
                   ease: "easeInOut",
                 }}
               >
-                Tu Negocio Abierto las <br />
+                Agencia de Diseño Web en La Serena. <br /> Tu negocio abierto las{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
                   24 Horas
                 </span>
-              </motion.h2>
+              </motion.h1>
               <p className="text-base md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
                 Faroweb es una agencia de diseño de páginas web en La Serena y Coquimbo especializada en crear sitios ultra-rápidos, tiendas online y sistemas a medida. Utilizamos tecnologías modernas como React, Next.js y Astro para potenciar negocios locales en toda la Cuarta Región.
               </p>
@@ -450,8 +456,9 @@ export default function Home() {
                   {/* Derecho: Precio + CTA */}
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-gray-100/80">
                     <div className="w-full mb-6">
-                      <span className="text-gray-400 line-through text-base block mb-1">$229.990</span>
-                      <p className="text-5xl font-black text-gray-900 leading-none tracking-tight mb-1">
+                      <span className="text-gray-400 line-through text-base block mb-1">Desde $229.990</span>
+                      <p className="text-5xl font-black text-gray-900 leading-none tracking-tight mb-1 flex items-baseline justify-center gap-2">
+                        <span className="text-2xl font-bold text-gray-500">Desde</span>
                         $129.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-red-50 border border-red-100">
@@ -519,8 +526,9 @@ export default function Home() {
                   {/* Derecho: Precio + CTA */}
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-white/10">
                     <div className="w-full mb-6">
-                      <span className="text-white/50 line-through text-base block mb-1">$299.990</span>
-                      <p className="text-5xl font-black text-white leading-none tracking-tight mb-1">
+                      <span className="text-white/50 line-through text-base block mb-1">Desde $299.990</span>
+                      <p className="text-5xl font-black text-white leading-none tracking-tight mb-1 flex items-baseline justify-center gap-2">
+                        <span className="text-2xl font-bold text-white/70">Desde</span>
                         $219.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-white/10 border border-white/20">
@@ -1018,7 +1026,8 @@ export default function Home() {
                     Inversión Transparente
                   </p>
                   <div className="flex items-baseline gap-2 flex-wrap">
-                    <span className="text-4xl md:text-5xl font-black text-white">
+                    <span className="text-4xl md:text-5xl font-black text-white flex items-baseline gap-2">
+                      <span className="text-xl md:text-2xl font-bold text-gray-400">Desde</span>
                       $20.000
                     </span>
                     <span className="text-green-400 font-bold text-sm md:text-base">
@@ -1088,6 +1097,41 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
+        {/* INTERNAL LINKS (pSEO) */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+            <details className="group border border-gray-200 rounded-2xl bg-gray-50 overflow-hidden shadow-sm">
+              <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-xl text-gray-900 hover:bg-gray-100 transition-colors">
+                <span className="flex items-center gap-3">
+                  <ListOrdered className="w-6 h-6 text-green-600" /> Soluciones Especializadas por Ciudad
+                </span>
+                <span className="transition group-open:rotate-180">
+                  <ChevronDown className="w-6 h-6 text-gray-500" />
+                </span>
+              </summary>
+              <div className="p-6 border-t border-gray-200 bg-white">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  {Object.keys(RUBROS).slice(0, 8).map((rubroSlug) => {
+                    const rubro = RUBROS[rubroSlug];
+                    return CIUDADES.slice(0, 2).map((ciudad) => (
+                      <Link
+                        key={`${rubroSlug}-${ciudad.slug}`}
+                        href={`/diseno-web/${rubroSlug}/${ciudad.slug}`}
+                        className="text-sm text-gray-500 hover:text-green-600 transition-colors p-3 rounded-xl hover:bg-green-50 border border-transparent hover:border-green-100 flex items-center gap-2"
+                      >
+                        <span>{rubro.emoji}</span>
+                        <span>Páginas web para {rubro.nombrePlural} en {ciudad.nombre}</span>
+                      </Link>
+                    ));
+                  })}
+                </div>
+              </div>
+            </details>
+          </div>
+        </section>
+
       </main>
 
       {/* FOOTER */}
