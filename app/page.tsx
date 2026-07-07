@@ -113,6 +113,50 @@ function WhatsAppFloating() {
   );
 }
 
+// --- 1.5. COMPONENTE BOTÓN INSTAGRAM FLOTANTE ---
+function InstagramFloating() {
+  const floatVariants: Variants = {
+    idle: {
+      y: [0, -5, 0],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+    notify: {
+      scale: [1, 1.1, 1, 1.1, 1],
+      rotate: [0, -5, 5, -5, 5, 0],
+      transition: {
+        duration: 0.5,
+        repeat: Infinity,
+        repeatDelay: 5,
+      },
+    },
+  };
+
+  return (
+    <motion.a
+      href="https://instagram.com/faroweb.cl"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-28 right-6 z-[100] flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-2xl transition-shadow hover:shadow-pink-500/50"
+      variants={floatVariants}
+      animate="notify"
+      whileHover={{ scale: 1.1, rotate: 0 }}
+      whileTap={{ scale: 0.9 }}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        className="h-9 w-9 fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+      </svg>
+    </motion.a>
+  );
+}
+
 // --- 2. COMPONENTE CARRUSEL PARA SERVICIOS ---
 function ServiceCarousel({
   images,
@@ -705,6 +749,17 @@ export default function Home() {
                 </p>
               </div>
 
+              {/* INDICADOR MÓVIL */}
+              <div className="md:hidden flex items-center justify-end w-full mb-4 px-2 gap-2 text-gray-400">
+                <span className="text-sm font-medium">Desliza para ver todos</span>
+                <motion.div
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.div>
+              </div>
+
               {/* CARRUSEL DE PROYECTOS */}
               <div className="flex overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:gap-8 -mx-4 px-4 md:mx-0 md:px-0">
 
@@ -834,6 +889,86 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Presencia (Arguedas Construcciones)")}
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                    >
+                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                {/* PROYECTO 4: Modular Norte */}
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                  <a href="https://modularnorte.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                      <img
+                        src="/modular.webp"
+                        alt="Modular Norte"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                      />
+                    </div>
+                    <div className="px-1 mb-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                          Catálogo
+                        </span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">Modular Norte</h4>
+                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
+                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <div className="mt-auto px-1">
+                    <a
+                      href={getWhatsAppLink("Plan Presencia (Modular Norte)")}
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                    >
+                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                {/* PROYECTO 5: Movigest */}
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                  <a href="https://movigest.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                      <img
+                        src="/movigest.webp"
+                        alt="Movigest"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                      />
+                    </div>
+                    <div className="px-1 mb-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                          Landing Page
+                        </span>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">Movigest</h4>
+                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
+                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <div className="mt-auto px-1">
+                    <a
+                      href={getWhatsAppLink("Plan Presencia (Movigest)")}
                       className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
@@ -1152,6 +1287,7 @@ export default function Home() {
       </footer>
 
       <WhatsAppFloating />
+      <InstagramFloating />
     </div>
   );
 }
