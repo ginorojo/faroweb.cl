@@ -62,7 +62,7 @@ function WhatsAppFloating() {
       y: [0, -5, 0],
       transition: {
         duration: 2,
-        repeat: Infinity,
+        repeat: 3,
         ease: "easeInOut",
       },
     },
@@ -71,7 +71,7 @@ function WhatsAppFloating() {
       rotate: [0, -5, 5, -5, 5, 0],
       transition: {
         duration: 0.5,
-        repeat: Infinity,
+        repeat: 3,
         repeatDelay: 4,
       },
     },
@@ -110,7 +110,7 @@ function InstagramFloating() {
       y: [0, -5, 0],
       transition: {
         duration: 2,
-        repeat: Infinity,
+        repeat: 3,
         ease: "easeInOut",
       },
     },
@@ -119,7 +119,7 @@ function InstagramFloating() {
       rotate: [0, -5, 5, -5, 5, 0],
       transition: {
         duration: 0.5,
-        repeat: Infinity,
+        repeat: 3,
         repeatDelay: 5,
       },
     },
@@ -165,7 +165,7 @@ function ServiceCarousel({
     <div
       className={`relative w-full aspect-[16/10] rounded-2xl overflow-hidden group shadow-inner ${isDark ? "bg-gray-800 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.img
           key={currentIndex}
           src={images[currentIndex]}
@@ -182,13 +182,13 @@ function ServiceCarousel({
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-card hover:bg-white text-green-600 opacity-0 group-hover:opacity-100 transition-all hover:scale-110 active:scale-95"
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-card hover:bg-white text-green-600 opacity-0 group-hover:opacity-100 transition-[opacity,transform,background-color] duration-200 ease-out hover:scale-110 active:scale-[0.97]"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-card hover:bg-white text-green-600 opacity-0 group-hover:opacity-100 transition-all hover:scale-110 active:scale-95"
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-card hover:bg-white text-green-600 opacity-0 group-hover:opacity-100 transition-[opacity,transform,background-color] duration-200 ease-out hover:scale-110 active:scale-[0.97]"
           >
             <ChevronRight size={20} />
           </button>
@@ -199,7 +199,7 @@ function ServiceCarousel({
         {images.map((_, idx) => (
           <div
             key={idx}
-            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? "w-4 bg-green-500" : "w-1.5 bg-white/60"
+            className={`h-1.5 rounded-full transition-[width,background-color] duration-200 ease-out ${idx === currentIndex ? "w-4 bg-green-500" : "w-1.5 bg-white/60"
               }`}
           />
         ))}
@@ -246,20 +246,12 @@ export default function Home() {
               <span className="inline-block py-1 px-3 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-eyebrow uppercase mb-6 backdrop-blur-sm">
                 Desarrollo Web IV Región
               </span>
-              <motion.h1
-                className="text-h1 text-balance text-white mb-6"
-                animate={{ y: [0, -8, 0] }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
+              <h1 className="text-h1 text-balance text-white mb-6">
                 Agencia de Diseño Web en La Serena. Tu negocio abierto las{" "}
                 <span className="text-green-400">
                   24 Horas
                 </span>
-              </motion.h1>
+              </h1>
               <p className="text-base md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
                 Faroweb es una agencia de diseño de páginas web en La Serena y Coquimbo especializada en crear sitios ultra-rápidos, tiendas online y sistemas a medida. Utilizamos tecnologías modernas como React, Next.js y Astro para potenciar negocios locales en toda la Cuarta Región.
               </p>
@@ -268,7 +260,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="#planes-y-servicios"
-                  className="group inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-green-700 shadow-card"
+                  className="group inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white transition-colors duration-200 ease-out hover:bg-green-700 active:scale-[0.97] shadow-card"
                 >
                   Ver Planes{" "}
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -307,7 +299,7 @@ export default function Home() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="group p-8 bg-white rounded-3xl shadow-card border border-gray-100 transition-all hover:shadow-card-hover hover:-translate-y-2"
+                  className="group p-8 bg-white rounded-3xl shadow-card border border-gray-100 transition-[box-shadow,transform] duration-300 ease-out hover:shadow-card-hover hover:-translate-y-2"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-green-600 transition-colors group-hover:bg-green-600 group-hover:text-white">
                     {item.icon}
@@ -371,13 +363,10 @@ export default function Home() {
                   desc: "Utilizamos Astro para lograr sitios estáticos extremadamente rápidos y optimizados para SEO.",
                 },
               ].map((tech, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="p-8 rounded-3xl bg-gray-900 border border-gray-800 hover:border-green-500/30 transition-all duration-300 group"
+                  style={{ animationDelay: `${i * 60}ms` }}
+                  className="animate-reveal p-8 rounded-3xl bg-gray-900 border border-gray-800 hover:border-green-500/30 transition-colors duration-200 ease-out group"
                 >
                   <div
                     className={`mb-5 ${tech.color} opacity-80 group-hover:opacity-100 transition-opacity`}
@@ -390,7 +379,7 @@ export default function Home() {
                   <p className="text-sm text-gray-400 leading-relaxed">
                     {tech.desc}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
 
@@ -507,7 +496,7 @@ export default function Home() {
                     </div>
                     <a
                       href={getWhatsAppLink("Plan Corporativo")}
-                      className="w-full py-4 text-center font-bold bg-gray-900 text-white rounded-2xl shadow-card hover:bg-gray-800 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
+                      className="w-full py-4 text-center font-bold bg-gray-900 text-white rounded-2xl shadow-card hover:bg-gray-800 hover:-translate-y-0.5 active:scale-[0.97] transition-[background-color,transform] duration-200 ease-out text-sm tracking-wide"
                     >
                       <span className="inline-flex items-center justify-center gap-2">
                         Contratar Plan
@@ -593,7 +582,7 @@ export default function Home() {
                     </div>
                     <a
                       href={getWhatsAppLink("Plan Catálogo Básico")}
-                      className="w-full py-4 text-center font-bold bg-white text-emerald-700 rounded-2xl shadow-card hover:bg-emerald-50 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
+                      className="w-full py-4 text-center font-bold bg-white text-emerald-700 rounded-2xl shadow-card hover:bg-emerald-50 hover:-translate-y-0.5 active:scale-[0.97] transition-[background-color,transform] duration-200 ease-out text-sm tracking-wide"
                     >
                       <span className="inline-flex items-center justify-center gap-2">
                         Contratar Plan
@@ -650,7 +639,7 @@ export default function Home() {
                     </div>
                     <a
                       href={getWhatsAppLink("Desarrollo a Medida")}
-                      className="w-full py-4 text-center font-bold bg-blue-600 text-white rounded-2xl shadow-card hover:bg-blue-500 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
+                      className="w-full py-4 text-center font-bold bg-blue-600 text-white rounded-2xl shadow-card hover:bg-blue-500 hover:-translate-y-0.5 active:scale-[0.97] transition-[background-color,transform] duration-200 ease-out text-sm tracking-wide"
                     >
                       <span className="inline-flex items-center justify-center gap-2">
                         Agendar Asesoría Gratuita
@@ -739,7 +728,7 @@ export default function Home() {
               {/* Encabezado renovado */}
               <div className="mb-14 text-left md:text-center">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 mb-6">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-emerald-500" />
                   <span className="text-eyebrow uppercase text-emerald-700">Resultados Reales</span>
                 </div>
                 <h2 className="text-h2 text-balance text-gray-900">
@@ -756,7 +745,7 @@ export default function Home() {
                 <span className="text-sm font-medium">Desliza para ver todos</span>
                 <motion.div
                   animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 1.5, repeat: 3, ease: "easeInOut" }}
                 >
                   <ArrowRight className="w-4 h-4" />
                 </motion.div>
@@ -766,15 +755,15 @@ export default function Home() {
               <div className="flex overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:gap-8 -mx-4 px-4 md:mx-0 md:px-0">
 
                 {/* PROYECTO 1: La Casita del Molle */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
                   <a href="https://lacasitadelmolle.cl" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
                       {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
                       <img
                         src="/casita.webp"
                         alt="La Casita del Molle"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
                       />
                       {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
@@ -799,7 +788,7 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan A Medida (La Casita del Molle)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
                       <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
@@ -812,15 +801,15 @@ export default function Home() {
                 </div>
 
                 {/* PROYECTO 2: Domos */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
                   <a href="https://domos-9vg.pages.dev" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
                       {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
                       <img
                         src="/domo1.webp"
                         alt="Domos"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
                       />
                       {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
@@ -845,7 +834,7 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Corporativo (Domos)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
                       <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
@@ -858,15 +847,15 @@ export default function Home() {
                 </div>
 
                 {/* PROYECTO 3: Arguedas Construcciones */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
                   <a href="https://arguedasconstrucciones.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
                       {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
                       <img
                         src="/arguedas.webp"
                         alt="Arguedas Construcciones"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
                       />
                       {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
@@ -891,7 +880,7 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Corporativo (Arguedas Construcciones)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
                       <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
@@ -904,14 +893,14 @@ export default function Home() {
                 </div>
 
                 {/* PROYECTO 4: Modular Norte */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
                   <a href="https://modularnorte.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
                       <img
                         src="/modular.webp"
                         alt="Modular Norte"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
                       />
                     </div>
                     <div className="px-1 mb-6">
@@ -931,7 +920,7 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Corporativo (Modular Norte)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
                       <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
@@ -944,14 +933,14 @@ export default function Home() {
                 </div>
 
                 {/* PROYECTO 5: Movigest */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
                   <a href="https://movigest.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
+                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
+                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
                       <img
                         src="/movigest.webp"
                         alt="Movigest"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-500 z-10"
+                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
                       />
                     </div>
                     <div className="px-1 mb-6">
@@ -971,7 +960,7 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Corporativo (Movigest)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
                       <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
@@ -1012,21 +1001,21 @@ export default function Home() {
 
                 <a
                   href={'https://faroweb.cl/bodas'}
-                  className="inline-flex items-center px-8 py-4 font-bold bg-[#6b9071] text-white rounded-full shadow-card hover:bg-[#527056] hover:-translate-y-1 transition-all duration-300"
+                  className="inline-flex items-center px-8 py-4 font-bold bg-[#6b9071] text-white rounded-full shadow-card hover:bg-[#527056] hover:-translate-y-1 active:scale-[0.97] transition-[background-color,transform] duration-200 ease-out"
                 >
                   Ver demos y valores <ArrowRight size={18} className="ml-2" />
                 </a>
               </div>
 
               <div className="md:w-1/2 w-full flex items-start gap-4 relative z-10">
-                <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-card border-[6px] transform rotate-[-3deg] hover:rotate-0 transition-transform duration-500">
+                <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-card border-[6px] transform rotate-[-3deg] hover:rotate-0 transition-transform duration-300">
                   <img
                     src="/weeding1.jpg"
                     alt="Boda 1"
                     className="w-full h-auto block"
                   />
                 </div>
-                <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-card border-[6px] border-white transform rotate-[5deg] hover:rotate-0 transition-transform duration-500 mt-10">
+                <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-card border-[6px] border-white transform rotate-[5deg] hover:rotate-0 transition-transform duration-300 mt-10">
                   <img
                     src="/weeding2.jpg"
                     alt="Boda 2"
@@ -1045,13 +1034,7 @@ export default function Home() {
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 border border-gray-100 shadow-card">
-              <motion.div
-                className="md:w-1/2"
-                initial={{ opacity: 0, x: -100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: false, margin: "-100px" }}
-              >
+              <div className="md:w-1/2 animate-reveal">
                 <h2 className="text-h2 text-balance text-gray-900 mb-6">
                   Expertos Locales.
                   <br />
@@ -1088,7 +1071,7 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
               <div className="md:w-1/2 w-full h-64 md:h-80 bg-gray-100 rounded-3xl relative overflow-hidden shadow-card border-2 border-white">
                 <video
                   src="/laserena.mp4"

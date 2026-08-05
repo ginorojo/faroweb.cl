@@ -2,6 +2,11 @@ import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
+    future: {
+        // Envuelve los `hover:` en @media (hover: hover). En tactil el hover se
+        // dispara al tocar y queda pegado hasta que tocas otra cosa.
+        hoverOnlyWhenSupported: true,
+    },
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,6 +30,13 @@ const config: Config = {
                     600: '#16a34a',
                     700: '#15803d',
                 }
+            },
+            // Las curvas nativas de CSS son demasiado debiles para sentirse
+            // intencionales. `ease-in` no se usa nunca en UI: retrasa el arranque
+            // justo en el instante que el usuario esta mirando.
+            transitionTimingFunction: {
+                out: "cubic-bezier(0.23, 1, 0.32, 1)",
+                "in-out": "cubic-bezier(0.77, 0, 0.175, 1)",
             },
             // Tokens con rol, no numeros. El interlineado, el tracking y el peso
             // van horneados aca, asi desaparecen del JSX las 40 declaraciones
@@ -62,11 +74,16 @@ const config: Config = {
                     from: { opacity: "0", transform: "translateY(30px)" },
                     to: { opacity: "1", transform: "none" },
                 },
+                reveal: {
+                    from: { opacity: "0", transform: "translateY(16px)" },
+                    to: { opacity: "1", transform: "none" },
+                },
             },
             animation: {
                 // `both` para que arranque en opacity 0 y, pase lo que pase,
                 // termine visible. A diferencia de framer-motion, no necesita JS.
-                "hero-in": "hero-in 0.7s ease-out both",
+                "hero-in": "hero-in 0.7s cubic-bezier(0.23,1,0.32,1) both",
+                reveal: "reveal 0.5s cubic-bezier(0.23,1,0.32,1) both",
             },
         },
     },

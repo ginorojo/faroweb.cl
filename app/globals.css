@@ -9,9 +9,11 @@
 }
 
 
-/* Si el usuario pide menos movimiento, el texto aparece directamente visible. */
+/* Si el usuario pide menos movimiento, el contenido aparece directamente
+   visible. Menos movimiento, no cero: opacidad y color se conservan. */
 @media (prefers-reduced-motion: reduce) {
-    .animate-hero-in {
+    .animate-hero-in,
+    .animate-reveal {
         animation: none;
     }
 }
