@@ -26,6 +26,21 @@ const config: Config = {
                     700: '#15803d',
                 }
             },
+            // Tres sombras para todo el sitio, en vez de 68 declaraciones sueltas
+            // mezclando negro generico con halos de color. El halo tintado bajo
+            // los botones es de las firmas de plantilla mas reconocibles.
+            boxShadow: {
+                card: "0 1px 2px rgb(16 24 40 / 0.04), 0 8px 24px -12px rgb(16 24 40 / 0.10)",
+                "card-hover": "0 2px 4px rgb(16 24 40 / 0.05), 0 24px 48px -16px rgb(16 24 40 / 0.16)",
+                raised: "0 24px 60px -20px rgb(0 0 0 / 0.5)",
+            },
+            // Tres radios en vez de nueve. Se bajan los valores: el squircle
+            // gigante (2rem, 2.5rem, 3rem) es firma de plantilla.
+            borderRadius: {
+                xl: "0.625rem",
+                "2xl": "1rem",
+                "3xl": "1.5rem",
+            },
             keyframes: {
                 "hero-in": {
                     from: { opacity: "0", transform: "translateY(30px)" },

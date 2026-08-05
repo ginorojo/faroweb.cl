@@ -2,33 +2,23 @@
 
 import { useState, useEffect } from "react";
 import {
-  Clock,
-  MapPin,
-  Smartphone,
   ArrowRight,
-  Star,
-  Award,
-  Users,
-  ExternalLink,
-  ChevronDown,
+  Briefcase,
   CheckCircle2,
-  Timer,
-  Code2,
-  Zap,
-  ShieldCheck,
-  Globe,
-  Settings,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
-  ShoppingCart,
-  CreditCard,
-  Briefcase,
-  Heart,
-  Menu, // <-- NUEVO: Icono de hamburguesa
-  X, // <-- NUEVO:  X,
-  Calendar,
+  ChevronUp,
+  Clock,
+  Code2,
+  Globe,
   ListOrdered,
+  MapPin,
   Rocket,
+  ShieldCheck,
+  Smartphone,
+  Star,
+  Zap,
 } from "lucide-react";
 import SharedHeader from "@/components/SharedHeader";
 import Footer from "@/components/Footer";
@@ -96,7 +86,7 @@ function WhatsAppFloating() {
       href={`https://wa.me/56971874099?text=${defaultMsg}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-[100] flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl transition-shadow hover:shadow-green-500/50"
+      className="fixed bottom-6 right-6 z-[100] flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-card transition-shadow hover:shadow-green-500/50"
       variants={floatVariants}
       animate="notify"
       whileHover={{ scale: 1.1, rotate: 0 }}
@@ -140,7 +130,7 @@ function InstagramFloating() {
       href="https://instagram.com/faroweb.cl"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-28 right-6 z-[100] flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-2xl transition-shadow hover:shadow-pink-500/50"
+      className="fixed bottom-28 right-6 z-[100] flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-card transition-shadow hover:shadow-pink-500/50"
       variants={floatVariants}
       animate="notify"
       whileHover={{ scale: 1.1, rotate: 0 }}
@@ -192,13 +182,13 @@ function ServiceCarousel({
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white text-green-600 opacity-0 group-hover:opacity-100 transition-all hover:scale-110 active:scale-95"
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-card hover:bg-white text-green-600 opacity-0 group-hover:opacity-100 transition-all hover:scale-110 active:scale-95"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white text-green-600 opacity-0 group-hover:opacity-100 transition-all hover:scale-110 active:scale-95"
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-card hover:bg-white text-green-600 opacity-0 group-hover:opacity-100 transition-all hover:scale-110 active:scale-95"
           >
             <ChevronRight size={20} />
           </button>
@@ -266,7 +256,7 @@ export default function Home() {
                 }}
               >
                 Agencia de Diseño Web en La Serena. <br /> Tu negocio abierto las{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
+                <span className="text-green-400">
                   24 Horas
                 </span>
               </motion.h1>
@@ -278,7 +268,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="#planes-y-servicios"
-                  className="group inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-green-700 shadow-xl shadow-green-900/40"
+                  className="group inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-green-700 shadow-card"
                 >
                   Ver Planes{" "}
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -289,9 +279,9 @@ export default function Home() {
         </section>
 
         {/* BENEFICIOS */}
-        <section id="beneficios" className="py-24 bg-gray-50">
+        <section id="beneficios" className="py-16 md:py-24 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-14">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Beneficios Inmediatos
               </h2>
@@ -317,7 +307,7 @@ export default function Home() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="group p-8 bg-white rounded-3xl shadow-sm border border-gray-100 transition-all hover:shadow-2xl hover:-translate-y-2"
+                  className="group p-8 bg-white rounded-3xl shadow-card border border-gray-100 transition-all hover:shadow-card-hover hover:-translate-y-2"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-green-600 transition-colors group-hover:bg-green-600 group-hover:text-white">
                     {item.icon}
@@ -335,14 +325,14 @@ export default function Home() {
         </section>
 
         {/* TECNOLOGÍA DE PUNTA */}
-        <section className="py-24 bg-gray-950 text-white relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-gray-950 text-white relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-500 via-transparent to-transparent pointer-events-none"></div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16 max-w-3xl mx-auto">
+            <div className="text-center mb-10 md:mb-14 max-w-3xl mx-auto">
               <h2 className="text-3xl font-black sm:text-5xl mb-6 leading-tight">
                 Tu web construida con la tecnología de{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-500 to-emerald-500">
+                <span className="text-green-400">
                   TikTok, Instagram, Facebook, y Netflix.
                 </span>
               </h2>
@@ -405,9 +395,6 @@ export default function Home() {
             </div>
 
             <div className="mt-16 text-center">
-              <p className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-6">
-                Ecosistema de alto rendimiento
-              </p>
               {/* Mismo tratamiento para los cinco: mezclar mono, serif y sans
                   para fingir logos distintos se lee como amateur. */}
               <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale">
@@ -434,10 +421,10 @@ export default function Home() {
         {/* --- NUEVA SECCIÓN: PLANES Y PORTAFOLIO --- */}
         <section
           id="planes-y-servicios"
-          className="py-24 bg-gray-50 border-t border-gray-100 relative overflow-hidden"
+          className="py-20 md:py-32 bg-gray-50 border-t border-gray-100 relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-14">
               <h2 className="text-3xl font-black text-gray-900 sm:text-5xl mb-6">
                 Nuestros Planes
               </h2>
@@ -447,28 +434,28 @@ export default function Home() {
             <div className="flex flex-col gap-8 max-w-4xl mx-auto mb-24">
 
               {/* PLAN CORPORATIVO */}
-              <div id="corporativo" className="relative rounded-[2rem] overflow-hidden scroll-mt-24 group">
+              <div id="corporativo" className="relative rounded-3xl overflow-hidden scroll-mt-24 group">
                 {/* Fondo con gradiente sutil */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-emerald-50/40 z-0" />
-                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl z-0 pointer-events-none" />
                 {/* Borde con brillo */}
-                <div className="absolute inset-0 rounded-[2rem] border border-gray-200/80 z-0" />
-                <div className="relative z-10 flex flex-col md:flex-row shadow-2xl shadow-gray-200/60 rounded-[2rem]">
+                <div className="absolute inset-0 rounded-3xl border border-gray-200/80 z-0" />
+                <div className="relative z-10 flex flex-col md:flex-row shadow-card rounded-3xl">
                   {/* Izquierdo: Info */}
                   <div className="p-8 md:p-12 md:w-2/3 flex flex-col justify-between">
                     <div>
-                      {/* Badge tipo */}
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900/5 border border-gray-900/10 mb-5">
-                        <Globe className="w-3 h-3 text-gray-500" />
-                        <span className="text-[10px] font-bold text-gray-500 tracking-widest uppercase">Landing Page</span>
-                      </div>
                       <h3 className="text-4xl font-black text-gray-900 mb-2 tracking-tight">
                         Corporativo
                       </h3>
                       <details className="group cursor-pointer mb-8">
                         <summary className="text-sm font-bold text-emerald-600 list-none hover:underline focus:outline-none">
-                          <span className="group-open:hidden">Leer descripción completa ↓</span>
-                          <span className="hidden group-open:inline">Ocultar descripción ↑</span>
+                          <span className="inline-flex items-center gap-1 group-open:hidden">
+                            Leer descripción completa
+                            <ChevronDown className="h-4 w-4" strokeWidth={1.5} />
+                          </span>
+                          <span className="hidden items-center gap-1 group-open:inline-flex">
+                            Ocultar descripción
+                            <ChevronUp className="h-4 w-4" strokeWidth={1.5} />
+                          </span>
                         </summary>
                         <div className="text-gray-500 text-sm leading-relaxed mt-3 cursor-auto space-y-3">
                           <p>
@@ -514,41 +501,49 @@ export default function Home() {
                         $189.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-red-50 border border-red-100">
-                        <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest">🔥 Oferta Pago Único</span>
+                        <span className="text-[13px] font-semibold text-red-600">Oferta pago único</span>
                       </div>
                       <span className="text-xs text-gray-500 font-semibold block mt-2">* Valores no incluyen IVA</span>
                     </div>
                     <a
                       href={getWhatsAppLink("Plan Corporativo")}
-                      className="w-full py-4 text-center font-bold bg-gray-900 text-white rounded-2xl shadow-lg shadow-gray-900/20 hover:bg-gray-800 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
+                      className="w-full py-4 text-center font-bold bg-gray-900 text-white rounded-2xl shadow-card hover:bg-gray-800 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
                     >
-                      Contratar Plan →
+                      <span className="inline-flex items-center justify-center gap-2">
+                        Contratar Plan
+                        <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+                      </span>
                     </a>
                   </div>
                 </div>
               </div>
 
               {/* PLAN CATÁLOGO — DESTACADO */}
-              <div id="catalogo" className="relative rounded-[2rem] overflow-hidden scroll-mt-24 group">
+              <div id="catalogo" className="relative rounded-3xl overflow-hidden scroll-mt-24 group">
                 {/* Fondo con gradiente verde más vibrante */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 z-0" />
-                <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl z-0 pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-teal-400/20 rounded-full blur-2xl z-0 pointer-events-none" />
-                <div className="relative z-10 flex flex-col md:flex-row shadow-2xl shadow-emerald-700/40 rounded-[2rem]">
+                <div className="relative z-10 flex flex-col md:flex-row shadow-card rounded-3xl">
                   {/* Izquierdo: Info */}
                   <div className="p-8 md:p-12 md:w-2/3 flex flex-col justify-between">
                     <div>
                       {/* Badge "más vendido" */}
                       <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/20 mb-5 backdrop-blur-sm">
-                        <span className="text-[10px] font-black text-white tracking-widest uppercase">⭐ El más vendido</span>
+                        <Star className="h-3 w-3 shrink-0 fill-current text-white" strokeWidth={1.5} />
+                        <span className="text-[10px] font-black text-white tracking-widest uppercase">El más vendido</span>
                       </div>
                       <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
                         Catálogo Básico
                       </h3>
                       <details className="group cursor-pointer mb-8">
                         <summary className="text-sm font-bold text-emerald-300 list-none hover:underline focus:outline-none">
-                          <span className="group-open:hidden">Leer descripción completa ↓</span>
-                          <span className="hidden group-open:inline">Ocultar descripción ↑</span>
+                          <span className="inline-flex items-center gap-1 group-open:hidden">
+                            Leer descripción completa
+                            <ChevronDown className="h-4 w-4" strokeWidth={1.5} />
+                          </span>
+                          <span className="hidden items-center gap-1 group-open:inline-flex">
+                            Ocultar descripción
+                            <ChevronUp className="h-4 w-4" strokeWidth={1.5} />
+                          </span>
                         </summary>
                         <div className="text-emerald-50/90 text-sm leading-relaxed mt-3 cursor-auto space-y-3">
                           <p>
@@ -592,35 +587,32 @@ export default function Home() {
                         $289.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-white/10 border border-white/20">
-                        <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest">🔥 Oferta Pago Único</span>
+                        <span className="text-[13px] font-semibold text-white/80">Oferta pago único</span>
                       </div>
                       <span className="text-xs text-white/60 font-semibold block mt-2">* Valores no incluyen IVA</span>
                     </div>
                     <a
                       href={getWhatsAppLink("Plan Catálogo Básico")}
-                      className="w-full py-4 text-center font-bold bg-white text-emerald-700 rounded-2xl shadow-lg shadow-black/20 hover:bg-emerald-50 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
+                      className="w-full py-4 text-center font-bold bg-white text-emerald-700 rounded-2xl shadow-card hover:bg-emerald-50 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
                     >
-                      Contratar Plan →
+                      <span className="inline-flex items-center justify-center gap-2">
+                        Contratar Plan
+                        <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+                      </span>
                     </a>
                   </div>
                 </div>
               </div>
 
               {/* PLAN A MEDIDA */}
-              <div id="medida" className="relative rounded-[2rem] overflow-hidden scroll-mt-24 group">
+              <div id="medida" className="relative rounded-3xl overflow-hidden scroll-mt-24 group">
                 {/* Fondo oscuro premium */}
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-slate-900 z-0" />
-                <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl z-0 pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-400/5 rounded-full blur-2xl z-0 pointer-events-none" />
-                <div className="absolute inset-0 rounded-[2rem] border border-white/5 z-0" />
-                <div className="relative z-10 flex flex-col md:flex-row shadow-2xl shadow-black/40 rounded-[2rem]">
+                <div className="absolute inset-0 rounded-3xl border border-white/5 z-0" />
+                <div className="relative z-10 flex flex-col md:flex-row shadow-raised rounded-3xl">
                   {/* Izquierdo: Info */}
                   <div className="p-8 md:p-12 md:w-5/12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5">
                     <div>
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 mb-5">
-                        <Briefcase className="w-3 h-3 text-blue-400" />
-                        <span className="text-[10px] font-bold text-blue-400 tracking-widest uppercase">Proyectos Empresariales</span>
-                      </div>
                       <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
                         Sistemas A Medida
                       </h3>
@@ -658,9 +650,12 @@ export default function Home() {
                     </div>
                     <a
                       href={getWhatsAppLink("Desarrollo a Medida")}
-                      className="w-full py-4 text-center font-bold bg-blue-600 text-white rounded-2xl shadow-lg shadow-blue-600/30 hover:bg-blue-500 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
+                      className="w-full py-4 text-center font-bold bg-blue-600 text-white rounded-2xl shadow-card hover:bg-blue-500 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
                     >
-                      Agendar Asesoría Gratuita →
+                      <span className="inline-flex items-center justify-center gap-2">
+                        Agendar Asesoría Gratuita
+                        <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+                      </span>
                     </a>
                   </div>
 
@@ -668,7 +663,7 @@ export default function Home() {
                   <div className="p-8 md:p-12 md:w-7/12 flex flex-col justify-between">
                     <div>
                       <h4 className="font-bold text-gray-300 mb-6 flex items-center gap-2 text-sm">
-                        <div className="w-6 h-6 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                        <div className="w-6 h-6 rounded-xl bg-blue-500/20 flex items-center justify-center">
                           <Briefcase className="w-3.5 h-3.5 text-blue-400" />
                         </div>
                         Tecnología Empresarial
@@ -694,7 +689,7 @@ export default function Home() {
             </div>
 
             {/* TABLA COMPARATIVA AEO */}
-            <div className="max-w-4xl mx-auto mb-24 overflow-x-auto rounded-xl border border-gray-200 shadow-sm bg-white">
+            <div className="max-w-4xl mx-auto mb-24 overflow-x-auto rounded-xl border border-gray-200 shadow-card bg-white">
               <table className="w-full text-left text-sm text-gray-600">
                 <thead className="bg-gray-50 text-gray-900">
                   <tr>
@@ -773,7 +768,7 @@ export default function Home() {
               <div className="flex overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:gap-8 -mx-4 px-4 md:mx-0 md:px-0">
 
                 {/* PROYECTO 1: La Casita del Molle */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
                   <a href="https://lacasitadelmolle.cl" target="_blank" rel="noreferrer" className="flex-grow group/link block">
                     <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
                       <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
@@ -791,7 +786,7 @@ export default function Home() {
                     </div>
                     <div className="px-1 mb-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                        <span className="text-[13px] font-medium text-gray-500">
                           Plan a Medida
                         </span>
                       </div>
@@ -806,10 +801,10 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan A Medida (La Casita del Molle)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
                         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
@@ -819,7 +814,7 @@ export default function Home() {
                 </div>
 
                 {/* PROYECTO 2: Domos */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
                   <a href="https://domos-9vg.pages.dev" target="_blank" rel="noreferrer" className="flex-grow group/link block">
                     <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
                       <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
@@ -837,7 +832,7 @@ export default function Home() {
                     </div>
                     <div className="px-1 mb-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                        <span className="text-[13px] font-medium text-gray-500">
                           Landing Page
                         </span>
                       </div>
@@ -852,10 +847,10 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Corporativo (Domos)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
                         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
@@ -865,7 +860,7 @@ export default function Home() {
                 </div>
 
                 {/* PROYECTO 3: Arguedas Construcciones */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
                   <a href="https://arguedasconstrucciones.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
                     <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
                       <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
@@ -883,7 +878,7 @@ export default function Home() {
                     </div>
                     <div className="px-1 mb-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                        <span className="text-[13px] font-medium text-gray-500">
                           Landing Page
                         </span>
                       </div>
@@ -898,10 +893,10 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Corporativo (Arguedas Construcciones)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
                         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
@@ -911,7 +906,7 @@ export default function Home() {
                 </div>
 
                 {/* PROYECTO 4: Modular Norte */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
                   <a href="https://modularnorte.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
                     <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
                       <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
@@ -923,7 +918,7 @@ export default function Home() {
                     </div>
                     <div className="px-1 mb-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                        <span className="text-[13px] font-medium text-gray-500">
                           Catálogo
                         </span>
                       </div>
@@ -938,10 +933,10 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Corporativo (Modular Norte)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
                         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
@@ -951,7 +946,7 @@ export default function Home() {
                 </div>
 
                 {/* PROYECTO 5: Movigest */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
+                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-all duration-500">
                   <a href="https://movigest.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
                     <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50 transition-all">
                       <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-500 z-20" />
@@ -963,7 +958,7 @@ export default function Home() {
                     </div>
                     <div className="px-1 mb-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200/60 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                        <span className="text-[13px] font-medium text-gray-500">
                           Landing Page
                         </span>
                       </div>
@@ -978,10 +973,10 @@ export default function Home() {
                   <div className="mt-auto px-1">
                     <a
                       href={getWhatsAppLink("Plan Corporativo (Movigest)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
+                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-md shadow-emerald-500/20 group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
                         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
@@ -998,17 +993,12 @@ export default function Home() {
         {/* --- SECCIÓN BOUTIQUE: BODAS --- */}
         <section
           id="bodas"
-          className="py-24 bg-[#72957a] border-t border-[#6b9071]/20"
+          className="py-20 md:py-32 bg-[#72957a] border-t border-[#6b9071]/20"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-            <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-[#6b9071]/5 border border-[#6b9071]/10 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-[#6b9071] rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
+            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-card border border-[#6b9071]/10 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
 
               <div className="md:w-1/2 relative z-10">
-                <div className="inline-flex rounded-full bg-[#6b9071]/10 border border-[#6b9071]/20 px-4 py-1.5 text-xs font-bold text-[#2c3f30] uppercase tracking-widest mb-6">
-                  🌿 Servicio Boutique
-                </div>
-
                 <h3 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
                   Invitaciones de <br />
                   <span className="text-[#6b9071]">
@@ -1024,21 +1014,21 @@ export default function Home() {
 
                 <a
                   href={'https://faroweb.cl/bodas'}
-                  className="inline-flex items-center px-8 py-4 font-bold bg-[#6b9071] text-white rounded-full shadow-lg shadow-[#6b9071]/30 hover:bg-[#527056] hover:-translate-y-1 transition-all duration-300"
+                  className="inline-flex items-center px-8 py-4 font-bold bg-[#6b9071] text-white rounded-full shadow-card hover:bg-[#527056] hover:-translate-y-1 transition-all duration-300"
                 >
                   Ver demos y valores <ArrowRight size={18} className="ml-2" />
                 </a>
               </div>
 
               <div className="md:w-1/2 w-full flex items-start gap-4 relative z-10">
-                <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-2xl shadow-black/10 border-[6px] transform rotate-[-3deg] hover:rotate-0 transition-transform duration-500">
+                <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-card border-[6px] transform rotate-[-3deg] hover:rotate-0 transition-transform duration-500">
                   <img
                     src="/weeding1.jpg"
                     alt="Boda 1"
                     className="w-full h-auto block"
                   />
                 </div>
-                <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-2xl shadow-black/10 border-[6px] border-white transform rotate-[5deg] hover:rotate-0 transition-transform duration-500 mt-10">
+                <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-card border-[6px] border-white transform rotate-[5deg] hover:rotate-0 transition-transform duration-500 mt-10">
                   <img
                     src="/weeding2.jpg"
                     alt="Boda 2"
@@ -1053,10 +1043,10 @@ export default function Home() {
         {/* QUIENES SOMOS */}
         <section
           id="nosotros"
-          className="py-24 bg-white relative overflow-hidden"
+          className="py-16 md:py-24 bg-white relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-[3rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 border border-gray-100 shadow-card">
               <motion.div
                 className="md:w-1/2"
                 initial={{ opacity: 0, x: -100 }}
@@ -1080,7 +1070,7 @@ export default function Home() {
                       (imgSrc, i) => (
                         <div
                           key={i}
-                          className="relative w-12 h-12 rounded-full border-4 border-white overflow-hidden shadow-sm bg-gray-100"
+                          className="relative w-12 h-12 rounded-full border-4 border-white overflow-hidden shadow-card bg-gray-100"
                         >
                           <img
                             src={imgSrc}
@@ -1101,7 +1091,7 @@ export default function Home() {
                   </div>
                 </div>
               </motion.div>
-              <div className="md:w-1/2 w-full h-64 md:h-80 bg-gray-100 rounded-3xl relative overflow-hidden shadow-lg border-2 border-white">
+              <div className="md:w-1/2 w-full h-64 md:h-80 bg-gray-100 rounded-3xl relative overflow-hidden shadow-card border-2 border-white">
                 <video
                   src="/laserena.mp4"
                   autoPlay
@@ -1116,22 +1106,16 @@ export default function Home() {
         </section>
 
         {/* --- SECCIÓN DE MANTENIMIENTO --- */}
-        <section className="py-16 bg-gray-900 relative overflow-hidden z-20 border-y border-gray-900">
+        <section className="py-12 md:py-16 bg-gray-900 relative overflow-hidden z-20 border-y border-gray-900">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-green-500/10 blur-[120px] pointer-events-none"></div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col md:flex-row items-center justify-between gap-10">
               <div className="md:w-7/12 text-left">
-                <div className="flex items-center gap-3 mb-4">
-                  <Settings className="w-6 h-6 text-green-500 animate-[spin_10s_linear_infinite]" />
-                  <span className="text-green-400 text-xs font-bold uppercase tracking-widest">
-                    Servicio Opcional de Mantención
-                  </span>
-                </div>
 
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight tracking-tight">
                   Tú dedícate a vender. <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">
+                  <span className="text-green-400">
                     Nosotros cuidamos tu web.
                   </span>
                 </h2>
@@ -1164,9 +1148,9 @@ export default function Home() {
               <div className="md:w-5/12 w-full flex justify-end">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-gray-900 border border-gray-800 rounded-3xl px-8 py-8 shadow-2xl w-full max-w-md relative"
+                  className="bg-gray-900 border border-gray-800 rounded-3xl px-8 py-8 shadow-card w-full max-w-md relative"
                 >
-                  <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">
+                  <p className="text-[13px] font-medium text-gray-400 mb-2">
                     Inversión Transparente
                   </p>
                   <div className="flex items-baseline gap-2 flex-wrap">
@@ -1199,9 +1183,9 @@ export default function Home() {
         </section>
 
         {/* FAQ SECTION */}
-        <section id="faq" className="py-24 bg-green-50">
+        <section id="faq" className="py-16 md:py-24 bg-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-14">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Preguntas Frecuentes
               </h2>
@@ -1216,9 +1200,9 @@ export default function Home() {
         </section>
 
         {/* INTERNAL LINKS (pSEO) */}
-        <section className="py-16 bg-white border-t border-gray-100">
+        <section className="py-12 md:py-16 bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <details className="group border border-gray-200 rounded-2xl bg-gray-50 overflow-hidden shadow-sm">
+            <details className="group border border-gray-200 rounded-2xl bg-gray-50 overflow-hidden shadow-card">
               <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-xl text-gray-900 hover:bg-gray-100 transition-colors">
                 <span className="flex items-center gap-3">
                   <ListOrdered className="w-6 h-6 text-green-600" /> Soluciones Especializadas por Ciudad
@@ -1276,7 +1260,7 @@ export default function Home() {
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="border border-green-100 rounded-2xl bg-white overflow-hidden shadow-sm">
+    <div className="border border-green-100 rounded-2xl bg-white overflow-hidden shadow-card">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between p-6 text-left"
