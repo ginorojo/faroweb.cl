@@ -7,16 +7,14 @@ import Footer from "@/components/Footer";
 
 export default function CalculadoraWebPage() {
   const [tipoWeb, setTipoWeb] = useState("landing");
-  const [pagos, setPagos] = useState(false);
   const [paginas, setPaginas] = useState(1);
 
   const calcularPrecio = () => {
-    let base = 129990; // Plan Presencia
-    if (tipoWeb === "catalogo") base = 219990;
+    let base = 189990; // Plan Corporativo
+    if (tipoWeb === "catalogo") base = 289990;
     if (tipoWeb === "medida") base = 450000;
 
     let extras = 0;
-    if (pagos) extras += 100000;
     if (paginas > 5) extras += (paginas - 5) * 15000;
 
     return base + extras;
@@ -85,31 +83,6 @@ export default function CalculadoraWebPage() {
               </select>
             </div>
 
-            {/* Pagos Online */}
-            <div>
-              <label className="block text-sm font-bold text-gray-700 mb-3">
-                ¿Necesitas recibir pagos con Tarjeta (Webpay/Transbank)?
-              </label>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => setPagos(true)}
-                  className={`flex-1 py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base rounded-xl border transition-all ${
-                    pagos ? "bg-emerald-50 border-emerald-500 text-emerald-700 font-bold" : "bg-white border-gray-200 text-gray-600"
-                  }`}
-                >
-                  Sí, necesito Webpay
-                </button>
-                <button
-                  onClick={() => setPagos(false)}
-                  className={`flex-1 py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base rounded-xl border transition-all ${
-                    !pagos ? "bg-emerald-50 border-emerald-500 text-emerald-700 font-bold" : "bg-white border-gray-200 text-gray-600"
-                  }`}
-                >
-                  No, solo WhatsApp/Transferencia
-                </button>
-              </div>
-            </div>
-
             {/* Cantidad de páginas */}
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-3">
@@ -136,7 +109,7 @@ export default function CalculadoraWebPage() {
               </div>
               <a
                 href={`https://wa.me/56971874099?text=${encodeURIComponent(
-                  `Hola Faroweb, usé su calculadora. Necesito una web tipo ${tipoWeb}, con ${paginas} secciones y pagos=${pagos}. El estimado fue de $${calcularPrecio()}. ¿Me asesoran?`
+                  `Hola Faroweb, usé su calculadora. Necesito una web tipo ${tipoWeb}, con ${paginas} secciones. El estimado fue de $${calcularPrecio()}. ¿Me asesoran?`
                 )}`}
                 target="_blank"
                 rel="noreferrer"

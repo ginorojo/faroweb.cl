@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Agencia de Diseño Web en La Serena | Faroweb",
-  description: "Especialistas en diseño de páginas web en La Serena, Coquimbo y la Cuarta Región. Creamos sitios web autoadministrables y tiendas online (e-commerce).",
+  description: "Especialistas en diseño de páginas web en La Serena, Coquimbo y la Cuarta Región. Creamos sitios web autoadministrables y catálogos online con pedidos por WhatsApp.",
 };
 
 export default function LaSerenaLanding() {
@@ -60,7 +60,7 @@ export default function LaSerenaLanding() {
                 Si tienes un negocio en <strong>La Serena</strong> o <strong>Coquimbo</strong>, sabes lo competitiva que se ha vuelto la Región de Coquimbo. Ya no basta con tener una página de Facebook o Instagram; tus clientes potenciales están buscando en Google servicios como los tuyos todos los días.
               </p>
               <p>
-                En <strong>Faroweb</strong>, somos una agencia especializada en el <strong>desarrollo de páginas web y tiendas online (e-commerce)</strong> adaptadas específicamente para el mercado local. A diferencia de las plataformas genéricas o las agencias de Santiago que no conocen la realidad regional, nosotros entendemos a tu público.
+                En <strong>Faroweb</strong>, somos una agencia especializada en el <strong>desarrollo de páginas web y catálogos online</strong> adaptados específicamente para el mercado local. A diferencia de las plataformas genéricas o las agencias de Santiago que no conocen la realidad regional, nosotros entendemos a tu público.
               </p>
               <h3 className="text-xl font-bold text-gray-900 mt-8 mb-4">¿Qué incluimos en nuestros proyectos?</h3>
               <ul className="list-disc pl-6 space-y-2">

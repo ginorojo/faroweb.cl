@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "¿Cuánto tiempo demoran en entregar mi página?",
     answer:
-      "Para el Plan Presencia y Catálogo Básico, nuestros tiempos récord son de 3 a 5 días hábiles una vez que nos entregas la información. Para desarrollos Full o a medida, suele tomar entre 2 a 3 semanas dependiendo de la complejidad del proyecto.",
+      "Para el Plan Corporativo y Catálogo Básico, nuestros tiempos récord son de 3 a 5 días hábiles una vez que nos entregas la información. Para desarrollos a medida, suele tomar entre 2 a 3 semanas dependiendo de la complejidad del proyecto.",
   },
   {
     question: "¿Debo pagar mensualidades?",
@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "¿Por qué elegir Faroweb en la Cuarta Región?",
     answer:
-      "En Faroweb, entendemos que el diseño de páginas web en La Serena, Coquimbo y toda la Cuarta Región no se trata solo de crear sitios bonitos, sino de construir herramientas digitales que generen ventas y prospectos reales para tu negocio. Nos especializamos en el desarrollo de tiendas online (e-commerce) ultra rápidas, sistemas de reservas a medida y sitios web corporativos utilizando tecnologías de vanguardia como Next.js y React. Esto garantiza que tu página cargue en milisegundos, dándote una ventaja competitiva brutal en el posicionamiento SEO frente a tu competencia. Además, no te dejamos solo una vez terminado el proyecto. Ofrecemos planes de mantención web y soporte directo para que tú te enfoques exclusivamente en atender a tus nuevos clientes mientras nosotros nos encargamos de que tu plataforma digital esté siempre segura, actualizada y funcionando 24/7.",
+      "En Faroweb, entendemos que el diseño de páginas web en La Serena, Coquimbo y toda la Cuarta Región no se trata solo de crear sitios bonitos, sino de construir herramientas digitales que generen ventas y prospectos reales para tu negocio. Nos especializamos en el desarrollo de catálogos online ultra rápidos, softwares a medida y sitios web corporativos utilizando tecnologías de vanguardia como Next.js y React. Esto garantiza que tu página cargue en milisegundos, dándote una ventaja competitiva brutal en el posicionamiento SEO frente a tu competencia. Además, no te dejamos solo una vez terminado el proyecto. Ofrecemos planes de mantención web y soporte directo para que tú te enfoques exclusivamente en atender a tus nuevos clientes mientras nosotros nos encargamos de que tu plataforma digital esté siempre segura, actualizada y funcionando 24/7.",
   },
 ];
 
@@ -444,8 +444,8 @@ export default function Home() {
             {/* PLANES UNO ABAJO DE OTRO */}
             <div className="flex flex-col gap-8 max-w-4xl mx-auto mb-24">
 
-              {/* PLAN PRESENCIA */}
-              <div id="presencia" className="relative rounded-[2rem] overflow-hidden scroll-mt-24 group">
+              {/* PLAN CORPORATIVO */}
+              <div id="corporativo" className="relative rounded-[2rem] overflow-hidden scroll-mt-24 group">
                 {/* Fondo con gradiente sutil */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-emerald-50/40 z-0" />
                 <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl z-0 pointer-events-none" />
@@ -461,20 +461,29 @@ export default function Home() {
                         <span className="text-[10px] font-bold text-gray-500 tracking-widest uppercase">Landing Page</span>
                       </div>
                       <h3 className="text-4xl font-black text-gray-900 mb-2 tracking-tight">
-                        Presencia
+                        Corporativo
                       </h3>
                       <details className="group cursor-pointer mb-8">
                         <summary className="text-sm font-bold text-emerald-600 list-none hover:underline focus:outline-none">
                           <span className="group-open:hidden">Leer descripción completa ↓</span>
                           <span className="hidden group-open:inline">Ocultar descripción ↑</span>
                         </summary>
-                        <p className="text-gray-500 text-sm leading-relaxed mt-3 cursor-auto">
-                          El Plan Presencia está diseñado específicamente para empresas en La Serena y Coquimbo que necesitan establecer su marca en internet de manera rápida, profesional y económica. Al contratar este servicio de diseño web, obtendrás una Landing Page corporativa y moderna, completamente optimizada para móviles y buscadores como Google. Entendemos que tu objetivo principal es recibir consultas, por lo que integramos botones directos a WhatsApp, un formulario de contacto y un mapa interactivo. Además, este paquete incluye 5 correos electrónicos corporativos para generar confianza en tus clientes, junto con alojamiento (hosting) de alta velocidad y registro de dominio gratis durante el primer año. Olvídate de los problemas técnicos; nosotros nos encargamos de toda la configuración.
-                        </p>
+                        <div className="text-gray-500 text-sm leading-relaxed mt-3 cursor-auto space-y-3">
+                          <p>
+                            El Plan Corporativo es para empresas en La Serena y Coquimbo que necesitan establecer su marca en internet de forma rápida, profesional y económica. Obtienes una Landing Page corporativa y moderna, optimizada para móviles y para buscadores como Google.
+                          </p>
+                          <p>
+                            <strong className="text-gray-700 font-semibold">Diseño personalizado, sin plantillas prediseñadas.</strong> Cada sitio se construye desde cero a partir de tu marca, tus colores y las necesidades de tu rubro, así que no terminas con una página igual a la de tu competencia.
+                          </p>
+                          <p>
+                            Como tu objetivo es recibir consultas, integramos botón directo a WhatsApp, formulario de contacto y mapa interactivo. Incluye además 5 correos electrónicos corporativos, alojamiento (hosting) de alta velocidad y registro de dominio gratis el primer año. De toda la configuración técnica nos encargamos nosotros.
+                          </p>
+                        </div>
                       </details>
 
                       <ul className="space-y-3 mb-8">
                         {[
+                          "Diseño personalizado, sin plantillas prediseñadas",
                           "Landing Page Informativa",
                           "Botón directo a WhatsApp",
                           "Formulario y Mapa",
@@ -500,7 +509,7 @@ export default function Home() {
                       <span className="text-gray-400 line-through text-base block mb-1">Desde $229.990</span>
                       <p className="text-5xl font-black text-gray-900 leading-none tracking-tight mb-1 flex items-baseline justify-center gap-2">
                         <span className="text-2xl font-bold text-gray-500">Desde</span>
-                        $129.990
+                        $189.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-red-50 border border-red-100">
                         <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest">🔥 Oferta Pago Único</span>
@@ -508,7 +517,7 @@ export default function Home() {
                       <span className="text-xs text-gray-500 font-semibold block mt-2">* Valores no incluyen IVA</span>
                     </div>
                     <a
-                      href={getWhatsAppLink("Plan Presencia")}
+                      href={getWhatsAppLink("Plan Corporativo")}
                       className="w-full py-4 text-center font-bold bg-gray-900 text-white rounded-2xl shadow-lg shadow-gray-900/20 hover:bg-gray-800 hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
                     >
                       Contratar Plan →
@@ -539,14 +548,22 @@ export default function Home() {
                           <span className="group-open:hidden">Leer descripción completa ↓</span>
                           <span className="hidden group-open:inline">Ocultar descripción ↑</span>
                         </summary>
-                        <p className="text-emerald-50/90 text-sm leading-relaxed mt-3 cursor-auto">
-                          El Plan Catálogo Básico es la solución ideal para comerciantes y emprendedores de la Cuarta Región que desean vender productos por internet sin pagar comisiones por venta. Esta tienda online incluye un catálogo interactivo y un carrito de compras fácil de usar, donde los clientes pueden seleccionar sus productos y enviarte el pedido detallado directamente a tu WhatsApp. Además de todas las características del Plan Presencia (correos corporativos, hosting, dominio y diseño responsivo), te entregamos un panel de control intuitivo para autogestionar tus productos, precios e inventario. Es la opción más rápida y efectiva para digitalizar tus ventas locales sin depender de plataformas de terceros que retienen tu dinero.
-                        </p>
+                        <div className="text-emerald-50/90 text-sm leading-relaxed mt-3 cursor-auto space-y-3">
+                          <p>
+                            El Plan Catálogo Básico es para comerciantes y emprendedores de la Cuarta Región que quieren vender productos por internet sin pagar comisiones por venta.
+                          </p>
+                          <p>
+                            Esta tienda online incluye un catálogo interactivo y un carrito de compras fácil de usar: tus clientes seleccionan sus productos y te envían el pedido detallado directo a tu WhatsApp.
+                          </p>
+                          <p>
+                            Suma todo lo del Plan Corporativo —correos corporativos, hosting, dominio y diseño responsivo— más un panel de control intuitivo para autogestionar tus productos y precios. Es la forma más rápida de digitalizar tus ventas locales sin depender de plataformas de terceros que retienen tu dinero.
+                          </p>
+                        </div>
                       </details>
 
                       <ul className="space-y-3 mb-8">
                         {[
-                          "Todo lo del Plan Presencia",
+                          "Todo lo del Plan Corporativo",
                           "Catálogo de productos",
                           "Carrito de compras",
                           "Pedidos al WhatsApp",
@@ -567,10 +584,10 @@ export default function Home() {
                   {/* Derecho: Precio + CTA */}
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-white/10">
                     <div className="w-full mb-6">
-                      <span className="text-white/50 line-through text-base block mb-1">Desde $299.990</span>
+                      <span className="text-white/50 line-through text-base block mb-1">Desde $359.990</span>
                       <p className="text-5xl font-black text-white leading-none tracking-tight mb-1 flex items-baseline justify-center gap-2">
                         <span className="text-2xl font-bold text-white/70">Desde</span>
-                        $219.990
+                        $289.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-white/10 border border-white/20">
                         <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest">🔥 Oferta Pago Único</span>
@@ -605,15 +622,14 @@ export default function Home() {
                       <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
                         Sistemas A Medida
                       </h3>
-                      <details className="group cursor-pointer mb-8">
-                        <summary className="text-sm font-bold text-blue-400 list-none hover:underline focus:outline-none">
-                          <span className="group-open:hidden">Leer descripción completa ↓</span>
-                          <span className="hidden group-open:inline">Ocultar descripción ↑</span>
-                        </summary>
-                        <p className="text-gray-400 text-sm leading-relaxed mt-3 cursor-auto">
-                          Desarrollamos Sistemas A Medida para grandes empresas y pymes escalables en Chile que requieren funcionalidades avanzadas más allá de una página web tradicional. Ya sea que necesites un E-commerce Full con integración oficial de Webpay Plus y Transbank para pagos con tarjeta, un Software como Servicio (SaaS) propio, o la digitalización de tus procesos internos a través de CRMs e Intranets privadas. Nuestro equipo de ingenieros Full-Stack trabaja estrechamente contigo para diseñar arquitecturas de software seguras, rápidas y conectadas con facturación electrónica o APIs externas. Construimos tecnología empresarial robusta que automatiza tus operaciones y reduce costos a largo plazo.
+                      <div className="text-gray-400 text-sm leading-relaxed mb-8 space-y-3">
+                        <p>
+                          <strong className="text-gray-300 font-semibold">Softwares a medida, CRM, Intranets.</strong> Para empresas y pymes en Chile que necesitan más que una página web: sistemas propios (SaaS) y digitalización de procesos internos.
                         </p>
-                      </details>
+                        <p>
+                          Nuestro equipo Full-Stack diseña arquitecturas de software seguras y rápidas, conectadas con los sistemas que ya usas. Tecnología empresarial que automatiza tus operaciones y reduce costos a largo plazo.
+                        </p>
+                      </div>
 
                       <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">
                         <p className="text-3xl font-black text-white leading-none">Cotizar Proyecto</p>
@@ -622,10 +638,10 @@ export default function Home() {
 
                       <ul className="space-y-3 mb-8">
                         {[
-                          "E-commerce Full (Pagos Webpay)",
+                          "Softwares a medida",
                           "Software SaaS (Sistemas Propios)",
                           "CRM e Intranets",
-                          "Integración con Facturación",
+                          "Integración con sistemas internos",
                         ].map((feat) => (
                           <li key={feat} className="flex items-center gap-3">
                             <div className="w-5 h-5 rounded-full bg-blue-500/20 border border-blue-400/30 flex items-center justify-center shrink-0">
@@ -658,21 +674,15 @@ export default function Home() {
 
                       <div className="mb-6 w-full">
                         <ServiceCarousel
-                          images={["/saas.jpg", "/ecommerce.jpg"]}
+                          images={["/saas.jpg"]}
                           isDark={true}
                         />
                       </div>
                     </div>
 
                     <div className="flex gap-4 items-center opacity-60 mt-6 pt-4 border-t border-white/5">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                        className="h-5"
-                        alt="Mastercard"
-                      />
-                      <div className="h-5 w-px bg-white/10"></div>
                       <span className="font-bold tracking-widest text-xs text-gray-400">
-                        WEBPAY PLUS / TRANSBANK
+                        REACT / NEXT.JS / TYPESCRIPT
                       </span>
                     </div>
                   </div>
@@ -687,7 +697,7 @@ export default function Home() {
                 <thead className="bg-gray-50 text-gray-900">
                   <tr>
                     <th scope="col" className="px-6 py-4 font-bold">Características</th>
-                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">Presencia</th>
+                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">Corporativo</th>
                     <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">Catálogo Básico</th>
                     <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">A Medida</th>
                   </tr>
@@ -715,13 +725,13 @@ export default function Home() {
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Pedidos / Ventas</th>
                     <td className="px-6 py-4 border-l border-gray-200 text-gray-500">Contacto Directo</td>
                     <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Carrito a WhatsApp</td>
-                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Webpay / Transbank</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-gray-500">Según requerimiento</td>
                   </tr>
                   <tr>
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Integraciones y Software</th>
                     <td className="px-6 py-4 border-l border-gray-200 text-gray-400">No</td>
                     <td className="px-6 py-4 border-l border-gray-200 text-gray-400">No</td>
-                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">SaaS, CRM, Facturación</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">SaaS, CRM, Intranets</td>
                   </tr>
                 </tbody>
               </table>
@@ -839,7 +849,7 @@ export default function Home() {
                   </a>
                   <div className="mt-auto px-1">
                     <a
-                      href={getWhatsAppLink("Plan Presencia (Domos)")}
+                      href={getWhatsAppLink("Plan Corporativo (Domos)")}
                       className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
@@ -885,7 +895,7 @@ export default function Home() {
                   </a>
                   <div className="mt-auto px-1">
                     <a
-                      href={getWhatsAppLink("Plan Presencia (Arguedas Construcciones)")}
+                      href={getWhatsAppLink("Plan Corporativo (Arguedas Construcciones)")}
                       className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
@@ -925,7 +935,7 @@ export default function Home() {
                   </a>
                   <div className="mt-auto px-1">
                     <a
-                      href={getWhatsAppLink("Plan Presencia (Modular Norte)")}
+                      href={getWhatsAppLink("Plan Corporativo (Modular Norte)")}
                       className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
@@ -965,7 +975,7 @@ export default function Home() {
                   </a>
                   <div className="mt-auto px-1">
                     <a
-                      href={getWhatsAppLink("Plan Presencia (Movigest)")}
+                      href={getWhatsAppLink("Plan Corporativo (Movigest)")}
                       className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300 group/wa"
                     >
                       <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
@@ -1202,34 +1212,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* PAGOS */}
-        <section className="py-24 bg-green-600 text-white text-center">
-          <h3 className="text-3xl md:text-5xl font-black mb-12 tracking-tight">
-            Aceptamos Todo Medio de Pago
-          </h3>
-          <div className="inline-flex flex-wrap justify-center items-center gap-8 bg-white py-8 px-12 rounded-3xl shadow-2xl">
-            <img
-              src="https://img.icons8.com/?size=100&id=13608&format=png&color=000000"
-              alt="Visa"
-              className="h-10 w-auto"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-              alt="Mastercard"
-              className="h-10 w-auto"
-            />
-            <div className="flex items-center gap-3 text-gray-800 font-bold border-l-2 border-gray-200 pl-8 ml-4">
-              <CheckCircle2 className="text-green-600 h-8 w-8" />
-              <span className="text-lg leading-tight text-left">
-                Transferencia
-                <br />
-                Bancaria
-              </span>
-            </div>
-          </div>
-        </section>
-
 
         {/* INTERNAL LINKS (pSEO) */}
         <section className="py-16 bg-white border-t border-gray-100">

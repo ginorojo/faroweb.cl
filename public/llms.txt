@@ -2,9 +2,9 @@
 > Somos una agencia de desarrollo de software y diseño web especializada en La Serena y Coquimbo, Chile. Creamos sitios web ultra-rápidos para SEO utilizando React, Next.js y Astro.
 
 ## Servicios Principales
-1. **Plan Presencia ($129.990 CLP):** Landing page corporativa, integración a WhatsApp, correos, hosting y dominio por 1 año.
-2. **Plan Catálogo Básico ($219.990 CLP):** Tienda online con carrito de compras y gestión de pedidos vía WhatsApp.
-3. **Sistemas a Medida:** E-commerce Full (Webpay), SaaS, CRM y facturación.
+1. **Plan Corporativo (desde $189.990 CLP):** Landing page corporativa con diseño personalizado, sin plantillas prediseñadas. Integración a WhatsApp, correos, hosting y dominio por 1 año.
+2. **Plan Catálogo Básico (desde $289.990 CLP):** Tienda online con carrito de compras y gestión de pedidos vía WhatsApp.
+3. **Sistemas a Medida:** Softwares a medida, SaaS, CRM e Intranets.
 4. **Webs de Bodas:** Confirmación de asistencia y listas de regalos digitales.
 
 ## Stack Tecnológico

@@ -14,14 +14,14 @@ export const RUBROS: Record<string, any> = {
     datoClave: "¿Sabías que más del 78% de las personas buscan asesoría legal directamente desde su celular en Google? Si tu estudio jurídico no transmite autoridad o es lento, pierdes clientes potenciales.",
     soluciones: [
       "Sistema de reservas de horas de consulta online (videollamada o presencial).",
-      "Integración de Webpay para cobrar la primera asesoría antes de agendar.",
+      "Confirmación de la hora y recordatorios automáticos por WhatsApp.",
       "Blog legal optimizado (SEO) para captar tráfico con dudas locales comunes.",
       "Diseño sobrio, elegante y responsive que proyecta confianza institucional."
     ],
     faqs: [
       {
-        q: "¿Puedo cobrar las consultas online por Webpay?",
-        a: "Sí, podemos integrar Webpay Plus de Transbank para que tus clientes paguen la hora de asesoría legal antes de reservar en tu calendario."
+        q: "¿Puedo gestionar el pago de las consultas desde la web?",
+        a: "Sí. La reserva queda registrada en tu calendario y el sistema le entrega al cliente los datos para coordinar el pago por transferencia o WhatsApp antes de confirmar la hora."
       },
       {
         q: "¿El diseño incluirá mis certificaciones y especialidades?",
@@ -135,8 +135,8 @@ export const RUBROS: Record<string, any> = {
     ],
     faqs: [
       {
-        q: "¿Pueden cobrar los bonos de sesiones directamente en la web?",
-        a: "Sí, podemos vincular paquetes de sesiones a Webpay para que el paciente pague su tratamiento completo antes de asistir."
+        q: "¿Pueden gestionar los bonos de sesiones desde la web?",
+        a: "Sí, el paciente puede solicitar su paquete de sesiones desde la web y coordinar el pago por transferencia o WhatsApp antes de asistir."
       },
       {
         q: "¿Cómo destaco que atiendo con ciertas Isapres o Fonasa?",
@@ -153,7 +153,7 @@ export const RUBROS: Record<string, any> = {
     soluciones: [
       "Botón flotante de Urgencias 24/7 directo a llamada o WhatsApp.",
       "Sistema de reservas para peluquería, vacunas y consultas generales.",
-      "Tienda online (E-commerce) integrada para venta de alimentos y medicamentos.",
+      "Catálogo online de alimentos y accesorios, con pedidos directos a tu WhatsApp.",
       "Fichas de adopción o galería de pacientes felices."
     ],
     faqs: [
@@ -193,19 +193,19 @@ export const RUBROS: Record<string, any> = {
   "tiendas-en-linea": {
     nombreSingular: "Tienda Online",
     nombrePlural: "Tiendas en Línea",
-    descripcion: "E-commerce completo y optimizado para ventas. Creamos tiendas online autogestionables con integración de Webpay, Shipit, Starken y control de inventario automatizado.",
+    descripcion: "Catálogo online autogestionable y optimizado para vender. Tus clientes arman el pedido desde el carrito y te llega detallado por WhatsApp, sin comisiones por venta y sin depender de plataformas de terceros.",
     emoji: "🛍️",
-    datoClave: "Un retraso de 1 segundo en la carga de tu tienda online hace caer tus ventas en un 20%. Nuestros e-commerce en Next.js aseguran cargas ultra-rápidas.",
+    datoClave: "Un retraso de 1 segundo en la carga de tu tienda online hace caer tus ventas en un 20%. Nuestros catálogos en Next.js aseguran cargas ultra-rápidas.",
     soluciones: [
-      "Carrito de compras sin comisiones ocultas e integrado con Webpay/Transbank.",
-      "Sincronización de inventario y cálculo de envíos automático (Starken, Chilexpress).",
+      "Carrito de compras sin comisiones por venta, con el pedido detallado directo a tu WhatsApp.",
+      "Catálogo de productos con fotos, precios y categorías, listo para publicar.",
       "Experiencia de compra optimizada para celulares (Mobile-First).",
       "Panel administrador amigable para subir y editar productos fácilmente."
     ],
     faqs: [
       {
         q: "¿Debo pagar comisiones por cada venta que haga en mi web?",
-        a: "¡No! A diferencia de plataformas como Shopify, nosotros no te cobramos comisiones por venta. Solo pagas la tarifa oficial del medio de pago (como Transbank)."
+        a: "¡No! A diferencia de plataformas como Shopify, nosotros no te cobramos comisiones por venta. Los pedidos llegan directo a tu WhatsApp y cobras por el medio que prefieras."
       },
       {
         q: "¿Es fácil para mí subir nuevos productos?",
@@ -231,8 +231,8 @@ export const RUBROS: Record<string, any> = {
         a: "Sí, podemos sincronizar los calendarios mediante iCal para que cuando agenden en tu web, la fecha se bloquee automáticamente en Booking y Airbnb (y viceversa)."
       },
       {
-        q: "¿Puedo cobrar el abono del 50% con tarjeta?",
-        a: "Por supuesto, el sistema calcula la estadía y cobra el abono requerido vía Webpay para asegurar la reserva sin que tengas que pedir transferencias manuales."
+        q: "¿Puedo pedir un abono para asegurar la reserva?",
+        a: "Por supuesto. El sistema calcula el valor de la estadía y le muestra al huésped el abono requerido junto con los datos para transferir, dejando la reserva pendiente hasta confirmarla."
       }
     ]
   },
