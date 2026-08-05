@@ -7,3 +7,62 @@
         @apply bg-white text-gray-900;
     }
 }
+
+/*
+ * Compatibilidad con navegadores de Smart TV (VIDAA/Tizen/webOS), que montan
+ * Chromium 79-87: descargan y parsean el CSS, pero descartan lo que no conocen.
+ *
+ * El `browserslist` de package.json ya cubre casi todo automaticamente
+ * (baja `inset` a top/right/bottom/left, separa los selectores con `:where()`
+ * para que no arrastren la regla entera, expande `system-ui`).
+ *
+ * `aspect-ratio` es lo unico que ninguna herramienta puede rellenar sola, y sin
+ * ella los contenedores de imagen colapsan a 0px de alto: las tarjetas quedan
+ * sin foto y la pagina parece HTML sin estilos.
+ *
+ * Chrome 88+. Fallback con padding-top porcentual. Funciona porque en todos los
+ * usos el contenido real va en `absolute inset-0` encima, asi que el ::before
+ * solo aporta la altura. */
+@supports not (aspect-ratio: 1 / 1) {
+    .aspect-\[16\/11\]::before,
+    .aspect-\[16\/10\]::before,
+    .aspect-\[4\/5\]::before,
+    .aspect-\[21\/9\]::before {
+        content: "";
+        display: block;
+        width: 0;
+    }
+
+    .aspect-\[16\/11\]::before {
+        padding-top: 68.75%;
+    }
+
+    .aspect-\[16\/10\]::before {
+        padding-top: 62.5%;
+    }
+
+    .aspect-\[4\/5\]::before {
+        padding-top: 125%;
+    }
+
+    .aspect-\[21\/9\]::before {
+        padding-top: 42.857%;
+    }
+}
+
+/* Unidades `svh` -> Chrome 108+. Sin esto la declaracion se descarta entera y
+   las secciones pierden su alto minimo. Solo `vh` en navegadores viejos: en
+   moviles modernos `svh` sigue mandando, que es donde importa la diferencia. */
+@supports not (height: 1svh) {
+    .min-h-\[70svh\] {
+        min-height: 70vh;
+    }
+
+    .min-h-\[85svh\] {
+        min-height: 85vh;
+    }
+
+    .min-h-\[90svh\] {
+        min-height: 90vh;
+    }
+}
