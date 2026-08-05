@@ -292,7 +292,7 @@ export default function Home() {
         <section id="beneficios" className="py-24 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl italic">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Beneficios Inmediatos
               </h2>
               <div className="h-1.5 w-20 bg-green-600 mx-auto mt-4 rounded-full"></div>
@@ -408,20 +408,22 @@ export default function Home() {
               <p className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-6">
                 Ecosistema de alto rendimiento
               </p>
+              {/* Mismo tratamiento para los cinco: mezclar mono, serif y sans
+                  para fingir logos distintos se lee como amateur. */}
               <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale">
-                <span className="text-2xl font-black font-mono tracking-tighter">
+                <span className="text-2xl font-bold tracking-tight">
                   React
                 </span>
-                <span className="text-2xl font-black tracking-tighter">
+                <span className="text-2xl font-bold tracking-tight">
                   NEXT.js
                 </span>
-                <span className="text-2xl font-bold font-serif italic">
+                <span className="text-2xl font-bold tracking-tight">
                   Typescript
                 </span>
-                <span className="text-2xl font-black tracking-tighter">
+                <span className="text-2xl font-bold tracking-tight">
                   Astro
                 </span>
-                <span className="text-2xl font-black tracking-tight">
+                <span className="text-2xl font-bold tracking-tight">
                   Cloudflare
                 </span>
               </div>
@@ -436,7 +438,7 @@ export default function Home() {
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-black text-gray-900 sm:text-5xl italic mb-6">
+              <h2 className="text-3xl font-black text-gray-900 sm:text-5xl mb-6">
                 Nuestros Planes
               </h2>
             </div>
@@ -1009,7 +1011,7 @@ export default function Home() {
 
                 <h3 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
                   Invitaciones de <br />
-                  <span className="text-[#6b9071] font-serif italic font-normal">
+                  <span className="text-[#6b9071]">
                     Boda Digitales
                   </span>
                 </h3>
@@ -1129,7 +1131,7 @@ export default function Home() {
 
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight tracking-tight">
                   Tú dedícate a vender. <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500 italic">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">
                     Nosotros cuidamos tu web.
                   </span>
                 </h2>
@@ -1251,7 +1253,7 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="bg-gray-950 text-gray-400 py-16 border-t border-gray-900 ">
         <div className="container mx-auto px-4 text-center flex flex-col items-center justify-center gap-5">
-          <span className="text-2xl font-black text-white tracking-tighter italic">
+          <span className="text-2xl font-black text-white tracking-tighter">
             FARO<span className="text-green-500">WEB</span>
           </span>
           <p className=" text-md text-gray-500">

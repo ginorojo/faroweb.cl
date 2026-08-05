@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
     content: [
@@ -8,6 +9,12 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                // Redefinir `sans` en vez de borrar la clase de los divs raiz:
+                // arregla home, blog, bodas, la-serena y las pSEO de una sola vez.
+                // `serif` NO se toca: es la identidad propia de la pagina de Bodas.
+                sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+            },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
                 "gradient-conic":

@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// Archivo: una sola familia variable, con ejes de peso Y de ancho. El contraste
+// de los titulares sale del ancho, no de una segunda fuente.
+// La variable CSS es lo que hace que `font-sans` resuelva aca y no a la fuente
+// del sistema: varias paginas llevan esa clase en su div raiz y, al estar en un
+// descendiente del body, ganaba por cercania en la cascada.
+// Dos omisiones deliberadas, ambas medidas sobre el corte latin (el unico que
+// baja un navegador en español):
+//   - italica: +99 KB para 5 palabras decorativas.
+//   - eje de ancho (wdth): 87 KB contra 34 KB, o sea 2,5x el peso del archivo.
+// El contraste de los titulares sale de tamaño y peso, que en una fuente
+// variable no cuestan un byte extra.
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   // Configura la base para que Next.js construya bien las URLs de tus imágenes automáticas
@@ -46,7 +61,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      {/* `font-sans` aca cubre las paginas pSEO, que no lo llevan en su raiz */}
+      <body className={`${archivo.variable} font-sans`}>{children}</body>
     </html>
   );
 }

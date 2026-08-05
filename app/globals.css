@@ -8,6 +8,7 @@
     }
 }
 
+
 /* Si el usuario pide menos movimiento, el texto aparece directamente visible. */
 @media (prefers-reduced-motion: reduce) {
     .animate-hero-in {
