@@ -18,7 +18,18 @@ const config: Config = {
                     600: '#16a34a',
                     700: '#15803d',
                 }
-            }
+            },
+            keyframes: {
+                "hero-in": {
+                    from: { opacity: "0", transform: "translateY(30px)" },
+                    to: { opacity: "1", transform: "none" },
+                },
+            },
+            animation: {
+                // `both` para que arranque en opacity 0 y, pase lo que pase,
+                // termine visible. A diferencia de framer-motion, no necesita JS.
+                "hero-in": "hero-in 0.7s ease-out both",
+            },
         },
     },
     plugins: [],

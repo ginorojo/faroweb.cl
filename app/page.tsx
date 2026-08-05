@@ -250,12 +250,9 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10 md:mb-0">
-            <motion.div
-              className="max-w-4xl text-left"
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-            >
+            {/* Entrada en CSS y no en framer-motion: es el H1 (elemento LCP) y
+                no puede depender de que corra el JS para hacerse visible. */}
+            <div className="max-w-4xl text-left animate-hero-in">
               <span className="inline-block py-1 px-3 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
                 Desarrollo Web IV Región
               </span>
@@ -287,7 +284,7 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </motion.a>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
