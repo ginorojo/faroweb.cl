@@ -26,6 +26,22 @@ const config: Config = {
                     700: '#15803d',
                 }
             },
+            // Tokens con rol, no numeros. El interlineado, el tracking y el peso
+            // van horneados aca, asi desaparecen del JSX las 40 declaraciones
+            // sueltas de tracking/leading. El clamp() elimina las dos
+            // convenciones de breakpoint mezcladas (sm: vs md:): no hay `md:`
+            // que olvidar porque no hay `md:`.
+            fontSize: {
+                eyebrow: ["0.75rem", { lineHeight: "1", letterSpacing: "0.12em", fontWeight: "600" }],
+                caption: ["0.8125rem", { lineHeight: "1.5", fontWeight: "400" }],
+                "body-sm": ["0.9375rem", { lineHeight: "1.6", fontWeight: "400" }],
+                body: ["1.0625rem", { lineHeight: "1.65", fontWeight: "400" }],
+                lead: ["1.1875rem", { lineHeight: "1.55", letterSpacing: "-0.005em", fontWeight: "400" }],
+                h4: ["clamp(1.0625rem, 0.98rem + 0.4vw, 1.25rem)", { lineHeight: "1.3", letterSpacing: "-0.005em", fontWeight: "600" }],
+                h3: ["clamp(1.375rem, 1.2rem + 0.9vw, 1.875rem)", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+                h2: ["clamp(1.875rem, 1.5rem + 1.9vw, 3rem)", { lineHeight: "1.1", letterSpacing: "-0.015em", fontWeight: "700" }],
+                h1: ["clamp(2.25rem, 1.6rem + 3.2vw, 4rem)", { lineHeight: "1.05", letterSpacing: "-0.02em", fontWeight: "700" }],
+            },
             // Tres sombras para todo el sitio, en vez de 68 declaraciones sueltas
             // mezclando negro generico con halos de color. El halo tintado bajo
             // los botones es de las firmas de plantilla mas reconocibles.

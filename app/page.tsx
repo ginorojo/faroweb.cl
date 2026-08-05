@@ -243,11 +243,11 @@ export default function Home() {
             {/* Entrada en CSS y no en framer-motion: es el H1 (elemento LCP) y
                 no puede depender de que corra el JS para hacerse visible. */}
             <div className="max-w-4xl text-left animate-hero-in">
-              <span className="inline-block py-1 px-3 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+              <span className="inline-block py-1 px-3 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-eyebrow uppercase mb-6 backdrop-blur-sm">
                 Desarrollo Web IV Región
               </span>
               <motion.h1
-                className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight"
+                className="text-h1 text-balance text-white mb-6"
                 animate={{ y: [0, -8, 0] }}
                 transition={{
                   duration: 5,
@@ -255,7 +255,7 @@ export default function Home() {
                   ease: "easeInOut",
                 }}
               >
-                Agencia de Diseño Web en La Serena. <br /> Tu negocio abierto las{" "}
+                Agencia de Diseño Web en La Serena. Tu negocio abierto las{" "}
                 <span className="text-green-400">
                   24 Horas
                 </span>
@@ -282,7 +282,7 @@ export default function Home() {
         <section id="beneficios" className="py-16 md:py-24 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 md:mb-14">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="text-h2 text-balance text-gray-900">
                 Beneficios Inmediatos
               </h2>
               <div className="h-1.5 w-20 bg-green-600 mx-auto mt-4 rounded-full"></div>
@@ -312,7 +312,7 @@ export default function Home() {
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-green-600 transition-colors group-hover:bg-green-600 group-hover:text-white">
                     {item.icon}
                   </div>
-                  <h3 className="mt-6 text-xl font-bold text-gray-900">
+                  <h3 className="mt-6 text-h4 text-gray-900">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-gray-600 leading-relaxed">
@@ -330,7 +330,7 @@ export default function Home() {
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-10 md:mb-14 max-w-3xl mx-auto">
-              <h2 className="text-3xl font-black sm:text-5xl mb-6 leading-tight">
+              <h2 className="text-h2 text-balance mb-6">
                 Tu web construida con la tecnología de{" "}
                 <span className="text-green-400">
                   TikTok, Instagram, Facebook, y Netflix.
@@ -384,9 +384,9 @@ export default function Home() {
                   >
                     {tech.icon}
                   </div>
-                  <h4 className="font-bold text-xl text-white mb-2">
+                  <h3 className="text-h4 text-white mb-2">
                     {tech.title}
-                  </h4>
+                  </h3>
                   <p className="text-sm text-gray-400 leading-relaxed">
                     {tech.desc}
                   </p>
@@ -425,7 +425,7 @@ export default function Home() {
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
             <div className="text-center mb-10 md:mb-14">
-              <h2 className="text-3xl font-black text-gray-900 sm:text-5xl mb-6">
+              <h2 className="text-h2 text-balance text-gray-900 mb-6">
                 Nuestros Planes
               </h2>
             </div>
@@ -443,7 +443,7 @@ export default function Home() {
                   {/* Izquierdo: Info */}
                   <div className="p-8 md:p-12 md:w-2/3 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-4xl font-black text-gray-900 mb-2 tracking-tight">
+                      <h3 className="text-h3 text-gray-900 mb-2">
                         Corporativo
                       </h3>
                       <details className="group cursor-pointer mb-8">
@@ -496,7 +496,7 @@ export default function Home() {
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-gray-100/80">
                     <div className="w-full mb-6">
                       <span className="text-gray-400 line-through text-base block mb-1">Desde $229.990</span>
-                      <p className="text-5xl font-black text-gray-900 leading-none tracking-tight mb-1 flex items-baseline justify-center gap-2">
+                      <p className="text-h2 text-gray-900 mb-1 flex items-baseline justify-center gap-2">
                         <span className="text-2xl font-bold text-gray-500">Desde</span>
                         $189.990
                       </p>
@@ -529,9 +529,9 @@ export default function Home() {
                       {/* Badge "más vendido" */}
                       <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/20 mb-5 backdrop-blur-sm">
                         <Star className="h-3 w-3 shrink-0 fill-current text-white" strokeWidth={1.5} />
-                        <span className="text-[10px] font-black text-white tracking-widest uppercase">El más vendido</span>
+                        <span className="text-eyebrow uppercase text-white">El más vendido</span>
                       </div>
-                      <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
+                      <h3 className="text-h3 text-white mb-2">
                         Catálogo Básico
                       </h3>
                       <details className="group cursor-pointer mb-8">
@@ -582,7 +582,7 @@ export default function Home() {
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-white/10">
                     <div className="w-full mb-6">
                       <span className="text-white/50 line-through text-base block mb-1">Desde $359.990</span>
-                      <p className="text-5xl font-black text-white leading-none tracking-tight mb-1 flex items-baseline justify-center gap-2">
+                      <p className="text-h2 text-white mb-1 flex items-baseline justify-center gap-2">
                         <span className="text-2xl font-bold text-white/70">Desde</span>
                         $289.990
                       </p>
@@ -613,7 +613,7 @@ export default function Home() {
                   {/* Izquierdo: Info */}
                   <div className="p-8 md:p-12 md:w-5/12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5">
                     <div>
-                      <h3 className="text-4xl font-black text-white mb-2 tracking-tight">
+                      <h3 className="text-h3 text-white mb-2">
                         Sistemas A Medida
                       </h3>
                       <div className="text-gray-400 text-sm leading-relaxed mb-8 space-y-3">
@@ -626,7 +626,7 @@ export default function Home() {
                       </div>
 
                       <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <p className="text-3xl font-black text-white leading-none">Cotizar Proyecto</p>
+                        <p className="text-h3 text-white">Cotizar Proyecto</p>
                         <span className="text-xs text-blue-400 font-semibold mt-1 block">Presupuesto personalizado sin costo</span>
                       </div>
 
@@ -662,12 +662,12 @@ export default function Home() {
                   {/* Derecho: Imagen y Contexto */}
                   <div className="p-8 md:p-12 md:w-7/12 flex flex-col justify-between">
                     <div>
-                      <h4 className="font-bold text-gray-300 mb-6 flex items-center gap-2 text-sm">
+                      <div className="text-eyebrow uppercase text-gray-300 mb-6 flex items-center gap-2">
                         <div className="w-6 h-6 rounded-xl bg-blue-500/20 flex items-center justify-center">
                           <Briefcase className="w-3.5 h-3.5 text-blue-400" />
                         </div>
                         Tecnología Empresarial
-                      </h4>
+                      </div>
 
                       <div className="mb-6 w-full">
                         <ServiceCarousel
@@ -678,7 +678,7 @@ export default function Home() {
                     </div>
 
                     <div className="flex gap-4 items-center opacity-60 mt-6 pt-4 border-t border-white/5">
-                      <span className="font-bold tracking-widest text-xs text-gray-400">
+                      <span className="text-eyebrow uppercase text-gray-400">
                         REACT / NEXT.JS / TYPESCRIPT
                       </span>
                     </div>
@@ -740,13 +740,11 @@ export default function Home() {
               <div className="mb-14 text-left md:text-center">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 mb-6">
                   <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-xs font-bold text-emerald-700 tracking-widest uppercase">Resultados Reales</span>
+                  <span className="text-eyebrow uppercase text-emerald-700">Resultados Reales</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-black text-gray-900 leading-none mb-2 tracking-tight">
+                <h2 className="text-h2 text-balance text-gray-900">
                   Proyectos que ya
-                </h2>
-                <h2 className="text-5xl md:text-7xl font-medium text-gray-400 leading-none tracking-tight">
-                  están vendiendo.
+                  <span className="block text-gray-400">están vendiendo.</span>
                 </h2>
                 <p className="text-gray-500 mt-6 text-lg max-w-xl md:mx-auto">
                   Mira lo que hemos construido para otros negocios — y pide algo similar para el tuyo.
@@ -791,7 +789,7 @@ export default function Home() {
                         </span>
                       </div>
                       <div className="flex items-start justify-between gap-4">
-                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">La Casita del Molle</h4>
+                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">La Casita del Molle</h3>
                         <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
                           <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
                         </div>
@@ -837,7 +835,7 @@ export default function Home() {
                         </span>
                       </div>
                       <div className="flex items-start justify-between gap-4">
-                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">Domos</h4>
+                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">Domos</h3>
                         <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
                           <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
                         </div>
@@ -883,7 +881,7 @@ export default function Home() {
                         </span>
                       </div>
                       <div className="flex items-start justify-between gap-4">
-                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">Arguedas Construcciones</h4>
+                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">Arguedas Construcciones</h3>
                         <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
                           <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
                         </div>
@@ -923,7 +921,7 @@ export default function Home() {
                         </span>
                       </div>
                       <div className="flex items-start justify-between gap-4">
-                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">Modular Norte</h4>
+                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">Modular Norte</h3>
                         <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
                           <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
                         </div>
@@ -963,7 +961,7 @@ export default function Home() {
                         </span>
                       </div>
                       <div className="flex items-start justify-between gap-4">
-                        <h4 className="text-2xl font-black text-gray-900 group-hover/link:text-emerald-600 transition-colors leading-tight">Movigest</h4>
+                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">Movigest</h3>
                         <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
                           <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
                         </div>
@@ -999,12 +997,12 @@ export default function Home() {
             <div className="bg-white rounded-3xl p-8 md:p-12 shadow-card border border-[#6b9071]/10 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
 
               <div className="md:w-1/2 relative z-10">
-                <h3 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                <h2 className="text-h2 text-balance text-gray-900 mb-6">
                   Invitaciones de <br />
                   <span className="text-[#6b9071]">
                     Boda Digitales
                   </span>
-                </h3>
+                </h2>
 
                 <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   Sorprende a tus invitados con una experiencia única, elegante
@@ -1054,7 +1052,7 @@ export default function Home() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: false, margin: "-100px" }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-h2 text-balance text-gray-900 mb-6">
                   Expertos Locales.
                   <br />
                   <span className="text-green-600">Resultados Globales.</span>
@@ -1113,7 +1111,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-10">
               <div className="md:w-7/12 text-left">
 
-                <h2 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight tracking-tight">
+                <h2 className="text-h2 text-balance text-white mb-4">
                   Tú dedícate a vender. <br />
                   <span className="text-green-400">
                     Nosotros cuidamos tu web.
@@ -1154,7 +1152,7 @@ export default function Home() {
                     Inversión Transparente
                   </p>
                   <div className="flex items-baseline gap-2 flex-wrap">
-                    <span className="text-4xl md:text-5xl font-black text-white flex items-baseline gap-2">
+                    <span className="text-h2 text-white flex items-baseline gap-2">
                       <span className="text-xl md:text-2xl font-bold text-gray-400">Desde</span>
                       $20.000
                     </span>
@@ -1186,7 +1184,7 @@ export default function Home() {
         <section id="faq" className="py-16 md:py-24 bg-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <div className="text-center mb-10 md:mb-14">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-h2 text-balance text-gray-900 mb-4">
                 Preguntas Frecuentes
               </h2>
               <p className="text-gray-600">Resolvemos tus dudas en segundos.</p>
@@ -1237,14 +1235,14 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="bg-gray-950 text-gray-400 py-16 border-t border-gray-900 ">
         <div className="container mx-auto px-4 text-center flex flex-col items-center justify-center gap-5">
-          <span className="text-2xl font-black text-white tracking-tighter">
+          <span className="text-h3 text-white">
             FARO<span className="text-green-500">WEB</span>
           </span>
-          <p className=" text-md text-gray-500">
+          <p className=" text-body-sm text-gray-500">
             Desarrollo web estratégico en La Serena, Chile.
           </p>
-          <p className=" text-md text-gray-500">soporte@faroweb.cl</p>
-          <p className=" text-md text-gray-500">+56971874099</p>
+          <p className=" text-body-sm text-gray-500">soporte@faroweb.cl</p>
+          <p className=" text-body-sm text-gray-500">+56971874099</p>
           <p className="flex items-center justify-center text-sm">
             &copy; 2026 Faroweb.cl. Todos los derechos reservados.
           </p>
