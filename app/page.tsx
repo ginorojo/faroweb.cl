@@ -92,13 +92,7 @@ function WhatsAppFloating() {
       whileHover={{ scale: 1.1, rotate: 0 }}
       whileTap={{ scale: 0.9 }}
     >
-      <svg
-        viewBox="0 0 24 24"
-        className="h-9 w-9 fill-current"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-      </svg>
+      <WhatsAppIcon className="h-9 w-9 fill-current" />
     </motion.a>
   );
 }
@@ -203,6 +197,79 @@ function ServiceCarousel({
               }`}
           />
         ))}
+      </div>
+    </div>
+  );
+}
+
+// El logo de WhatsApp estaba pegado seis veces en el archivo.
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  );
+}
+
+// Las cinco tarjetas eran copia literal, ~45 lineas cada una. Con los datos
+// separados, un cambio de estilo llega a las cinco por igual.
+const proyectos = [
+  { href: "https://lacasitadelmolle.cl", img: "/casita.webp", titulo: "La Casita del Molle", plan: "Plan a Medida", wa: "Plan A Medida (La Casita del Molle)", destacado: true },
+  { href: "https://domos-9vg.pages.dev", img: "/domo1.webp", titulo: "Domos", plan: "Landing Page", wa: "Plan Corporativo (Domos)" },
+  { href: "https://arguedasconstrucciones.cl/", img: "/arguedas.webp", titulo: "Arguedas Construcciones", plan: "Landing Page", wa: "Plan Corporativo (Arguedas Construcciones)" },
+  { href: "https://modularnorte.cl/", img: "/modular.webp", titulo: "Modular Norte", plan: "Catálogo", wa: "Plan Corporativo (Modular Norte)" },
+  { href: "https://movigest.cl/", img: "/movigest.webp", titulo: "Movigest", plan: "Landing Page", wa: "Plan Corporativo (Movigest)" },
+];
+
+function ProyectoCard({
+  proyecto,
+  waLink,
+}: {
+  proyecto: (typeof proyectos)[number];
+  waLink: string;
+}) {
+  const { href, img, titulo, plan, destacado } = proyecto;
+  return (
+    <div
+      className={`snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out${
+        destacado ? " lg:col-span-2" : ""
+      }`}
+    >
+      <a href={href} target="_blank" rel="noreferrer" className="flex-grow group/link block">
+        <div
+          className={`w-full ${
+            destacado ? "aspect-[21/9]" : "aspect-[16/11]"
+          } relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50`}
+        >
+          <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
+          <img
+            src={img}
+            alt={titulo}
+            className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
+          />
+        </div>
+        <div className="px-1 mb-6">
+          <span className="text-[13px] font-medium text-gray-500 mb-3 block">{plan}</span>
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">
+              {titulo}
+            </h3>
+            <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
+              <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
+            </div>
+          </div>
+        </div>
+      </a>
+      <div className="mt-auto px-1">
+        <a
+          href={waLink}
+          className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
+        >
+          <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
+          <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
+            <WhatsAppIcon className="h-5 w-5 fill-current" />
+          </div>
+        </a>
       </div>
     </div>
   );
@@ -754,223 +821,13 @@ export default function Home() {
               {/* CARRUSEL DE PROYECTOS */}
               <div className="flex overflow-x-auto pb-8 hide-scrollbar snap-x snap-mandatory gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:gap-8 -mx-4 px-4 md:mx-0 md:px-0">
 
-                {/* PROYECTO 1: La Casita del Molle */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
-                  <a href="https://lacasitadelmolle.cl" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
-                      {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
-                      <img
-                        src="/casita.webp"
-                        alt="La Casita del Molle"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
-                      />
-                      {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
-                        <Globe className="w-8 h-8 opacity-50 mb-1" />
-                        <span className="font-medium text-sm">src=""</span>
-                      </div>
-                    </div>
-                    <div className="px-1 mb-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[13px] font-medium text-gray-500">
-                          Plan a Medida
-                        </span>
-                      </div>
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">La Casita del Molle</h3>
-                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
-                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <div className="mt-auto px-1">
-                    <a
-                      href={getWhatsAppLink("Plan A Medida (La Casita del Molle)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
-                    >
-                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                        </svg>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                {/* PROYECTO 2: Domos */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
-                  <a href="https://domos-9vg.pages.dev" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
-                      {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
-                      <img
-                        src="/domo1.webp"
-                        alt="Domos"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
-                      />
-                      {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
-                        <Globe className="w-8 h-8 opacity-50 mb-1" />
-                        <span className="font-medium text-sm">src=""</span>
-                      </div>
-                    </div>
-                    <div className="px-1 mb-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[13px] font-medium text-gray-500">
-                          Landing Page
-                        </span>
-                      </div>
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">Domos</h3>
-                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
-                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <div className="mt-auto px-1">
-                    <a
-                      href={getWhatsAppLink("Plan Corporativo (Domos)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
-                    >
-                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                        </svg>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                {/* PROYECTO 3: Arguedas Construcciones */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
-                  <a href="https://arguedasconstrucciones.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
-                      {/* ETIQUETA DE IMAGEN LISTA - Solo coloca el enlace o ruta en el src="" */}
-                      <img
-                        src="/arguedas.webp"
-                        alt="Arguedas Construcciones"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
-                      />
-                      {/* Texto temporal (puedes borrarlo cuando pongas la imagen) */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 z-0">
-                        <Globe className="w-8 h-8 opacity-50 mb-1" />
-                        <span className="font-medium text-sm">src=""</span>
-                      </div>
-                    </div>
-                    <div className="px-1 mb-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[13px] font-medium text-gray-500">
-                          Landing Page
-                        </span>
-                      </div>
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">Arguedas Construcciones</h3>
-                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
-                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <div className="mt-auto px-1">
-                    <a
-                      href={getWhatsAppLink("Plan Corporativo (Arguedas Construcciones)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
-                    >
-                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                        </svg>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                {/* PROYECTO 4: Modular Norte */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
-                  <a href="https://modularnorte.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
-                      <img
-                        src="/modular.webp"
-                        alt="Modular Norte"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
-                      />
-                    </div>
-                    <div className="px-1 mb-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[13px] font-medium text-gray-500">
-                          Catálogo
-                        </span>
-                      </div>
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">Modular Norte</h3>
-                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
-                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <div className="mt-auto px-1">
-                    <a
-                      href={getWhatsAppLink("Plan Corporativo (Modular Norte)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
-                    >
-                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                        </svg>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                {/* PROYECTO 5: Movigest */}
-                <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
-                  <a href="https://movigest.cl/" target="_blank" rel="noreferrer" className="flex-grow group/link block">
-                    <div className="w-full aspect-[16/11] flex items-center justify-center relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
-                      <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
-                      <img
-                        src="/movigest.webp"
-                        alt="Movigest"
-                        className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
-                      />
-                    </div>
-                    <div className="px-1 mb-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[13px] font-medium text-gray-500">
-                          Landing Page
-                        </span>
-                      </div>
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="text-h4 text-gray-900 group-hover/link:text-emerald-600 transition-colors">Movigest</h3>
-                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 group-hover/link:bg-emerald-50 transition-colors">
-                          <ArrowRight className="text-gray-400 group-hover/link:text-emerald-600 transition-colors w-4 h-4 group-hover/link:-rotate-45" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <div className="mt-auto px-1">
-                    <a
-                      href={getWhatsAppLink("Plan Corporativo (Movigest)")}
-                      className="inline-flex w-full items-center justify-between bg-gray-900 text-white rounded-2xl pl-5 pr-2 py-2 hover:bg-gray-800 hover:shadow-card active:scale-[0.97] transition-[background-color,box-shadow,transform] duration-200 ease-out group/wa"
-                    >
-                      <span className="font-bold text-sm mr-2 tracking-wide">Quiero una web así</span>
-                      <div className="bg-emerald-500 w-10 h-10 rounded-xl text-white shadow-card group-hover/wa:scale-105 transition-transform flex items-center justify-center shrink-0">
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                        </svg>
-                      </div>
-                    </a>
-                  </div>
-                </div>
+                {proyectos.map((proyecto) => (
+                  <ProyectoCard
+                    key={proyecto.href}
+                    proyecto={proyecto}
+                    waLink={getWhatsAppLink(proyecto.wa)}
+                  />
+                ))}
 
               </div>
             </div>
@@ -1216,21 +1073,7 @@ export default function Home() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-gray-950 text-gray-400 py-16 border-t border-gray-900 ">
-        <div className="container mx-auto px-4 text-center flex flex-col items-center justify-center gap-5">
-          <span className="text-h3 text-white">
-            FARO<span className="text-green-500">WEB</span>
-          </span>
-          <p className=" text-body-sm text-gray-500">
-            Desarrollo web estratégico en La Serena, Chile.
-          </p>
-          <p className=" text-body-sm text-gray-500">soporte@faroweb.cl</p>
-          <p className=" text-body-sm text-gray-500">+56971874099</p>
-          <p className="flex items-center justify-center text-sm">
-            &copy; 2026 Faroweb.cl. Todos los derechos reservados.
-          </p>
-        </div>
-      </footer>
+      <Footer />
 
       <WhatsAppFloating />
       <InstagramFloating />
