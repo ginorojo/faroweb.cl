@@ -214,7 +214,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 // Las cinco tarjetas eran copia literal, ~45 lineas cada una. Con los datos
 // separados, un cambio de estilo llega a las cinco por igual.
 const proyectos = [
-  { href: "https://lacasitadelmolle.cl", img: "/casita.webp", titulo: "La Casita del Molle", plan: "Plan a Medida", wa: "Plan A Medida (La Casita del Molle)", destacado: true },
+  { href: "https://lacasitadelmolle.cl", img: "/casita.webp", titulo: "La Casita del Molle", plan: "Plan a Medida", wa: "Plan A Medida (La Casita del Molle)" },
   { href: "https://domos-9vg.pages.dev", img: "/domo1.webp", titulo: "Domos", plan: "Landing Page", wa: "Plan Corporativo (Domos)" },
   { href: "https://arguedasconstrucciones.cl/", img: "/arguedas.webp", titulo: "Arguedas Construcciones", plan: "Landing Page", wa: "Plan Corporativo (Arguedas Construcciones)" },
   { href: "https://modularnorte.cl/", img: "/modular.webp", titulo: "Modular Norte", plan: "Catálogo", wa: "Plan Corporativo (Modular Norte)" },
@@ -228,19 +228,11 @@ function ProyectoCard({
   proyecto: (typeof proyectos)[number];
   waLink: string;
 }) {
-  const { href, img, titulo, plan, destacado } = proyecto;
+  const { href, img, titulo, plan } = proyecto;
   return (
-    <div
-      className={`snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out${
-        destacado ? " lg:col-span-2" : ""
-      }`}
-    >
+    <div className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-auto flex flex-col group/card bg-white rounded-3xl p-5 shadow-card hover:shadow-card-hover border border-gray-100 hover:border-gray-200 hover:-translate-y-1.5 transition-[box-shadow,border-color,transform] duration-300 ease-out">
       <a href={href} target="_blank" rel="noreferrer" className="flex-grow group/link block">
-        <div
-          className={`w-full ${
-            destacado ? "aspect-[21/9]" : "aspect-[16/11]"
-          } relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50`}
-        >
+        <div className="w-full aspect-[16/11] relative overflow-hidden mb-6 rounded-2xl bg-gray-50/50">
           <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
           <img
             src={img}
@@ -345,43 +337,33 @@ export default function Home() {
                 Beneficios Inmediatos
               </h2>
             </div>
-            {/* Trio asimetrico: el primero manda y los otros dos se apilan al
-                lado. Tres tarjetas iguales con icono en cuadrito redondeado es
-                la retícula mas repetida de las landings generadas. */}
-            <div className="grid gap-10 md:grid-cols-2 md:gap-x-16 md:gap-y-12">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {[
                 {
-                  icon: <Clock className="h-full w-full" strokeWidth={1.5} />,
+                  icon: <Clock className="h-7 w-7" strokeWidth={1.5} />,
                   title: "Ventas 24/7",
                   desc: "Tu página web trabaja por ti sin descanso, captando clientes incluso mientras duermes.",
                 },
                 {
-                  icon: <MapPin className="h-full w-full" strokeWidth={1.5} />,
+                  icon: <MapPin className="h-7 w-7" strokeWidth={1.5} />,
                   title: "Posicionamiento Local",
                   desc: "Optimizamos tu web para que aparezcas en Google cuando busquen tus servicios en la IV Región.",
                 },
                 {
-                  icon: <Smartphone className="h-full w-full" strokeWidth={1.5} />,
+                  icon: <Smartphone className="h-7 w-7" strokeWidth={1.5} />,
                   title: "Diseño Móvil Perfecto",
                   desc: "La mayoría de tus clientes te visitará desde su celular. Les daremos la mejor experiencia.",
                 },
               ].map((item, i) => (
-                <div key={i} className={i === 0 ? "md:row-span-2 md:self-center" : ""}>
-                  <div
-                    className={`text-green-600 ${i === 0 ? "h-10 w-10" : "h-7 w-7"}`}
-                  >
+                <div
+                  key={i}
+                  className="group p-8 bg-white rounded-3xl shadow-card border border-gray-100 transition-[box-shadow,transform] duration-300 ease-out hover:shadow-card-hover hover:-translate-y-2"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-green-600 transition-colors group-hover:bg-green-600 group-hover:text-white">
                     {item.icon}
                   </div>
-                  <h3
-                    className={`mt-5 text-gray-900 ${i === 0 ? "text-h3" : "text-h4"}`}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    className={`mt-3 text-gray-600 ${i === 0 ? "text-lead max-w-[38ch]" : "text-body max-w-[46ch]"}`}
-                  >
-                    {item.desc}
-                  </p>
+                  <h3 className="mt-6 text-h4 text-gray-900">{item.title}</h3>
+                  <p className="mt-3 text-body text-gray-600">{item.desc}</p>
                 </div>
               ))}
             </div>
