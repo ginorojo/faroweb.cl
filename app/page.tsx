@@ -420,7 +420,7 @@ export default function Home() {
                 <div
                   key={i}
                   style={{ animationDelay: `${i * 60}ms` }}
-                  className="animate-reveal border-t border-white/10 pt-6 group"
+                  className="animate-reveal p-8 rounded-3xl bg-gray-900 border border-gray-800 hover:border-green-500/30 transition-colors duration-200 ease-out group"
                 >
                   <div
                     className={`mb-5 ${tech.color} opacity-80 group-hover:opacity-100 transition-opacity`}
@@ -596,7 +596,7 @@ export default function Home() {
                             Esta tienda online incluye un catálogo interactivo y un carrito de compras fácil de usar: tus clientes seleccionan sus productos y te envían el pedido detallado directo a tu WhatsApp.
                           </p>
                           <p>
-                            Suma todo lo del Plan Corporativo —correos corporativos, hosting, dominio y diseño responsivo— más un panel de control intuitivo para autogestionar tus productos y precios. Es la forma más rápida de digitalizar tus ventas locales sin depender de plataformas de terceros que retienen tu dinero.
+                            Suma todo lo del Plan Corporativo (correos corporativos, hosting, dominio y diseño responsivo) más un panel de control intuitivo para autogestionar tus productos y precios. Es la forma más rápida de digitalizar tus ventas locales sin depender de plataformas de terceros que retienen tu dinero.
                           </p>
                         </div>
                       </details>
@@ -789,8 +789,8 @@ export default function Home() {
                   Proyectos que ya
                   <span className="block text-gray-400">están vendiendo.</span>
                 </h2>
-                <p className="text-gray-500 mt-6 text-lg max-w-xl md:mx-auto">
-                  Mira lo que hemos construido para otros negocios — y pide algo similar para el tuyo.
+                <p className="text-body text-gray-500 mt-4 max-w-xl">
+                  Mira lo que hemos construido para otros negocios y pide algo similar para el tuyo.
                 </p>
               </div>
 
