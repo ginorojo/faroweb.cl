@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "¿Cuánto tiempo demoran en entregar mi página?",
     answer:
-      "Para el Plan Corporativo y Catálogo Básico, nuestros tiempos récord son de 3 a 5 días hábiles una vez que nos entregas la información. Para desarrollos a medida, suele tomar entre 2 a 3 semanas dependiendo de la complejidad del proyecto.",
+      "Para el Plan One Page y el Sitio Web Corporativo, nuestros tiempos récord son de 3 a 5 días hábiles una vez que nos entregas la información. Para desarrollos a medida, suele tomar entre 2 a 3 semanas dependiendo de la complejidad del proyecto.",
   },
   {
     question: "¿Debo pagar mensualidades?",
@@ -211,14 +211,15 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
-// Las cinco tarjetas eran copia literal, ~45 lineas cada una. Con los datos
-// separados, un cambio de estilo llega a las cinco por igual.
+// Las tarjetas eran copia literal, ~45 lineas cada una. Con los datos
+// separados, un cambio de estilo llega a todas por igual.
 const proyectos = [
   { href: "https://lacasitadelmolle.cl", img: "/casita.webp", titulo: "La Casita del Molle", plan: "Plan a Medida", wa: "Plan A Medida (La Casita del Molle)" },
-  { href: "https://domos-9vg.pages.dev", img: "/domo1.webp", titulo: "Domos", plan: "Landing Page", wa: "Plan Corporativo (Domos)" },
-  { href: "https://arguedasconstrucciones.cl/", img: "/arguedas.webp", titulo: "Arguedas Construcciones", plan: "Landing Page", wa: "Plan Corporativo (Arguedas Construcciones)" },
-  { href: "https://modularnorte.cl/", img: "/modular.webp", titulo: "Modular Norte", plan: "Catálogo", wa: "Plan Corporativo (Modular Norte)" },
-  { href: "https://movigest.cl/", img: "/movigest.webp", titulo: "Movigest", plan: "Landing Page", wa: "Plan Corporativo (Movigest)" },
+  { href: "https://domos-9vg.pages.dev", img: "/domo1.webp", titulo: "Domos", plan: "One Page", wa: "Plan One Page (Domos)" },
+  { href: "https://arguedasconstrucciones.cl/", img: "/arguedas.webp", titulo: "Arguedas Construcciones", plan: "One Page", wa: "Plan One Page (Arguedas Construcciones)" },
+  { href: "https://modularnorte.cl/", img: "/modular.webp", titulo: "Modular Norte", plan: "Sitio Web Corporativo", wa: "Plan Sitio Web Corporativo (Modular Norte)" },
+  { href: "https://movigest.cl/", img: "/movigest.webp", titulo: "Movigest", plan: "Sitio Web Corporativo", wa: "Plan Sitio Web Corporativo (Movigest)" },
+  { href: "https://onproducciones.cl/", img: "/onproducciones.webp", titulo: "On Producciones", plan: "One Page", wa: "Plan One Page (On Producciones)" },
 ];
 
 function ProyectoCard({
@@ -487,8 +488,9 @@ export default function Home() {
                   <div className="p-8 md:p-12 md:w-2/3 flex flex-col justify-between">
                     <div>
                       <h3 className="text-h3 text-gray-900 mb-2">
-                        Corporativo
+                        One Page
                       </h3>
+                      <p className="text-sm text-gray-500 mb-4">Sitio web corporativo de una sola página (One Page).</p>
                       <details className="group cursor-pointer mb-8">
                         <summary className="text-sm font-bold text-emerald-600 list-none hover:underline focus:outline-none">
                           <span className="inline-flex items-center gap-1 group-open:hidden">
@@ -502,7 +504,7 @@ export default function Home() {
                         </summary>
                         <div className="text-gray-500 text-sm leading-relaxed mt-3 cursor-auto space-y-3">
                           <p>
-                            El Plan Corporativo es para empresas en La Serena y Coquimbo que necesitan establecer su marca en internet de forma rápida, profesional y económica. Obtienes una Landing Page corporativa y moderna, optimizada para móviles y para buscadores como Google.
+                            El Plan One Page es para empresas en La Serena y Coquimbo que necesitan establecer su marca en internet de forma rápida, profesional y económica. Obtienes un sitio web de una sola página (One Page): toda tu información —servicios, contacto y ubicación— en una misma página moderna, optimizada para móviles y para buscadores como Google.
                           </p>
                           <p>
                             <strong className="text-gray-700 font-semibold">Diseño personalizado, sin plantillas prediseñadas.</strong> Cada sitio se construye desde cero a partir de tu marca, tus colores y las necesidades de tu rubro, así que no terminas con una página igual a la de tu competencia.
@@ -516,7 +518,7 @@ export default function Home() {
                       <ul className="space-y-3 mb-8">
                         {[
                           "Diseño personalizado, sin plantillas prediseñadas",
-                          "Landing Page Informativa",
+                          "Sitio de 1 página (One Page) informativa",
                           "Botón directo a WhatsApp",
                           "Formulario y Mapa",
                           "5 Correos corporativos",
@@ -538,15 +540,15 @@ export default function Home() {
                   {/* Derecho: Precio + CTA */}
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-gray-100/80">
                     <div className="w-full mb-6">
-                      <span className="text-gray-400 line-through text-base block mb-1">Desde $229.990</span>
+                      <span className="text-gray-400 line-through text-base block mb-1">Desde $329.990</span>
                       <p className="text-h2 text-gray-900 mb-1 flex items-baseline justify-center gap-2">
                         <span className="text-2xl font-bold text-gray-500">Desde</span>
-                        $189.990
+                        $249.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-red-50 border border-red-100">
                         <span className="text-[13px] font-semibold text-red-600">Oferta pago único</span>
                       </div>
-                      <span className="text-xs text-gray-500 font-semibold block mt-2">* Valores no incluyen IVA</span>
+                      <span className="text-xs text-gray-500 font-semibold block mt-2">* Valores no incluyen impuestos</span>
                     </div>
                     <a
                       href={getWhatsAppLink("Plan Corporativo")}
@@ -562,7 +564,7 @@ export default function Home() {
               </div>
 
               {/* PLAN CATÁLOGO — DESTACADO */}
-              <div id="catalogo" className="relative rounded-3xl overflow-hidden scroll-mt-24 group">
+              <div id="corporativo-multipagina" className="relative rounded-3xl overflow-hidden scroll-mt-24 group">
                 {/* Fondo con gradiente verde más vibrante */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 z-0" />
                 <div className="relative z-10 flex flex-col md:flex-row shadow-card rounded-3xl">
@@ -575,8 +577,9 @@ export default function Home() {
                         <span className="text-eyebrow uppercase text-white">El más vendido</span>
                       </div>
                       <h3 className="text-h3 text-white mb-2">
-                        Catálogo Básico
+                        Sitio Web Corporativo
                       </h3>
+                      <p className="text-sm text-emerald-100/80 mb-4">Un sitio web completo, con varias páginas para tu empresa.</p>
                       <details className="group cursor-pointer mb-8">
                         <summary className="text-sm font-bold text-emerald-300 list-none hover:underline focus:outline-none">
                           <span className="inline-flex items-center gap-1 group-open:hidden">
@@ -590,23 +593,24 @@ export default function Home() {
                         </summary>
                         <div className="text-emerald-50/90 text-sm leading-relaxed mt-3 cursor-auto space-y-3">
                           <p>
-                            El Plan Catálogo Básico es para comerciantes y emprendedores de la Cuarta Región que quieren vender productos por internet sin pagar comisiones por venta.
+                            El Plan Sitio Web Corporativo es para empresas de La Serena y Coquimbo que ya tienen algo que contar y necesitan más espacio del que da una sola página. En lugar de resumirlo todo en un scroll, tu contenido se organiza en páginas independientes: Inicio, Nosotros, Servicios y Contacto, con la opción de sumar más según tu rubro.
                           </p>
                           <p>
-                            Esta tienda online incluye un catálogo interactivo y un carrito de compras fácil de usar: tus clientes seleccionan sus productos y te envían el pedido detallado directo a tu WhatsApp.
+                            <strong className="text-white font-semibold">Incluye todo lo del Plan One Page</strong> —diseño personalizado sin plantillas, botón directo a WhatsApp, formulario, mapa, 5 correos corporativos, hosting y dominio el primer año— pero con un menú de navegación real que guía al visitante hacia lo que vino a buscar.
                           </p>
                           <p>
-                            Suma todo lo del Plan Corporativo (correos corporativos, hosting, dominio y diseño responsivo) más un panel de control intuitivo para autogestionar tus productos y precios. Es la forma más rápida de digitalizar tus ventas locales sin depender de plataformas de terceros que retienen tu dinero.
+                            Más páginas también significan más presencia en Google: cada sección se optimiza por separado, así puedes posicionarte por servicio y no solo por el nombre de tu empresa. De toda la configuración técnica nos encargamos nosotros.
                           </p>
                         </div>
                       </details>
 
                       <ul className="space-y-3 mb-8">
                         {[
-                          "Todo lo del Plan Corporativo",
-                          "Catálogo de productos",
-                          "Carrito de compras",
-                          "Pedidos al WhatsApp",
+                          "Todo lo del Plan One Page",
+                          "Hasta 5 páginas (Inicio, Nosotros, Servicios, Contacto + 1)",
+                          "Menú de navegación completo",
+                          "SEO optimizado por página",
+                          "Galería de proyectos o servicios",
                         ].map((feat) => (
                           <li key={feat} className="flex items-center gap-3">
                             <div className="w-5 h-5 rounded-full bg-white/20 border border-white/30 flex items-center justify-center shrink-0">
@@ -624,18 +628,18 @@ export default function Home() {
                   {/* Derecho: Precio + CTA */}
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-white/10">
                     <div className="w-full mb-6">
-                      <span className="text-white/50 line-through text-base block mb-1">Desde $359.990</span>
+                      <span className="text-white/50 line-through text-base block mb-1">Desde $459.990</span>
                       <p className="text-h2 text-white mb-1 flex items-baseline justify-center gap-2">
                         <span className="text-2xl font-bold text-white/70">Desde</span>
-                        $289.990
+                        $389.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-white/10 border border-white/20">
                         <span className="text-[13px] font-semibold text-white/80">Oferta pago único</span>
                       </div>
-                      <span className="text-xs text-white/60 font-semibold block mt-2">* Valores no incluyen IVA</span>
+                      <span className="text-xs text-white/60 font-semibold block mt-2">* Valores no incluyen impuestos</span>
                     </div>
                     <a
-                      href={getWhatsAppLink("Plan Catálogo Básico")}
+                      href={getWhatsAppLink("Plan Sitio Web Corporativo")}
                       className="w-full py-4 text-center font-bold bg-white text-emerald-700 rounded-2xl shadow-card hover:bg-emerald-50 hover:-translate-y-0.5 active:scale-[0.97] transition-[background-color,transform] duration-200 ease-out text-sm tracking-wide"
                     >
                       <span className="inline-flex items-center justify-center gap-2">
@@ -737,8 +741,8 @@ export default function Home() {
                 <thead className="bg-gray-50 text-gray-900">
                   <tr>
                     <th scope="col" className="px-6 py-4 font-bold">Características</th>
-                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">Corporativo</th>
-                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">Catálogo Básico</th>
+                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">One Page</th>
+                    <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">Sitio Web Corporativo</th>
                     <th scope="col" className="px-6 py-4 font-bold border-l border-gray-200">A Medida</th>
                   </tr>
                 </thead>
@@ -762,9 +766,9 @@ export default function Home() {
                     <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">5 cuentas</td>
                   </tr>
                   <tr>
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Pedidos / Ventas</th>
-                    <td className="px-6 py-4 border-l border-gray-200 text-gray-500">Contacto Directo</td>
-                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Carrito a WhatsApp</td>
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 bg-gray-50/50">Número de páginas</th>
+                    <td className="px-6 py-4 border-l border-gray-200 text-gray-500">1 página</td>
+                    <td className="px-6 py-4 border-l border-gray-200 text-emerald-600 font-medium">Hasta 5 páginas</td>
                     <td className="px-6 py-4 border-l border-gray-200 text-gray-500">Según requerimiento</td>
                   </tr>
                   <tr>
@@ -945,9 +949,9 @@ export default function Home() {
                   </span>
                 </h2>
                 <p className="text-gray-400 text-base leading-relaxed mb-6 max-w-2xl">
-                  Eres dueño de tu página al 100%. Pero si no tienes tiempo para
-                  subir fotos o cambiar precios, lo hacemos por ti a través de
-                  WhatsApp. Rápido y sin estrés.
+                  Eres dueño de tu página al 100%. Cuando necesites subir fotos
+                  o cambiar precios, lo hacemos por ti a través de WhatsApp. Sin
+                  mensualidad: pagas solo por el ajuste que pides.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 max-w-xl">
@@ -981,10 +985,10 @@ export default function Home() {
                   <div className="flex items-baseline gap-2 flex-wrap">
                     <span className="text-h2 text-white flex items-baseline gap-2">
                       <span className="text-xl md:text-2xl font-bold text-gray-400">Desde</span>
-                      $20.000
+                      $30.000
                     </span>
                     <span className="text-green-400 font-bold text-sm md:text-base">
-                      / mes o por evento
+                      / por ajuste
                     </span>
                   </div>
                   <p className="text-gray-400 text-sm mt-4 mb-6 flex items-center">
@@ -995,10 +999,11 @@ export default function Home() {
                   <div className="border-t border-gray-800 pt-4 mt-2">
                     <p className="text-gray-500 text-xs leading-relaxed">
                       * <strong className="text-gray-400">Nota técnica:</strong>{" "}
-                      Este plan cubre modificaciones sobre el contenido
-                      existente (textos e imágenes). El desarrollo de nuevas
-                      secciones, funciones o rediseños estructurales se cotizan
-                      por separado.
+                      No es una mensualidad: pagas solo cuando necesitas un
+                      ajuste. Cubre modificaciones concretas sobre el contenido
+                      existente (textos, precios e imágenes). El desarrollo de
+                      nuevas secciones, funciones, cambios de estilo o rediseños
+                      estructurales se cotizan por separado.
                     </p>
                   </div>
                 </motion.div>

@@ -5,27 +5,50 @@ import Link from "next/link";
 import SharedHeader from "@/components/SharedHeader";
 import Footer from "@/components/Footer";
 
+// Los mismos planes y precios que se publican en la home. Si cambian alla,
+// cambian aca.
+const PRECIO_PAGINA_EXTRA = 15000;
+
+const PLANES = {
+  onepage: {
+    nombre: "One Page (sitio de una pagina)",
+    base: 249990,
+    paginasIncluidas: null,
+    nota: "Toda tu informacion en una sola pagina: servicios, contacto y ubicacion.",
+  },
+  corporativo: {
+    nombre: "Sitio Web Corporativo (multipagina)",
+    base: 389990,
+    paginasIncluidas: 5,
+    nota: "Incluye hasta 5 paginas. Cada pagina adicional suma $15.000.",
+  },
+  medida: {
+    nombre: "Sistema a Medida (complejo)",
+    base: 450000,
+    paginasIncluidas: 5,
+    nota: "Valor referencial de entrada: el alcance final se cotiza segun las funciones que necesites.",
+  },
+} as const;
+
+type PlanId = keyof typeof PLANES;
+
 export default function CalculadoraWebPage() {
-  const [tipoWeb, setTipoWeb] = useState("landing");
-  const [paginas, setPaginas] = useState(1);
+  const [tipoWeb, setTipoWeb] = useState<PlanId>("onepage");
+  const [paginas, setPaginas] = useState(5);
 
-  const calcularPrecio = () => {
-    let base = 189990; // Plan Corporativo
-    if (tipoWeb === "catalogo") base = 289990;
-    if (tipoWeb === "medida") base = 450000;
+  const plan = PLANES[tipoWeb];
+  // El One Page es de una sola pagina por definicion: el contador solo aplica
+  // a los planes que crecen en secciones.
+  const paginasCobrables = plan.paginasIncluidas === null ? 0 : Math.max(0, paginas - plan.paginasIncluidas);
 
-    let extras = 0;
-    if (paginas > 5) extras += (paginas - 5) * 15000;
-
-    return base + extras;
-  };
+  const calcularPrecio = () => plan.base + paginasCobrables * PRECIO_PAGINA_EXTRA;
 
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: "Calculadora de Presupuesto Web - Faroweb",
     url: "https://faroweb.cl/calculadora-web",
-    description: "Calcula el costo de tu página web corporativa o tienda online en Chile en base a las funcionalidades que tu negocio necesita.",
+    description: "Calcula el costo de tu sitio web One Page o corporativo multipágina en Chile en base a las funcionalidades que tu negocio necesita.",
     applicationCategory: "BusinessApplication",
     operatingSystem: "All",
     offers: {
@@ -74,30 +97,44 @@ export default function CalculadoraWebPage() {
               </label>
               <select
                 value={tipoWeb}
-                onChange={(e) => setTipoWeb(e.target.value)}
+                onChange={(e) => setTipoWeb(e.target.value as PlanId)}
                 className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl p-3 sm:p-4 text-sm sm:text-base truncate focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
               >
-                <option value="landing">Landing Page (Servicios)</option>
-                <option value="catalogo">Tienda Online (Productos)</option>
-                <option value="medida">Sistema a Medida (Complejo)</option>
+                {(Object.keys(PLANES) as PlanId[]).map((id) => (
+                  <option key={id} value={id}>
+                    {PLANES[id].nombre}
+                  </option>
+                ))}
               </select>
             </div>
 
             {/* Cantidad de páginas */}
-            <div>
-              <label className="block text-sm font-bold text-gray-700 mb-3">
-                Cantidad aproximada de páginas o secciones
-              </label>
-              <input
-                type="number"
-                min="1"
-                max="50"
-                value={paginas}
-                onChange={(e) => setPaginas(Number(e.target.value))}
-                className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl p-4 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-              />
-              <p className="text-xs text-gray-400 mt-2">Ej: Inicio, Nosotros, Servicios, Contacto (4 páginas)</p>
-            </div>
+            {plan.paginasIncluidas === null ? (
+              <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-4">
+                <p className="text-sm font-bold text-emerald-800 mb-1">Este plan es de una sola página</p>
+                <p className="text-sm text-emerald-700/90">{plan.nota}</p>
+              </div>
+            ) : (
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-3">
+                  Cantidad aproximada de páginas o secciones
+                </label>
+                <input
+                  type="number"
+                  min="1"
+                  max="50"
+                  value={paginas}
+                  onChange={(e) => setPaginas(Math.min(50, Math.max(1, Number(e.target.value) || 1)))}
+                  className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl p-4 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                />
+                <p className="text-xs text-gray-400 mt-2">
+                  {plan.nota}
+                  {paginasCobrables > 0
+                    ? ` Estás sumando ${paginasCobrables} página${paginasCobrables === 1 ? "" : "s"} extra.`
+                    : ""}
+                </p>
+              </div>
+            )}
 
             {/* Resultado */}
             <div className="mt-12 bg-gray-900 rounded-2xl p-8 text-center">
@@ -109,7 +146,7 @@ export default function CalculadoraWebPage() {
               </div>
               <a
                 href={`https://wa.me/56971874099?text=${encodeURIComponent(
-                  `Hola Faroweb, usé su calculadora. Necesito una web tipo ${tipoWeb}, con ${paginas} secciones. El estimado fue de $${calcularPrecio()}. ¿Me asesoran?`
+                  `Hola Faroweb, usé su calculadora. Me interesa el plan ${plan.nombre}${plan.paginasIncluidas === null ? "" : ` con ${paginas} páginas`}. El estimado fue de $${calcularPrecio().toLocaleString("es-CL")}. ¿Me asesoran?`
                 )}`}
                 target="_blank"
                 rel="noreferrer"
@@ -117,6 +154,7 @@ export default function CalculadoraWebPage() {
               >
                 Solicitar este Presupuesto por WhatsApp →
               </a>
+              <p className="text-xs text-gray-500 mt-4">* Valor referencial, no incluye impuestos.</p>
             </div>
           </div>
         </div>
