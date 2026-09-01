@@ -2,7 +2,7 @@ import Link from "next/link";
 import SharedHeader from "@/components/SharedHeader";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
-import { MessageCircle, Mail, Instagram, MapPin } from "lucide-react";
+import { MessageCircle, Mail, Instagram, MapPin, Clock } from "lucide-react";
 import { CIUDADES } from "@/data/pseo";
 
 export const metadata: Metadata = {
@@ -108,9 +108,21 @@ export default function ContactoPage() {
               nos permite mantener los plazos cortos. Si prefieres una reunión presencial
               en La Serena o Coquimbo, la coordinamos sin problema.
             </p>
-            {/* TODO(faroweb): agregar el horario de atencion real. Debe coincidir
-                exactamente con el declarado en la ficha de Google Business Profile
-                y con `openingHoursSpecification` en app/layout.tsx. */}
+          </div>
+
+          {/* El horario debe coincidir con el de la ficha de Google Business
+              Profile y con `openingHoursSpecification` en app/layout.tsx. */}
+          <div className="border-t border-gray-100 pt-10 mb-12">
+            <h2 className="text-2xl font-black text-gray-900 mb-4 flex items-center gap-3">
+              <Clock className="w-6 h-6 text-emerald-600" strokeWidth={1.5} />
+              Horario
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              El canal está abierto <strong className="text-gray-900">las 24 horas, de lunes a domingo</strong>.
+              Puedes escribirnos a la hora que te acomode y tu mensaje queda registrado.
+              Los mensajes que llegan durante la noche los respondemos a primera hora
+              de la mañana siguiente.
+            </p>
           </div>
 
           <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8">

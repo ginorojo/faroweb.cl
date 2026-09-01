@@ -97,9 +97,24 @@ export default function RootLayout({
               })),
               sameAs: ["https://www.instagram.com/faroweb.cl"],
               priceRange: "$$",
-              // TODO(faroweb): falta `openingHoursSpecification`. Necesitamos el
-              // horario de atencion real para declararlo aca y en /contacto, y
-              // que coincida con el de la ficha de Google.
+              // Abierto 24 horas, de lunes a domingo. Debe seguir coincidiendo
+              // con el horario declarado en la ficha de Google Business Profile:
+              // una discrepancia entre ambos debilita la validacion de la
+              // entidad. Para 24 horas, Google espera opens 00:00 y closes 23:59.
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday",
+                ],
+                opens: "00:00",
+                closes: "23:59",
+              },
             }),
           }}
         />
