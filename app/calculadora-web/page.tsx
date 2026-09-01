@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Script from "next/script";
 import Link from "next/link";
 import SharedHeader from "@/components/SharedHeader";
 import Footer from "@/components/Footer";
@@ -56,24 +55,19 @@ export default function CalculadoraWebPage() {
       price: "0",
       priceCurrency: "CLP",
     },
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Faroweb",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "La Serena",
-        addressRegion: "Coquimbo",
-        addressCountry: "CL",
-      },
-    },
+    // Referencia por @id a la entidad declarada en app/layout.tsx en vez de
+    // redeclarar el negocio: asi Google ve una sola organizacion y no dos.
+    provider: { "@id": "https://faroweb.cl/#organizacion" },
   };
 
   return (
     <>
       <SharedHeader />
       <div className="min-h-screen bg-gray-50 pt-10 md:pt-16 pb-24">
-      <Script
-        id="calculadora-schema"
+      {/* <script> plano y no <Script>: con next/script el JSON-LD se inyectaba
+          desde el cliente y no llegaba al HTML estatico, asi que este schema
+          era invisible para los rastreadores. */}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />

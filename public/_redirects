@@ -1,0 +1,11 @@
+# Cloudflare Pages redirects.
+# Se evaluan en orden; solo la primera coincidencia se aplica.
+
+# pSEO: la dimension ciudad se colapso. Las 56 URLs de 3 segmentos
+# (/diseno-web/:rubro/:ciudad) apuntan a la pagina unica del rubro.
+# Este patron NO matchea las rutas de 2 segmentos, asi que las paginas
+# nuevas se sirven normal.
+/diseno-web/:rubro/:ciudad  /diseno-web/:rubro  301
+
+# /la-serena competia con la home por la misma intencion y estaba huerfana.
+/la-serena  /  301

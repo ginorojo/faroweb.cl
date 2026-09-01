@@ -5,6 +5,20 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Un solo origen para la navegacion, en vez de derivar el href con ternarios
+// encadenados dentro del map. "Bodas" y "Nosotros" apuntan ahora a sus paginas
+// reales y no al ancla de la home: /bodas estaba en el sitemap pero no la
+// enlazaba nadie, y /nosotros dejo de ser solo una seccion.
+const NAV_ITEMS = [
+  { label: "Beneficios", href: "/#beneficios" },
+  { label: "Planes", href: "/#planes-y-servicios" },
+  { label: "Bodas", href: "/bodas" },
+  { label: "Nosotros", href: "/nosotros" },
+  { label: "Calculadora", href: "/calculadora-web" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contacto", href: "/contacto" },
+];
+
 export default function SharedHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -26,10 +40,14 @@ export default function SharedHeader() {
               </Link>
             </div>
 
-            <nav className="hidden md:flex md:space-x-8 font-medium text-sm tracking-wide">
-              {["Beneficios", "Planes", "Bodas", "Nosotros", "Calculadora", "Blog"].map((item) => (
-                <Link key={item} href={item === "Calculadora" ? "/calculadora-web" : item === "Blog" ? "/blog" : `/#${item === "Planes" ? "planes-y-servicios" : item.toLowerCase()}`} className="text-gray-500 hover:text-emerald-600 transition-colors relative group py-2">
-                  {item}
+            {/* md:space-x-3 en vez de 8: con Contacto son siete items y a 768px
+                exactos el nav empujaba el boton "Hablemos" fuera del viewport,
+                provocando scroll horizontal. A partir de lg vuelve al espaciado
+                original. */}
+            <nav className="hidden md:flex md:space-x-3 lg:space-x-8 font-medium text-sm tracking-wide">
+              {NAV_ITEMS.map((item) => (
+                <Link key={item.label} href={item.href} className="text-gray-500 hover:text-emerald-600 transition-colors relative group py-2">
+                  {item.label}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-600 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
@@ -49,10 +67,10 @@ export default function SharedHeader() {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-24 px-6 pb-6 md:hidden flex flex-col min-h-screen">
-              <nav className="flex flex-col space-y-8 text-center mt-12">
-                {["Beneficios", "Planes", "Bodas", "Nosotros", "Calculadora", "Blog"].map((item) => (
-                  <Link key={item} href={item === "Calculadora" ? "/calculadora-web" : item === "Blog" ? "/blog" : `/#${item === "Planes" ? "planes-y-servicios" : item.toLowerCase()}`} onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-gray-800 hover:text-emerald-600 transition-colors">
-                    {item}
+              <nav className="flex flex-col space-y-6 text-center mt-12">
+                {NAV_ITEMS.map((item) => (
+                  <Link key={item.label} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-gray-800 hover:text-emerald-600 transition-colors">
+                    {item.label}
                   </Link>
                 ))}
               </nav>

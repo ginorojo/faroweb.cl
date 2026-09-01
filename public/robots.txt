@@ -1,15 +1,34 @@
 User-agent: *
 Allow: /
 Disallow: /cdn-cgi/
-Disallow: /*?*
 
-# Permitir explícitamente a rastreadores de IA populares
+# Rastreadores de IA. Nota: estas reglas solo aplican si el bot llega a leer el
+# archivo. Si el WAF bloquea en el edge, nunca llega. Ver Cloudflare >
+# Security > Bots (Block AI bots / Bot Fight Mode).
 User-agent: GPTBot
 Allow: /
-User-agent: Claude-Web
+
+User-agent: OAI-SearchBot
 Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: CCBot
 Allow: /
 

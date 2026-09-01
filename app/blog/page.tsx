@@ -3,8 +3,15 @@ import Footer from "@/components/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog de Diseño Web y Tecnología | Faroweb",
-  description: "Aprende sobre SEO, diseño web, desarrollo de tiendas online y tecnología para Pymes en Chile.",
+  title: "Blog de Diseño Web y SEO para Pymes | Faroweb",
+  description: "Guías sobre SEO local, diseño web, tiendas online e inteligencia artificial aplicada a pymes chilenas. Escrito desde La Serena.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog de Diseño Web y SEO para Pymes | Faroweb",
+    description: "Guías sobre SEO local, diseño web, tiendas online e inteligencia artificial aplicada a pymes chilenas.",
+    url: "/blog",
+    type: "website",
+  },
 };
 
 export default function BlogIndex() {

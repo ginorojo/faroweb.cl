@@ -49,9 +49,14 @@ const faqs = [
       "Trabajamos con un 50% de anticipo para iniciar el proyecto y el 50% restante se paga solo cuando tu página está lista y funcionando a tu entera satisfacción.",
   },
   {
+    question: "¿Cuánto cuesta una página web en La Serena?",
+    answer:
+      "El plan One Page parte desde $249.990 CLP y el Sitio Web Corporativo, con varias páginas y menú de navegación, desde $389.990 CLP. Ambos son pago único e incluyen diseño personalizado, correos corporativos, hosting y dominio por el primer año. Los sistemas a medida se cotizan según el alcance. Si quieres un estimado antes de escribirnos, la calculadora de la web te lo da en un minuto.",
+  },
+  {
     question: "¿Por qué elegir Faroweb en la Cuarta Región?",
     answer:
-      "En Faroweb, entendemos que el diseño de páginas web en La Serena, Coquimbo y toda la Cuarta Región no se trata solo de crear sitios bonitos, sino de construir herramientas digitales que generen ventas y prospectos reales para tu negocio. Nos especializamos en el desarrollo de catálogos online ultra rápidos, softwares a medida y sitios web corporativos utilizando tecnologías de vanguardia como Next.js y React. Esto garantiza que tu página cargue en milisegundos, dándote una ventaja competitiva brutal en el posicionamiento SEO frente a tu competencia. Además, no te dejamos solo una vez terminado el proyecto. Ofrecemos planes de mantención web y soporte directo para que tú te enfoques exclusivamente en atender a tus nuevos clientes mientras nosotros nos encargamos de que tu plataforma digital esté siempre segura, actualizada y funcionando 24/7.",
+      "Porque somos de acá y trabajamos rápido. Vivimos en La Serena, conocemos el mercado de la conurbación, y entregamos los planes One Page y Corporativo en 3 a 5 días hábiles. Construimos cada sitio a mano con React y Next.js en vez de usar plantillas, así que carga en milisegundos, y la web queda 100% tuya sin mensualidades obligatorias.",
   },
 ];
 
@@ -160,6 +165,10 @@ function ServiceCarousel({
       className={`relative w-full aspect-[16/10] rounded-2xl overflow-hidden group shadow-inner ${isDark ? "bg-gray-800 border border-gray-700" : "bg-gray-100 border border-gray-200"}`}
     >
       <AnimatePresence mode="wait" initial={false}>
+        {/* loading="lazy" no es solo diferir la descarga: React 19 emite un
+            <link rel="preload"> por cada <img> que renderiza en el SSR, y sin
+            esto la home salia con 12 preloads de imagen compitiendo entre si
+            por ancho de banda contra el LCP del hero. */}
         <motion.img
           key={currentIndex}
           src={images[currentIndex]}
@@ -168,7 +177,9 @@ function ServiceCarousel({
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
           className="w-full h-full object-cover"
-          alt={`Ejemplo ${currentIndex + 1}`}
+          loading="lazy"
+          decoding="async"
+          alt={`Ejemplo de diseño web realizado por Faroweb (${currentIndex + 1})`}
         />
       </AnimatePresence>
 
@@ -237,7 +248,9 @@ function ProyectoCard({
           <div className="absolute inset-0 bg-gray-900/0 group-hover/link:bg-gray-900/10 transition-colors duration-300 z-20" />
           <img
             src={img}
-            alt={titulo}
+            alt={`Sitio web de ${titulo} desarrollado por Faroweb`}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover group-hover/link:scale-105 transition-transform duration-300 z-10"
           />
         </div>
@@ -269,6 +282,60 @@ function ProyectoCard({
 }
 
 // --- 3. COMPONENTE PRINCIPAL ---
+// FAQPage no da resultados enriquecidos: Google los retiro en 2023 salvo para
+// fuentes gubernamentales y de salud. Se marca para que los agentes y modelos
+// de lenguaje puedan parsear las respuestas en vez de adivinarlas.
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+
+// Los precios estaban visibles en la pagina pero sin marcado, asi que un agente
+// al que le preguntaran "cuanto cobra Faroweb" no tenia de donde sacarlos.
+// Mantener sincronizado con la seccion de planes y con public/llms.txt.
+const serviciosSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Planes de diseño web de Faroweb",
+  itemListElement: [
+    {
+      nombre: "One Page",
+      descripcion:
+        "Sitio web corporativo de una sola página, con diseño personalizado, botón a WhatsApp, formulario, mapa, 5 correos corporativos, hosting y dominio el primer año.",
+      precio: "249990",
+    },
+    {
+      nombre: "Sitio Web Corporativo",
+      descripcion:
+        "Sitio web de varias páginas con menú de navegación real, además de todo lo incluido en el plan One Page.",
+      precio: "389990",
+    },
+  ].map((plan, idx) => ({
+    "@type": "ListItem",
+    position: idx + 1,
+    item: {
+      "@type": "Service",
+      name: plan.nombre,
+      description: plan.descripcion,
+      serviceType: "Diseño y desarrollo web",
+      provider: { "@id": "https://faroweb.cl/#organizacion" },
+      areaServed: CIUDADES.map((ciudad) => ({ "@type": "City", name: ciudad.nombre })),
+      offers: {
+        "@type": "Offer",
+        price: plan.precio,
+        priceCurrency: "CLP",
+        availability: "https://schema.org/InStock",
+        url: "https://faroweb.cl/#planes-y-servicios",
+      },
+    },
+  })),
+};
+
 export default function Home() {
 
   const getWhatsAppLink = (planName: string) => {
@@ -280,6 +347,18 @@ export default function Home() {
 
   return (
     <div className="bg-white selection:bg-green-100 selection:text-green-900 font-sans">
+      {/* <script> plano y no <Script> de next/script: con la estrategia por
+          defecto (afterInteractive) el JSON-LD se inyecta desde el cliente y
+          nunca aparece en el HTML estatico, asi que un rastreador que no ejecuta
+          JS no lo ve. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviciosSchema) }}
+      />
       <SharedHeader />
 
       <main>
@@ -859,14 +938,18 @@ export default function Home() {
                 <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-card border-[6px] transform rotate-[-3deg] hover:rotate-0 transition-transform duration-300">
                   <img
                     src="/weeding1.jpg"
-                    alt="Boda 1"
+                    alt="Invitación de matrimonio digital diseñada por Faroweb"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-auto block"
                   />
                 </div>
                 <div className="w-1/2 h-fit rounded-2xl overflow-hidden shadow-card border-[6px] border-white transform rotate-[5deg] hover:rotate-0 transition-transform duration-300 mt-10">
                   <img
                     src="/weeding2.jpg"
-                    alt="Boda 2"
+                    alt="Web de boda con confirmación de asistencia y lista de regalos"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-auto block"
                   />
                 </div>
@@ -903,7 +986,10 @@ export default function Home() {
                         >
                           <img
                             src={imgSrc}
-                            alt={`Equipo ${i}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
                             className="object-cover w-full h-full"
                           />
                         </div>
@@ -1029,36 +1115,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* INTERNAL LINKS (pSEO) */}
+        {/* INTERNAL LINKS (pSEO)
+            Antes: 8 rubros x 2 ciudades = 16 enlaces para 56 paginas, y dentro
+            de un <details> colapsado. Ahora los 14 rubros, visibles sin
+            interaccion. Es la unica via por la que estas paginas reciben
+            enlaces internos desde la home. */}
         <section className="py-12 md:py-16 bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <details className="group border border-gray-200 rounded-2xl bg-gray-50 overflow-hidden shadow-card">
-              <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-xl text-gray-900 hover:bg-gray-100 transition-colors">
-                <span className="flex items-center gap-3">
-                  <ListOrdered className="w-6 h-6 text-green-600" strokeWidth={1.5} /> Soluciones Especializadas por Ciudad
-                </span>
-                <span className="transition group-open:rotate-180">
-                  <ChevronDown className="w-6 h-6 text-gray-500" strokeWidth={1.5} />
-                </span>
-              </summary>
+            <div className="border border-gray-200 rounded-2xl bg-gray-50 overflow-hidden shadow-card">
+              <h2 className="flex items-center gap-3 font-bold p-6 text-xl text-gray-900">
+                <ListOrdered className="w-6 h-6 text-green-600" strokeWidth={1.5} />
+                Diseño web especializado por rubro
+              </h2>
               <div className="p-6 border-t border-gray-200 bg-white">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                  {Object.keys(RUBROS).slice(0, 8).map((rubroSlug) => {
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                  {Object.keys(RUBROS).map((rubroSlug) => {
                     const rubro = RUBROS[rubroSlug];
-                    return CIUDADES.slice(0, 2).map((ciudad) => (
+                    return (
                       <Link
-                        key={`${rubroSlug}-${ciudad.slug}`}
-                        href={`/diseno-web/${rubroSlug}/${ciudad.slug}`}
+                        key={rubroSlug}
+                        href={`/diseno-web/${rubroSlug}`}
                         className="text-sm text-gray-500 hover:text-green-600 transition-colors p-3 rounded-xl hover:bg-green-50 border border-transparent hover:border-green-100 flex items-center gap-2"
                       >
-                        <span>{rubro.emoji}</span>
-                        <span>Páginas web para {rubro.nombrePlural} en {ciudad.nombre}</span>
+                        <span aria-hidden="true">{rubro.emoji}</span>
+                        <span>Páginas web para {rubro.nombrePlural}</span>
                       </Link>
-                    ));
+                    );
                   })}
                 </div>
+                <p className="text-sm text-gray-500 mt-5 px-3">
+                  Atendemos {CIUDADES.map((c) => c.nombre).join(", ").replace(/, ([^,]*)$/, " y $1")} y el resto de la Región de Coquimbo.
+                </p>
               </div>
-            </details>
+            </div>
           </div>
         </section>
 
