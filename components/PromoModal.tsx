@@ -24,7 +24,7 @@ const PROMO = {
   // WebP, no PNG: el original pesaba 1,8 MB y con images.unoptimized en
   // next.config nadie lo comprime por nosotros. A calidad 85 y misma
   // resolucion son 169 KB, un 90% menos, para una imagen que carga al entrar.
-  imagen: "/promo-septiembre-2026.webp",
+  imagen: "/promo-septiembre-2026-v2.webp",
   ancho: 1024,
   alto: 1536,
   alt: "30% de descuento en páginas One Page y sitios corporativos, válido del 7 al 13 de septiembre de 2026. One Page $174.990 y sitios corporativos $272.990, con hosting y dominio gratis por un año.",
