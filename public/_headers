@@ -1,0 +1,39 @@
+# Cloudflare Pages - politica de cache.
+#
+# El problema que esto resuelve: Cloudflare cacheaba el HTML en el edge, y ese
+# HTML apunta a chunks con hash de contenido (/_next/static/chunks/<hash>.js).
+# Tras cada deploy los hashes cambian, asi que un visitante que recibia HTML
+# cacheado pedia assets que ya no existian y la pagina cargaba sin estilos.
+# Se notaba sobre todo en incognito, donde no hay cache del navegador que
+# disimule el fallo.
+#
+# La regla es simple: lo que lleva hash en el nombre se cachea para siempre;
+# el HTML que decide que hashes pedir, nunca.
+
+# Assets con hash de contenido: inmutables por definicion. Si el contenido
+# cambia, cambia el nombre del archivo.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Imagenes y video de public/: cache larga pero revalidable, porque el nombre
+# no lleva hash y pueden reemplazarse manteniendo la ruta.
+/*.webp
+  Cache-Control: public, max-age=86400, must-revalidate
+/*.jpg
+  Cache-Control: public, max-age=86400, must-revalidate
+/*.png
+  Cache-Control: public, max-age=86400, must-revalidate
+/*.mp4
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Archivos que deben reflejar el ultimo deploy de inmediato.
+/sitemap.xml
+  Cache-Control: public, max-age=0, must-revalidate
+/robots.txt
+  Cache-Control: public, max-age=0, must-revalidate
+/llms.txt
+  Cache-Control: public, max-age=0, must-revalidate
+
+# HTML: nunca servir una copia vieja. Es lo que decide que chunks pedir.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
