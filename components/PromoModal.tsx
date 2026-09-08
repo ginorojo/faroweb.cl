@@ -21,7 +21,10 @@ const PROMO = {
   activa: true,
   inicioUTC: "2026-09-07T03:00:00Z", // lunes 07-09 00:00 Chile
   finUTC: "2026-09-14T03:00:00Z", // lunes 14-09 00:00 Chile
-  imagen: "/promo-septiembre-2026.jpg",
+  // WebP, no PNG: el original pesaba 1,8 MB y con images.unoptimized en
+  // next.config nadie lo comprime por nosotros. A calidad 85 y misma
+  // resolucion son 169 KB, un 90% menos, para una imagen que carga al entrar.
+  imagen: "/promo-septiembre-2026.webp",
   ancho: 1024,
   alto: 1536,
   alt: "30% de descuento en páginas One Page y sitios corporativos, válido del 7 al 13 de septiembre de 2026. One Page $174.990 y sitios corporativos $272.990, con hosting y dominio gratis por un año.",
