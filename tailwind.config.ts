@@ -78,12 +78,22 @@ const config: Config = {
                     from: { opacity: "0", transform: "translateY(16px)" },
                     to: { opacity: "1", transform: "none" },
                 },
+                "promo-fade": {
+                    from: { opacity: "0" },
+                    to: { opacity: "1" },
+                },
+                "promo-in": {
+                    from: { opacity: "0", transform: "scale(0.96)" },
+                    to: { opacity: "1", transform: "none" },
+                },
             },
             animation: {
                 // `both` para que arranque en opacity 0 y, pase lo que pase,
                 // termine visible. A diferencia de framer-motion, no necesita JS.
                 "hero-in": "hero-in 0.7s cubic-bezier(0.23,1,0.32,1) both",
                 reveal: "reveal 0.5s cubic-bezier(0.23,1,0.32,1) both",
+                "promo-fade": "promo-fade 0.2s ease-out both",
+                "promo-in": "promo-in 0.25s cubic-bezier(0.23,1,0.32,1) both",
             },
         },
     },

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "./globals.css";
 import { CIUDADES } from "@/data/pseo";
+import PromoModal from "@/components/PromoModal";
 
 // Archivo: una sola familia variable, con ejes de peso Y de ancho. El contraste
 // de los titulares sale del ancho, no de una segunda fuente.
@@ -120,7 +121,15 @@ export default function RootLayout({
         />
       </head>
       {/* `font-sans` aca cubre las paginas pSEO, que no lo llevan en su raiz */}
-      <body className={`${archivo.variable} font-sans`}>{children}</body>
+      <body className={`${archivo.variable} font-sans`}>
+        {children}
+        {/* Va en el layout raiz y no en la home para que tambien lo vea quien
+            entra desde el buscador a una pagina de rubro. Se muestra una sola
+            vez por sesion, asi que estar en todas las rutas no multiplica las
+            apariciones. Se autodesactiva en la fecha de corte configurada
+            dentro del componente. */}
+        <PromoModal />
+      </body>
     </html>
   );
 }
