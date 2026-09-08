@@ -128,15 +128,24 @@ export default function PromoModal() {
           <X className="h-5 w-5" strokeWidth={2.5} />
         </button>
 
-        {/* Si el archivo de la promo falta o falla, se cierra el modal en vez
-            de mostrarle una imagen rota al visitante. */}
+        {/* loading="eager" es obligatorio aca. next/image por defecto pone
+            loading="lazy", y dentro de un overlay fijo el IntersectionObserver
+            no se dispara de forma fiable: en produccion la peticion nunca
+            llegaba a hacerse y el modal quedaba con un hueco en blanco, sin
+            cargar ni fallar (asi que onError tampoco lo rescataba).
+            No usamos `priority` porque no hace falta precargarla: este
+            componente devuelve null mientras el modal esta cerrado, o sea que
+            la imagen solo se pide cuando de verdad se va a ver.
+
+            Si el archivo falta o falla, onError cierra el modal en vez de
+            mostrarle una imagen rota al visitante. */}
         <Image
           src={PROMO.imagen}
           alt={PROMO.alt}
           width={PROMO.ancho}
           height={PROMO.alto}
           className="w-full h-auto rounded-t-2xl"
-          priority={false}
+          loading="eager"
           onError={() => setVisible(false)}
         />
 
