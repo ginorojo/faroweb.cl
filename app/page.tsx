@@ -51,7 +51,7 @@ const faqs = [
   {
     question: "¿Cuánto cuesta una página web en La Serena?",
     answer:
-      "El plan One Page parte desde $249.990 CLP y el Sitio Web Corporativo, con varias páginas y menú de navegación, desde $389.990 CLP. Ambos son pago único e incluyen diseño personalizado, correos corporativos, hosting y dominio por el primer año. Los sistemas a medida se cotizan según el alcance. Si quieres un estimado antes de escribirnos, la calculadora de la web te lo da en un minuto.",
+      "El plan One Page parte desde $189.990 CLP y el Sitio Web Corporativo, con varias páginas y menú de navegación, desde $272.990 CLP. Ambos son pago único e incluyen diseño personalizado, correos corporativos, hosting y dominio por el primer año. Los sistemas a medida se cotizan según el alcance. Si quieres un estimado antes de escribirnos, la calculadora de la web te lo da en un minuto.",
   },
   {
     question: "¿Por qué elegir Faroweb en la Cuarta Región?",
