@@ -11,13 +11,13 @@ const PRECIO_PAGINA_EXTRA = 15000;
 const PLANES = {
   onepage: {
     nombre: "One Page (sitio de una pagina)",
-    base: 249990,
+    base: 189990,
     paginasIncluidas: null,
     nota: "Toda tu informacion en una sola pagina: servicios, contacto y ubicacion.",
   },
   corporativo: {
     nombre: "Sitio Web Corporativo (multipagina)",
-    base: 389990,
+    base: 272990,
     paginasIncluidas: 5,
     nota: "Incluye hasta 5 paginas. Cada pagina adicional suma $15.000.",
   },

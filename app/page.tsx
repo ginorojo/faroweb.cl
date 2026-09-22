@@ -619,10 +619,10 @@ export default function Home() {
                   {/* Derecho: Precio + CTA */}
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-gray-100/80">
                     <div className="w-full mb-6">
-                      <span className="text-gray-400 line-through text-base block mb-1">Desde $329.990</span>
+                      <span className="text-gray-400 line-through text-base block mb-1">Desde $249.990</span>
                       <p className="text-h2 text-gray-900 mb-1 flex items-baseline justify-center gap-2">
                         <span className="text-2xl font-bold text-gray-500">Desde</span>
-                        $249.990
+                        $189.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-red-50 border border-red-100">
                         <span className="text-[13px] font-semibold text-red-600">Oferta pago único</span>
@@ -707,10 +707,10 @@ export default function Home() {
                   {/* Derecho: Precio + CTA */}
                   <div className="p-8 md:p-12 md:w-1/3 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-white/10">
                     <div className="w-full mb-6">
-                      <span className="text-white/50 line-through text-base block mb-1">Desde $459.990</span>
+                      <span className="text-white/50 line-through text-base block mb-1">Desde $389.990</span>
                       <p className="text-h2 text-white mb-1 flex items-baseline justify-center gap-2">
                         <span className="text-2xl font-bold text-white/70">Desde</span>
-                        $389.990
+                        $272.990
                       </p>
                       <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-white/10 border border-white/20">
                         <span className="text-[13px] font-semibold text-white/80">Oferta pago único</span>
