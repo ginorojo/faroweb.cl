@@ -1,10 +1,17 @@
+# Content Signals (contentsignals.org): que puede hacer cada uno con el
+# contenido, ademas de si puede entrar. Todo en yes a proposito: el sitio es
+# marketing y el objetivo es que las IAs conozcan y recomienden a Faroweb.
+# ai-train=yes solo es cierto si Cloudflare no bloquea el entrenamiento: ver
+# Security > Settings > politicas del bot de IA > Entrenamiento (debe estar en
+# Permitir). La sincronizacion de preferencias del bot va apagada para que
+# Cloudflare no anteponga sus propias lineas a este archivo.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /cdn-cgi/
 
 # Rastreadores de IA. Nota: estas reglas solo aplican si el bot llega a leer el
-# archivo. Si el WAF bloquea en el edge, nunca llega. Ver Cloudflare >
-# Security > Bots (Block AI bots / Bot Fight Mode).
+# archivo. Si el WAF bloquea en el edge, nunca llega.
 User-agent: GPTBot
 Allow: /
 

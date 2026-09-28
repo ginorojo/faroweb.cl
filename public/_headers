@@ -15,6 +15,14 @@
 # mas restrictivo. Por eso aca no hay ninguna regla /*, y el HTML se deja en
 # el valor por defecto de Pages, que ya es "public, max-age=0, must-revalidate".
 
+# Cabecera Link (RFC 8288) en la home: le indica a los agentes de IA donde
+# esta el resumen para ellos (llms.txt) y el sitemap. Regla exacta a "/", no
+# comodin, para no repetir el problema de arriba.
+# Pages genera solo un Link de preload desde el HTML (Early Hints), pero deja de
+# hacerlo si _headers ya define uno; por eso el preload del hero va incluido.
+/
+  Link: </hero.jpg>; rel="preload"; as=image, </llms.txt>; rel="describedby"; type="text/plain", </sitemap.xml>; rel="sitemap"; type="application/xml"
+
 # Assets con hash de contenido: inmutables por definicion. Si el contenido
 # cambia, cambia el nombre del archivo.
 /_next/static/*
