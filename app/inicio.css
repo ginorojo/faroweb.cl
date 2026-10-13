@@ -1,0 +1,169 @@
+/* Estilos propios de la home. Todo va bajo `.fw` para
+   que nada de esto alcance al resto del sitio. */
+
+.fw {
+    background-color: #F5FAF8;
+    color: #1B2233;
+    font-family: var(--font-body), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.fw h1,
+.fw h2,
+.fw h3 {
+    text-wrap: balance;
+}
+
+.fw p {
+    text-wrap: pretty;
+}
+
+.fw :focus-visible {
+    outline: 3px solid #047857;
+    outline-offset: 3px;
+}
+
+/* El haz del faro: un trazo ambar bajo las palabras clave. Sin gradiente en el
+   texto, solo un fondo detras. */
+.fw-haz {
+    background-image: linear-gradient(#FBBF24, #FBBF24);
+    background-repeat: no-repeat;
+    background-position: 0 88%;
+    background-size: 100% 0.32em;
+    padding-inline: 0.04em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.fw-haz-anim {
+    animation: fw-haz 0.9s 0.45s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes fw-haz {
+    from {
+        background-size: 0% 0.32em;
+    }
+    to {
+        background-size: 100% 0.32em;
+    }
+}
+
+/* Entrada del hero: escalonada con --i. `both` garantiza que siempre termine
+   visible, aunque la animacion arranque tarde. */
+.fw-entra {
+    animation: fw-entra 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+@keyframes fw-entra {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Revelado al hacer scroll, solo donde el navegador soporta animaciones
+   ligadas al scroll. En el resto el contenido simplemente esta visible: el
+   revelado mejora la pagina, nunca la condiciona. */
+@supports (animation-timeline: view()) {
+    .fw-revela {
+        animation: fw-revela linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+    }
+
+    @keyframes fw-revela {
+        from {
+            opacity: 0;
+            transform: translateY(28px);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    /* La linea del proceso se enciende como el haz de un faro. */
+    .fw-linea {
+        transform-origin: left center;
+        animation: fw-linea linear both;
+        animation-timeline: view();
+        animation-range: entry 20% cover 45%;
+    }
+
+    @keyframes fw-linea {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+
+    .fw-linea-v {
+        transform-origin: center top;
+        animation: fw-linea-v linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 60%;
+    }
+
+    @keyframes fw-linea-v {
+        from {
+            transform: scaleY(0);
+        }
+        to {
+            transform: scaleY(1);
+        }
+    }
+}
+
+/* Portafolio: la captura larga se recorre al pasar el cursor o al enfocar. */
+.fw-captura {
+    object-position: 50% 0%;
+    transition: object-position 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) {
+    .fw-proyecto:hover .fw-captura[data-larga="true"],
+    .fw-proyecto:focus-within .fw-captura[data-larga="true"] {
+        object-position: 50% 100%;
+        transition-duration: 7s;
+        transition-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+    }
+}
+
+/* Acordeon de preguntas: el chevron gira y el contenido aparece suave. */
+.fw details summary::-webkit-details-marker {
+    display: none;
+}
+
+.fw details[open] .fw-chevron {
+    transform: rotate(45deg);
+}
+
+.fw details[open] .fw-respuesta {
+    animation: fw-entra 0.35s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fw-entra,
+    .fw-haz-anim,
+    .fw-revela,
+    .fw-linea,
+    .fw-linea-v,
+    .fw details[open] .fw-respuesta {
+        animation: none !important;
+    }
+
+    .fw-captura {
+        transition: none !important;
+    }
+
+    .fw * {
+        scroll-behavior: auto !important;
+    }
+}

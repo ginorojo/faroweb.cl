@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // reales y no al ancla de la home: /bodas estaba en el sitemap pero no la
 // enlazaba nadie, y /nosotros dejo de ser solo una seccion.
 const NAV_ITEMS = [
-  { label: "Beneficios", href: "/#beneficios" },
+  { label: "Proceso", href: "/#proceso" },
   { label: "Planes", href: "/#planes-y-servicios" },
   { label: "Bodas", href: "/bodas" },
   { label: "Nosotros", href: "/nosotros" },

@@ -7,12 +7,14 @@ export const dynamic = 'force-static'
 // en las 59 URLs a la vez, y un lastmod que siempre miente es un lastmod que
 // Google aprende a ignorar. Actualizar a mano cuando cambie el contenido.
 const LAST_MODIFIED = '2026-09-01'
+// La home se rediseño entera: su fecha va aparte para no mentir sobre el resto.
+const HOME_MODIFIED = '2026-10-12'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseRoutes: MetadataRoute.Sitemap = [
     {
       url: 'https://faroweb.cl',
-      lastModified: LAST_MODIFIED,
+      lastModified: HOME_MODIFIED,
       changeFrequency: 'weekly',
       priority: 1,
     },

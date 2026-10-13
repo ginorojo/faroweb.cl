@@ -19,6 +19,10 @@ const config: Config = {
                 // arregla home, blog, bodas, la-serena y las pSEO de una sola vez.
                 // `serif` NO se toca: es la identidad propia de la pagina de Bodas.
                 sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+                // Solo para la home. Las variables las
+                // define next/font en el wrapper de esa ruta.
+                display: ["var(--font-display)", ...defaultTheme.fontFamily.sans],
+                body: ["var(--font-body)", ...defaultTheme.fontFamily.sans],
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -29,6 +33,24 @@ const config: Config = {
                 green: {
                     600: '#16a34a',
                     700: '#15803d',
+                },
+                // Paleta de la home. En hex y no en OKLCH a proposito: el sitio
+                // mantiene compatibilidad con los Chromium 79-87 de las Smart TV,
+                // que no entienden oklch() y descartarian la declaracion entera.
+                // Contrastes medidos: blanco sobre `emerald` 5.5:1, `soft` sobre
+                // `bg` 7.5:1, `ink` sobre `beam` 9.7:1.
+                fw: {
+                    bg: '#F5FAF8',
+                    ink: '#1B2233',
+                    soft: '#46536A',
+                    line: '#DCE8E3',
+                    emerald: '#047857',
+                    'emerald-deep': '#065F46',
+                    'emerald-bright': '#10B981',
+                    mint: '#E3F6EE',
+                    beam: '#FBBF24',
+                    'beam-soft': '#FFF4D1',
+                    coral: '#E8553D',
                 }
             },
             // Las curvas nativas de CSS son demasiado debiles para sentirse
