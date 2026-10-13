@@ -6,7 +6,7 @@ import RastreoConversiones from "./RastreoConversiones";
 //   GA_ID:      Google Analytics 4 -> Administrar > Flujos de datos > ID de medicion (G-XXXXXXXXXX)
 //   CLARITY_ID: Microsoft Clarity  -> Settings > Overview > Project ID
 // Si se agrega o quita una herramienta, actualizar tambien /privacidad.
-export const GA_ID = "";
+export const GA_ID = "G-CV8TPS1TXE";
 export const CLARITY_ID = "";
 
 export default function Analitica() {

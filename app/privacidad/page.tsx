@@ -1,6 +1,7 @@
 import SharedHeader from "@/components/SharedHeader";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
+import { CLARITY_ID, GA_ID } from "@/components/Analitica";
 
 export const metadata: Metadata = {
   title: "Política de Privacidad | Faroweb",
@@ -15,6 +16,30 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+// El texto sale de los IDs configurados en components/Analitica.tsx: la
+// politica solo nombra las herramientas que de verdad estan activas.
+const HERRAMIENTAS = [GA_ID && "Google Analytics", CLARITY_ID && "Microsoft Clarity"].filter(
+  Boolean,
+) as string[];
+const EMPRESAS = [GA_ID && "Google", CLARITY_ID && "Microsoft"].filter(Boolean) as string[];
+
+const PARRAFOS_MEDICION =
+  HERRAMIENTAS.length === 0
+    ? [
+        "Este sitio no utiliza cookies de analítica, píxeles de redes sociales ni herramientas de seguimiento publicitario.",
+        "El sitio se sirve a través de Cloudflare, que puede establecer cookies estrictamente técnicas necesarias para la seguridad y el correcto funcionamiento de la infraestructura.",
+      ]
+    : [
+        `Usamos ${HERRAMIENTAS.join(" y ")} para entender cómo se usa este sitio: qué páginas se visitan, desde qué tipo de dispositivo, cuánto tiempo se permanece en ellas y qué botones se usan, por ejemplo el de WhatsApp.${
+          CLARITY_ID
+            ? " Clarity además genera grabaciones anónimas de la navegación y mapas de calor, sin registrar lo que escribes en los formularios."
+            : ""
+        }`,
+        "Estas herramientas instalan cookies de medición y tratan datos de navegación de forma agregada. No los usamos para identificarte, no los cruzamos con tus datos de contacto ni los usamos con fines publicitarios. Puedes bloquear o eliminar estas cookies desde la configuración de tu navegador, y el sitio seguirá funcionando con normalidad.",
+        `${EMPRESAS.join(" y ")} ${EMPRESAS.length > 1 ? "tratan" : "trata"} esta información conforme a sus propias políticas de privacidad. Este sitio no usa píxeles de redes sociales ni herramientas de publicidad.`,
+        "El sitio se sirve a través de Cloudflare, que puede establecer cookies estrictamente técnicas necesarias para la seguridad y el correcto funcionamiento de la infraestructura.",
+      ];
 
 const SECCIONES = [
   {
@@ -39,12 +64,7 @@ const SECCIONES = [
   },
   {
     titulo: "Cookies y medición del sitio",
-    parrafos: [
-      "Usamos Google Analytics y Microsoft Clarity para entender cómo se usa este sitio: qué páginas se visitan, desde qué tipo de dispositivo, cuánto tiempo se permanece en ellas y qué botones se usan, por ejemplo el de WhatsApp. Clarity además genera grabaciones anónimas de la navegación y mapas de calor, sin registrar lo que escribes en los formularios.",
-      "Estas herramientas instalan cookies de medición y tratan datos de navegación de forma agregada. No los usamos para identificarte, no los cruzamos con tus datos de contacto ni los usamos con fines publicitarios. Puedes bloquear o eliminar estas cookies desde la configuración de tu navegador, y el sitio seguirá funcionando con normalidad.",
-      "Google y Microsoft tratan esta información conforme a sus propias políticas de privacidad. Este sitio no usa píxeles de redes sociales ni herramientas de publicidad.",
-      "El sitio se sirve a través de Cloudflare, que puede establecer cookies estrictamente técnicas necesarias para la seguridad y el correcto funcionamiento de la infraestructura.",
-    ],
+    parrafos: PARRAFOS_MEDICION,
   },
   {
     titulo: "Con quién compartimos tus datos",
