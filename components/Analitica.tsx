@@ -7,7 +7,7 @@ import RastreoConversiones from "./RastreoConversiones";
 //   CLARITY_ID: Microsoft Clarity  -> Settings > Overview > Project ID
 // Si se agrega o quita una herramienta, actualizar tambien /privacidad.
 export const GA_ID = "G-CV8TPS1TXE";
-export const CLARITY_ID = "";
+export const CLARITY_ID = "yxbgdwrnez";
 
 export default function Analitica() {
   return (
