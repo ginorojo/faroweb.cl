@@ -22,7 +22,10 @@ export default function Analitica() {
         </>
       )}
       {CLARITY_ID && (
-        <Script id="clarity" strategy="lazyOnload">
+        // El id NO puede ser "clarity": los elementos con id se exponen como
+        // window.<id>, y el snippet ve ese elemento en window.clarity y no crea
+        // la funcion (error "a[c] is not a function").
+        <Script id="ms-clarity-init" strategy="lazyOnload">
           {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_ID}");`}
         </Script>
       )}
