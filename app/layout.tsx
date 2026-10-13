@@ -3,6 +3,7 @@ import { Archivo } from "next/font/google";
 import "./globals.css";
 import { CIUDADES } from "@/data/pseo";
 import PromoModal from "@/components/PromoModal";
+import Analitica from "@/components/Analitica";
 
 // Archivo: una sola familia variable, con ejes de peso Y de ancho. El contraste
 // de los titulares sale del ancho, no de una segunda fuente.
@@ -129,6 +130,7 @@ export default function RootLayout({
             apariciones. Se autodesactiva en la fecha de corte configurada
             dentro del componente. */}
         <PromoModal />
+        <Analitica />
       </body>
     </html>
   );

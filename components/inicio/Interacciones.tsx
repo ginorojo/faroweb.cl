@@ -3,26 +3,14 @@
 import { useEffect, useState } from "react";
 import { WA_GENERAL } from "./data";
 import { IconoWhatsApp } from "./Iconos";
-import { track } from "./track";
 
-// Un solo listener para todos los enlaces con `data-track`: las secciones
-// siguen siendo componentes de servidor y no cargan JS solo para medir clics.
-function useRastreoDeClics() {
-  useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      const el = (e.target as HTMLElement | null)?.closest<HTMLElement>("[data-track]");
-      if (el) track("clic_whatsapp", el.dataset.track);
-    };
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, []);
-}
+// La medicion de clics vive en components/RastreoConversiones.tsx, que cubre
+// todo el sitio desde el layout.
 
 // Barra fija en movil, en lugar de los dos botones flotantes que tapaban el
 // contenido. Aparece al dejar atras el hero y se esconde al llegar a contacto,
 // donde ya hay un boton de WhatsApp a la vista.
 export default function Interacciones() {
-  useRastreoDeClics();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

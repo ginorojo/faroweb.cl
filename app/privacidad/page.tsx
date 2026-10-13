@@ -5,7 +5,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Política de Privacidad | Faroweb",
   description:
-    "Cómo Faroweb trata los datos personales que recibe por WhatsApp, correo y la calculadora web, conforme a la Ley 19.628 sobre protección de la vida privada.",
+    "Cómo Faroweb trata los datos personales que recibe por WhatsApp, correo, el formulario de contacto y la calculadora web, conforme a la Ley 19.628 sobre protección de la vida privada.",
   alternates: { canonical: "/privacidad" },
   openGraph: {
     title: "Política de Privacidad | Faroweb",
@@ -38,10 +38,12 @@ const SECCIONES = [
     ],
   },
   {
-    titulo: "Cookies y seguimiento",
+    titulo: "Cookies y medición del sitio",
     parrafos: [
-      "Este sitio no utiliza cookies de analítica, píxeles de redes sociales ni herramientas de seguimiento publicitario. No usamos Google Analytics ni servicios equivalentes, y no construimos perfiles de navegación de nuestros visitantes.",
-      "El sitio se sirve a través de Cloudflare, que puede establecer cookies estrictamente técnicas necesarias para la seguridad y el correcto funcionamiento de la infraestructura. No tenemos acceso a esa información con fines comerciales.",
+      "Usamos Google Analytics y Microsoft Clarity para entender cómo se usa este sitio: qué páginas se visitan, desde qué tipo de dispositivo, cuánto tiempo se permanece en ellas y qué botones se usan, por ejemplo el de WhatsApp. Clarity además genera grabaciones anónimas de la navegación y mapas de calor, sin registrar lo que escribes en los formularios.",
+      "Estas herramientas instalan cookies de medición y tratan datos de navegación de forma agregada. No los usamos para identificarte, no los cruzamos con tus datos de contacto ni los usamos con fines publicitarios. Puedes bloquear o eliminar estas cookies desde la configuración de tu navegador, y el sitio seguirá funcionando con normalidad.",
+      "Google y Microsoft tratan esta información conforme a sus propias políticas de privacidad. Este sitio no usa píxeles de redes sociales ni herramientas de publicidad.",
+      "El sitio se sirve a través de Cloudflare, que puede establecer cookies estrictamente técnicas necesarias para la seguridad y el correcto funcionamiento de la infraestructura.",
     ],
   },
   {
@@ -108,7 +110,7 @@ export default function PrivacidadPage() {
           </div>
 
           <p className="text-sm text-gray-400 mt-14 pt-8 border-t border-gray-100">
-            Última actualización: 1 de septiembre de 2026.
+            Última actualización: 13 de octubre de 2026.
           </p>
         </div>
       </main>
