@@ -131,6 +131,21 @@ export const PROYECTOS: Proyecto[] = [
     capturaLarga: true,
     resumen: "Sus experiencias y servicios presentados para empresas, colegios e instituciones.",
   },
+  {
+    slug: "lucas-vera",
+    nombre: "Lucas Vera",
+    rubro: "Fotografía de bodas y eventos · Santiago",
+    plan: "One Page",
+    url: "https://portafolio-fotografo.ginorojoj.workers.dev",
+    dominio: "lucas vera · fotografía",
+    logo: "/rediseno/logos/lucas-vera.webp",
+    logoAncho: 193,
+    logoAlto: 240,
+    captura: "/rediseno/proyectos/lucas-vera.webp",
+    capturaLarga: true,
+    resumen:
+      "Un carrusel de fotos que, al pasar el cursor, muestra cada imagen en grande de fondo. Sesiones agendadas por WhatsApp.",
+  },
 ];
 
 export type Plan = {

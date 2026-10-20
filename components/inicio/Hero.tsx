@@ -131,7 +131,7 @@ export default function Hero() {
           <h2 id="clientes-titulo" className="max-w-[15rem] shrink-0 text-[0.9375rem] font-medium leading-snug text-fw-soft">
             Negocios de la región que ya confían en Faroweb
           </h2>
-          <ul className="grid flex-1 grid-cols-3 items-center gap-x-6 gap-y-6 sm:grid-cols-6">
+          <ul className="flex flex-1 flex-wrap items-center justify-center gap-x-8 gap-y-6 lg:justify-between lg:gap-x-6">
             {PROYECTOS.map((p) => (
               <li key={p.slug} className="flex justify-center">
                 <Image

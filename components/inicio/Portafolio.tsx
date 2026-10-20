@@ -6,14 +6,15 @@ import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { PROYECTOS, waLink } from "./data";
 import { IconoWhatsApp } from "./Iconos";
 
-// Mosaico: el primero ocupa dos filas; el resto se reparte 5 + 5 y 4 + 4 + 4.
+// Mosaico: el primero ocupa dos filas; el resto se reparte 5 + 5, 6 + 6 y 6 + 6.
 const COLUMNAS = [
   "lg:col-span-7 lg:row-span-2",
   "lg:col-span-5",
   "lg:col-span-5",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
+  "lg:col-span-6",
+  "lg:col-span-6",
+  "lg:col-span-6",
+  "lg:col-span-6",
 ];
 
 const VISIBLES_MOVIL = 3;
@@ -44,7 +45,7 @@ export default function Portafolio() {
             return (
               <li
                 key={p.slug}
-                className={`${COLUMNAS[i]} ${grande || i === PROYECTOS.length - 1 ? "sm:col-span-2" : ""} ${oculto ? "hidden sm:flex" : "flex"} fw-revela`}
+                className={`${COLUMNAS[i]} ${grande || (i === PROYECTOS.length - 1 && PROYECTOS.length % 2 === 0) ? "sm:col-span-2" : ""} ${oculto ? "hidden sm:flex" : "flex"} fw-revela`}
               >
                 <article className="fw-proyecto flex w-full flex-col rounded-3xl border border-fw-line bg-white p-2.5 transition-shadow duration-300 hover:shadow-[0_24px_48px_-24px_rgb(27_34_51/0.35)]">
                   {/* Marco de navegador con la captura real del sitio. */}

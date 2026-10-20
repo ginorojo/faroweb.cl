@@ -97,8 +97,8 @@ export default function NosotrosPage() {
 
           <h2 className="text-2xl font-black text-gray-900 mb-4">Proyectos que ya están funcionando</h2>
           <p className="text-gray-600 leading-relaxed mb-10">
-            La Casita del Molle, Domos, Arguedas Construcciones, Modular Norte, Movigest y
-            On Producciones son sitios que construimos y que hoy operan a diario. Puedes
+            La Casita del Molle, Domos, Arguedas Construcciones, Modular Norte, Movigest,
+            On Producciones y Lucas Vera son sitios que construimos y que hoy operan a diario. Puedes
             verlos en el portafolio de la portada, con el enlace directo a cada uno para
             que revises el resultado real y no una captura de pantalla.
           </p>
